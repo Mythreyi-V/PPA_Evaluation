@@ -1,0 +1,7 @@
+iter;dataset;cls;method;param;value;score
+2;bpic2015_5_f2;rf;state_laststate;max_features;0.5453606924430398;0.9267446965096923
+2;bpic2015_5_f2;rf;state_laststate;processing_time;493.8832185268402;0
+3;bpic2015_5_f2;rf;state_laststate;max_features;0.7810483663610748;0.9254462570660685
+3;bpic2015_5_f2;rf;state_laststate;processing_time;498.7541184425354;0
+4;bpic2015_5_f2;rf;state_laststate;max_features;0.639700201742994;0.9261403148660018
+4;bpic2015_5_f2;rf;state_laststate;processing_time;490.16316199302673;0

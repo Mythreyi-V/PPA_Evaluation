@@ -1,0 +1,7 @@
+iter;dataset;cls;method;param;value;score
+2;bpic2015_5_f2;rf;single_agg;max_features;0.4894880484586043;0.9599300444230249
+2;bpic2015_5_f2;rf;single_agg;processing_time;291.998069524765;0
+3;bpic2015_5_f2;rf;single_agg;max_features;0.4143585248113446;0.9613874623251667
+3;bpic2015_5_f2;rf;single_agg;processing_time;256.220739364624;0
+4;bpic2015_5_f2;rf;single_agg;max_features;0.6199876336609468;0.9577926517759222
+4;bpic2015_5_f2;rf;single_agg;processing_time;349.94166326522827;0
