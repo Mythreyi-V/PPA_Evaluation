@@ -7,10 +7,10 @@ input_data_folder = "../orig_logs"
 output_data_folder = "../labeled_logs_csv_processed"
 filenames = ["bpic2012.csv"]
 
-case_id_col = "Case ID"
-activity_col = "Activity"
-resource_col = "Resource"
-timestamp_col = "Complete Timestamp"
+case_id_col = "caseID"
+activity_col = "event"
+resource_col = "org:resource"
+timestamp_col = "completeTime"
 label_col = "label"
 pos_label = "deviant"
 neg_label = "regular"
@@ -35,11 +35,11 @@ def extract_timestamp_features(group):
     group = group.sort_values(timestamp_col, ascending=False, kind='mergesort')
     
     tmp = group[timestamp_col] - group[timestamp_col].shift(-1)
-    tmp = tmp.fillna(0)
+    tmp = tmp.fillna((pd.Timedelta(0)))
     group["timesincelastevent"] = tmp.apply(lambda x: float(x / np.timedelta64(1, 'm'))) # m is for minutes
 
     tmp = group[timestamp_col] - group[timestamp_col].iloc[-1]
-    tmp = tmp.fillna(0)
+    tmp = tmp.fillna((pd.Timedelta(0)))
     group["timesincecasestart"] = tmp.apply(lambda x: float(x / np.timedelta64(1, 'm'))) # m is for minutes
 
     group = group.sort_values(timestamp_col, ascending=True, kind='mergesort')
@@ -53,7 +53,12 @@ def get_open_cases(date):
 
 for filename in filenames:
     
-    data = pd.read_csv(os.path.join(input_data_folder, filename), sep=";")
+    data = pd.read_csv(os.path.join(input_data_folder, filename), sep=",", index_col = False)
+    index_no = list(range(0, data.shape[0]))
+    #data.insert(0, 'index', index_no)
+    #data.set_index('index')
+    #print(data.index)
+
     data[timestamp_col] = pd.to_datetime(data[timestamp_col])
     data[resource_col] = data.sort_values(timestamp_col, ascending=True).groupby(case_id_col)[resource_col].transform(lambda grp: grp.fillna(method='ffill'))
     data.rename(columns=lambda x: x.replace('(case) ', ''), inplace=True)
@@ -73,8 +78,10 @@ for filename in filenames:
     # add inter-case features
     print("Extracting open cases...")
     sys.stdout.flush()
+#    data.reset_index()
     data = data.sort_values([timestamp_col], ascending=True, kind='mergesort')
-    dt_first_last_timestamps = data.groupby(case_id_col)[timestamp_col].agg([min, max])
+#    data.reset_index()
+    dt_first_last_timestamps = data.groupby(case_id_col).agg({timestamp_col: ['min', 'max']})
     dt_first_last_timestamps.columns = ["start_time", "end_time"]
     data["open_cases"] = data[timestamp_col].apply(get_open_cases)
     
