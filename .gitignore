@@ -1,0 +1,6 @@
+
+*.csv
+benchmark_interpretability/PPM_Stability/bpic2012/xgboost_single_agg/test_data/bucket_1_labels.pickle
+benchmark_interpretability/PPM_Stability/bpic2012/xgboost_single_agg/test_data/bucket_1_prefixes.pickle
+benchmark_interpretability/PPM_Stability/bpic2012/xgboost_single_agg/train_data/bucket_1_labels.pickle
+benchmark_interpretability/PPM_Stability/bpic2012/xgboost_single_agg/train_data/bucket_1_prefixes.pickle
