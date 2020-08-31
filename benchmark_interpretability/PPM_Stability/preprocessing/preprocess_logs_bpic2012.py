@@ -7,10 +7,10 @@ input_data_folder = "../orig_logs"
 output_data_folder = "../labeled_logs_csv_processed_2"
 filenames = ["bpic2012.csv"]
 
-case_id_col = "case"
-activity_col = "event"
-resource_col = "org:resource"
-timestamp_col = "completeTime"
+case_id_col = "Case ID"
+activity_col = "Activity"
+resource_col = "Resource"
+timestamp_col = "Complete Timestamp"
 label_col = "label"
 pos_label = "deviant"
 neg_label = "regular"
@@ -35,11 +35,11 @@ def extract_timestamp_features(group):
     group = group.sort_values(timestamp_col, ascending=False, kind='mergesort')
     
     tmp = group[timestamp_col] - group[timestamp_col].shift(-1)
-    tmp = tmp.fillna(pd.Timedelta(seconds=0))
+    tmp = tmp.fillna(pd.Timedelta(seconds = 0))
     group["timesincelastevent"] = tmp.apply(lambda x: float(x / np.timedelta64(1, 'm'))) # m is for minutes
 
     tmp = group[timestamp_col] - group[timestamp_col].iloc[-1]
-    tmp = tmp.fillna(pd.Timedelta(seconds=0))
+    tmp = tmp.fillna(pd.Timedelta(seconds = 0))
     group["timesincecasestart"] = tmp.apply(lambda x: float(x / np.timedelta64(1, 'm'))) # m is for minutes
 
     group = group.sort_values(timestamp_col, ascending=True, kind='mergesort')
@@ -53,9 +53,7 @@ def get_open_cases(date):
 
 for filename in filenames:
     
-    data = pd.read_csv(os.path.join(input_data_folder, filename), sep=",", index_col = False)
-    idxs = np.arange(0, data.shape[0])
-    data = data.reindex(idxs)
+    data = pd.read_csv(os.path.join(input_data_folder, filename), sep=",")
     data[timestamp_col] = pd.to_datetime(data[timestamp_col])
     data[resource_col] = data.sort_values(timestamp_col, ascending=True).groupby(case_id_col)[resource_col].transform(lambda grp: grp.fillna(method='ffill'))
     data.rename(columns=lambda x: x.replace('(case) ', ''), inplace=True)
@@ -70,27 +68,21 @@ for filename in filenames:
     # add features extracted from timestamp
     print("Extracting timestamp features...")
     sys.stdout.flush()
-    #data.reset_index()
     data = data.groupby(case_id_col, as_index = False).apply(extract_timestamp_features)
-    #data.reset_index()
     
     # add inter-case features
     print("Extracting open cases...")
     sys.stdout.flush()
-    #data.reset_index()
     data = data.sort_values([timestamp_col], ascending=True, kind='mergesort')
     dt_first_last_timestamps = data.groupby(case_id_col, as_index = False)[timestamp_col].agg([min, max])
     dt_first_last_timestamps.columns = ["start_time", "end_time"]
     data["open_cases"] = data[timestamp_col].apply(get_open_cases)
     
     # assign class labels
-    print("Assigning class labels...")
     last_o_events = data[data[activity_col].str.startswith("O")].sort_values(timestamp_col, ascending=True).groupby(case_id_col).last()[activity_col]
     last_o_events = pd.DataFrame(last_o_events)
     last_o_events.columns = ["last_o_activity"]
-    print(last_o_events.columns)
     data = data.merge(last_o_events, left_on=case_id_col, right_index=True)
-    print(data.columns)
     data = data[data.last_o_activity.isin(relevant_offer_events)]
     
     for activity in relevant_offer_events:
@@ -115,4 +107,3 @@ for filename in filenames:
             dt_labeled.loc[~mask, col] = "other"
 
         dt_labeled.to_csv(os.path.join(output_data_folder, "%s_%s.csv" % (filename[:-4], activity)), sep=";", index=False)
-    

@@ -40,7 +40,7 @@ def create_and_evaluate_model(args):
         dt_train_prefixes = pd.DataFrame()
         for cv_train_iter in range(n_splits): 
             if cv_train_iter != cv_iter:
-                dt_train_prefixes = pd.concat([dt_train_prefixes, dt_prefixes[cv_train_iter]], axis=0)
+                dt_train_prefixes = pd.concat([dt_train_prefixes, dt_prefixes[cv_train_iter]], axis=0, sort=False)
         
         # Bucketing prefixes based on control flow
         bucketer_args = {'encoding_method':bucket_encoding, 
@@ -143,7 +143,7 @@ def create_and_evaluate_model(args):
 dataset_ref = "bpic2012"
 params_dir = "params"
 n_iter = 3
-bucket_method = "single"
+bucket_method = "prefix"
 cls_encoding = "agg"
 cls_method = "xgboost"
 
@@ -171,6 +171,7 @@ encoding_dict = {
 
 datasets = [dataset_ref] if dataset_ref not in dataset_ref_to_datasets else dataset_ref_to_datasets[dataset_ref]
 methods = encoding_dict[cls_encoding]
+print(datasets)
     
 train_ratio = 0.8
 n_splits = 3
@@ -202,6 +203,7 @@ for dataset_name in datasets:
         max_prefix_length = min(40, dataset_manager.get_pos_case_length_quantile(data, 0.90))
 
     # split into training and test
+    print("splitting data")
     train, _ = dataset_manager.split_data_strict(data, train_ratio, split="temporal")
     
     # prepare chunks for CV
@@ -238,7 +240,7 @@ for dataset_name in datasets:
         fout_all.write("%s;%s;%s;%s;%s;%s;%s;%s\n" % ("iter", "dataset", "cls", "method", "nr_events", "param", "value", "score"))   
     else:
         fout_all.write("%s;%s;%s;%s;%s;%s;%s\n" % ("iter", "dataset", "cls", "method", "param", "value", "score"))   
-    best = fmin(create_and_evaluate_model, space, algo=tpe.suggest, max_evals=n_iter, trials=trials)
+    best = fmin(create_and_evaluate_model, space, algo=tpe.suggest, max_evals=n_iter, trials=trials, verbose=True)
     fout_all.close()
 
     # write the best parameters
