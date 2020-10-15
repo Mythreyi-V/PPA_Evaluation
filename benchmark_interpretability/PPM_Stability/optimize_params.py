@@ -143,9 +143,9 @@ def create_and_evaluate_model(args):
 dataset_ref = "bpic2012"
 params_dir = "params"
 n_iter = 3
-bucket_method = "prefix"
+bucket_method = "single"
 cls_encoding = "agg"
-cls_method = "xgboost"
+cls_method = "rf"
 
 if bucket_method == "state":
     bucket_encoding = "last"
