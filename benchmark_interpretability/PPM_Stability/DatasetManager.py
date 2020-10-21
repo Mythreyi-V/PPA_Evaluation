@@ -251,8 +251,15 @@ class DatasetManager:
 
         return (X, y, case_ids)
 
-    def get_lstm_encoded_cols(self):
+    def get_lstm_encoded_cols(self, max_len):
         #if self.encoded_cols != None:
-        feature_names = self.encoded_cols[:-3]
+        features = self.encoded_cols[:-3]
+        feature_names = []
+
+        for i in range(max_len):
+            end = "_pref_"+str(i)
+            row = [feature+end for feature in features]
+            feature_names.append(row)
+
         return(feature_names)
         
