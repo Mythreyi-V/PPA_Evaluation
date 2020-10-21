@@ -183,10 +183,10 @@ class DatasetManager:
             dt_all = pd.DataFrame(self.scaler.fit_transform(data[num_cols]), index=data.index, columns=num_cols)
         else:
             dt_all = pd.DataFrame(self.scaler.transform(data[num_cols]), index=data.index, columns=num_cols)
-        print(dt_all)
+        
         # one-hot encode categorical cols
         dt_cat = pd.get_dummies(data[cat_cols])
-        print(dt_cat)
+        
         
         # merge
         dt_all = pd.concat([dt_all, dt_cat], axis=1)
@@ -194,7 +194,6 @@ class DatasetManager:
         dt_all[self.label_col] = data[self.label_col].apply(lambda x: 1 if x == self.pos_label else 0)
         dt_all[self.timestamp_col] = data[self.timestamp_col]
         
-        print(dt_all)
         
         # add missing columns if necessary
         if self.encoded_cols is None:
