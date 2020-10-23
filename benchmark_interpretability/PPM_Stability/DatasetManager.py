@@ -267,7 +267,7 @@ class DatasetManager:
 
     def generate_3d_data_for_single_case(self, data, max_len, nr_events = 1):
         grouped = data.groupby(self.case_id_col)
-        data_dim = data.shape[1]
+        data_dim = data.shape[1]-3
         n_cases = np.sum(grouped.size() >= nr_events)
         
         # encode only prefixes of this length
@@ -282,7 +282,7 @@ class DatasetManager:
             group = group.sort_values(self.timestamp_col, ascending=True, kind="mergesort")
             label = group[self.label_col].iloc[0]
             group = group.values
-            X[idx] = pad_sequences(group[np.newaxis,:nr_events,:], maxlen=max_len, dtype=np.float32)
+            X[idx] = pad_sequences(group[np.newaxis,:nr_events,:-3], maxlen=max_len, dtype=np.float32)
             y[idx, label] = 1
             case_ids.append(case_id)
             idx += 1
