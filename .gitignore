@@ -16,3 +16,7 @@ benchmark_interpretability/PPM_Stability/bpic2012/cb_single_agg/cb_model.json
 benchmark_interpretability/PPM_Stability/bpic2012/cb_single_agg/models/cls_bucket_1.joblib
 benchmark_interpretability/PPM_Stability/bpic2012/cb_single_agg/pipelines/pipeline_bucket_1.joblib
 benchmark_interpretability/PPM_Stability/bpic2012/cb_single_agg/train_data/bucket_1_prefixes.pickle
+benchmark_interpretability/PPM_Stability/bpic2012/lstm/test_data/labels.pickle
+benchmark_interpretability/PPM_Stability/bpic2012/lstm/test_data/prefixes.pickle
+benchmark_interpretability/PPM_Stability/bpic2012/lstm/train_data/labels.pickle
+benchmark_interpretability/PPM_Stability/bpic2012/lstm/train_data/prefixes.pickle
