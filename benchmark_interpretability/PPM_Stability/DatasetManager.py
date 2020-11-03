@@ -42,6 +42,22 @@ class DatasetManager:
 
         return data
 
+    def balance_data(self, data):
+        y = self.get_label_numeric(data)
+        case_ids = self.get_case_ids(data)
+        
+        neg_cases = [case_ids[i] for i in range(len(case_ids)) if y[i] == 0]
+        pos_cases = [case_ids[i] for i in range(len(case_ids)) if y[i] == 1]
+
+        if len(neg_cases) > len(pos_cases):
+            neg_cases = resample(neg_cases, replace = False, n_samples = len(pos_cases))
+        elif len(neg_cases) < len(pos_cases):
+            pos_cases = resample(pos_cases, replace = False, n_samples = len(neg_cases))
+
+        bal_data = data.loc[data[self.case_id_col].isin(neg_cases)]
+        bal_data = bal_data.append(data.loc[data[self.case_id_col].isin(pos_cases)])
+        
+        return bal_data
 
     def split_data(self, data, train_ratio, split="temporal", seed=22):  
         # split into train and test using temporal split
