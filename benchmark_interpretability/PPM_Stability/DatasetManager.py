@@ -230,18 +230,20 @@ class DatasetManager:
         
         X = np.zeros((n_cases, max_len, data_dim), dtype=np.float32)
         y = np.zeros((n_cases, 2), dtype=np.float32)
+        case_ids = []
 
         idx = 0
         # each prefix will be a separate instance
-        for _, group in grouped:
+        for case_id, group in grouped:
             group = group.sort_values(self.timestamp_col, ascending=True, kind="mergesort")
             label = group[self.label_col].iloc[0]
             group = group.values
             for i in range(1, len(group) + 1):
                 X[idx] = pad_sequences(group[np.newaxis,:i,:-3], maxlen=max_len, dtype=np.float32)
                 y[idx, label] = 1
+                case_ids.append(case_id)
                 idx += 1
-        return (X, y)    
+        return (X, y, case_ids)    
 
     def generate_3d_data_for_prefix_length(self, data, max_len, nr_events):
         grouped = data.groupby(self.case_id_col)
