@@ -8,6 +8,8 @@ import numpy as np
 from sklearn.model_selection import StratifiedKFold
 from sklearn.preprocessing import MinMaxScaler
 from keras_preprocessing.sequence import pad_sequences
+from sklearn.utils import resample
+
 
 
 class DatasetManager:
@@ -270,8 +272,9 @@ class DatasetManager:
         return (X, y, case_ids)
 
     def get_lstm_encoded_cols(self, max_len):
-        if self.encoded_cols == None:
-            self.encode_data_for_lstm(self.read_dataset)
+        #print(type(self.encoded_cols))
+        if np.any(self.encoded_cols): #self.encoded_cols == None or self.encoded_cols == []:
+            self.encode_data_for_lstm(self.read_dataset())
         
         features = self.encoded_cols[:-3]
         feature_names = []
