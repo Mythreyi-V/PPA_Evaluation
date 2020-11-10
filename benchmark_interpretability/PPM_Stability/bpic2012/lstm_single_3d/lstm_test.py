@@ -99,20 +99,8 @@ def create_samples(shap_explainer, iterations, row, features, top = None):
     
     for j in range(iterations):
         
-        #if shap_type == "kernel":
-        #    shap_explainer = shap.KernelExplainer(cls.predict, trainingsample)
-        #elif shap_type == "tree":
-        #    shap_explainer = shap.TreeExplainer(cls)
-        #elif shap_type == "deep":
-        #    shap_explainer = shap.DeepExplainer(cls, background)
-        #print(row.shape)
-        #for each in row:
-        #    print (each.shape)
-        
-        #print(X_test_frame.loc[row])
         shap_values = shap_explainer.shap_values(row)
-        #print(shap_values)
-
+        
         importances = []
         
         if type(shap_explainer) == shap.explainers.kernel.KernelExplainer:
@@ -146,8 +134,7 @@ def create_samples(shap_explainer, iterations, row, features, top = None):
                     abs_val = abs(shap_values[0][0][i])
                     entry = (feat, shap_val, abs_val)
                     importances.append(entry)
-        
-        #print(importances[0])
+    
         importances.sort(key=lambda tup: tup[2], reverse = True)
         
         exp.append(importances)
@@ -177,11 +164,6 @@ def dispersal(weights, features):
             feat_weight.append(iteration[i])
         weights_by_feat.append(feat_weight)
         
-    #for iteration in weights:
-     #   for val in iteration:
-      #      idx = iteration.index(val)
-       #     print(idx)
-        #    weights_by_feat[idx].append(val)
     
     dispersal = []
     dispersal_no_outlier = []
@@ -261,6 +243,7 @@ dataset_ref_to_datasets = {
 datasets = [dataset_ref] if dataset_ref not in dataset_ref_to_datasets else dataset_ref_to_datasets[dataset_ref]
 
 #Try SHAP
+print("----------------------------------------------SHAP----------------------------------------------")
 start_time = time.time()
 
 if generate_model_shap:
@@ -305,12 +288,12 @@ if generate_model_shap:
                     train_y = pickle.load(f)
                     
                 #import test set
-                X_test_path = os.path.join(PATH, "%s/%s_%s/test_data/bucket_%s_prefixes.pickle" % (dataset_ref, cls_method, method_name, bucketID))
-                Y_test_path = os.path.join(PATH, "%s/%s_%s/test_data/bucket_%s_labels.pickle" % (dataset_ref, cls_method, method_name, bucketID))
-                with open(X_test_path, 'rb') as f:
-                    dt_test_bucket = pickle.load(f)
-                with open(Y_test_path, 'rb') as f:
-                    test_y = pickle.load(f)
+                #X_test_path = os.path.join(PATH, "%s/%s_%s/test_data/bucket_%s_prefixes.pickle" % (dataset_ref, cls_method, method_name, bucketID))
+                #Y_test_path = os.path.join(PATH, "%s/%s_%s/test_data/bucket_%s_labels.pickle" % (dataset_ref, cls_method, method_name, bucketID))
+                #with open(X_test_path, 'rb') as f:
+                #    dt_test_bucket = pickle.load(f)
+                #with open(Y_test_path, 'rb') as f:
+                #    test_y = pickle.load(f)
 
                 #import previously identified samples
                 tn_path = os.path.join(PATH, "%s/%s_%s/samples/true_neg_bucket_%s_.pickle" % (dataset_ref, cls_method, method_name, bucketID))
@@ -373,8 +356,9 @@ if generate_model_shap:
                         feat_pres = []
                         feat_weights = []
 
+                        print("Computing feature presence in each iteration")
                         for iteration in rel_exp:
-                            print("Computing feature presence for iteration", rel_exp.index(iteration))
+                            #print("Computing feature presence for iteration", rel_exp.index(iteration))
                             
                             if cls_encoding == "3d":
                                 #The stability measure functions can only handle two dimensional arrays and lists
@@ -395,9 +379,10 @@ if generate_model_shap:
                                         presence_list[list_idx] = 1
 
                             feat_pres.append(presence_list)
-                            
+
+                        print("Computing feature weights in each iteration")                            
                         for iteration in exp:
-                            print("Compiling feature weights for iteration", exp.index(iteration))
+                            #print("Compiling feature weights for iteration", exp.index(iteration))
                             
                             if cls_encoding == "3d":
                                 #The stability measure functions can only handle two dimensional arrays and lists
@@ -445,6 +430,7 @@ elapsed = time.time() - start_time
 print("Time taken by SHAP:", elapsed)
 
 #Try LIME
+print("----------------------------------------------LIME----------------------------------------------")
 start_time = time.time()
 if generate_lime:
     
