@@ -1,0 +1,11 @@
+  WARNING: The scripts f2py, f2py3 and f2py3.7 are installed in '/home/n9455647/.local/bin' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+ERROR: After October 2020 you may experience errors when installing or updating packages. This is because pip will change the way that it resolves dependency conflicts.
+
+We recommend you use --use-feature=2020-resolver to test your packages with the new resolver before it becomes the default.
+
+tensorflow 2.3.1 requires numpy<1.19.0,>=1.16.0, but you'll have numpy 1.19.4 which is incompatible.
+Traceback (most recent call last):
+  File "lstm_test.py", line 18, in <module>
+    stab = st.get_stability(lst)
+AttributeError: module 'stability' has no attribute 'get_stability'

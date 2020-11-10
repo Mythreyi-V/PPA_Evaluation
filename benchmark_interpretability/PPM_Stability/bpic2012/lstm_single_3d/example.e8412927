@@ -1,0 +1,12 @@
+/var/spool/PBS/mom_priv/jobs/8412927.pbs.SC: line 27: 46361 Killed                  python -m pip install --upgrade pip
+/var/spool/PBS/mom_priv/jobs/8412927.pbs.SC: line 29: 46364 Killed                  python -m pip install lime==0.2.0.1
+/var/spool/PBS/mom_priv/jobs/8412927.pbs.SC: line 30: eacho: command not found
+/var/spool/PBS/mom_priv/jobs/8412927.pbs.SC: line 31: 46366 Killed                  python -m pip install shap==0.35.0
+/var/spool/PBS/mom_priv/jobs/8412927.pbs.SC: line 33: 46367 Killed                  python -m pip install --upgrade numpy
+/var/spool/PBS/mom_priv/jobs/8412927.pbs.SC: line 35: 46368 Killed                  python -m pip install --upgrade pandas
+Traceback (most recent call last):
+  File "lstm_test.py", line 14, in <module>
+    import stability as st
+  File "/home/n9455647/PPM_Evaluation/Stability-Experiments/benchmark_interpretability/PPM_Stability/stability.py", line 22, in <module>
+    import numpy as np
+ImportError: No module named numpy
