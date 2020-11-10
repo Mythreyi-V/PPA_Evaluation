@@ -1,0 +1,20 @@
+queue started
+modules purged
+python loaded
+pip loaded
+numpy loaded
+pandas loaded
+scipy loaded
+tensorflow loaded
+pip upgraded
+shap installed
+numpy upgraded
+pandsas upgraded
+starting test
+test ended
+
+-----
+PBS Job 8412927.pbs
+CPU time  : 00:00:00
+Wall time : 00:00:12
+Mem usage : 0b

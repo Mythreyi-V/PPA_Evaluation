@@ -1,0 +1,12 @@
+queue started
+python loaded
+pip loaded
+numpy loaded
+pandas loaded
+scipy loaded
+
+-----
+PBS Job 8412914.pbs
+CPU time  : 00:00:07
+Wall time : 00:05:19
+Mem usage : 1024kb

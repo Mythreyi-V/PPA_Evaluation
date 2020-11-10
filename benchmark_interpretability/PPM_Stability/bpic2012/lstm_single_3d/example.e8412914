@@ -1,0 +1,43 @@
+python/2.7.14-foss-2018a(32):ERROR:150: Module 'python/2.7.14-foss-2018a' conflicts with the currently loaded module(s) 'python/3.7.2-foss-2018a'
+python/2.7.14-foss-2018a(32):ERROR:102: Tcl command execution failed: conflict python
+
+foss/2019a(23):ERROR:150: Module 'foss/2019a' conflicts with the currently loaded module(s) 'foss/2018a'
+foss/2019a(23):ERROR:102: Tcl command execution failed: conflict foss
+
+python/2.7.15-foss-2019a(38):ERROR:150: Module 'python/2.7.15-foss-2019a' conflicts with the currently loaded module(s) 'python/3.7.2-foss-2018a'
+python/2.7.15-foss-2019a(38):ERROR:102: Tcl command execution failed: conflict python
+
+foss/2019a(23):ERROR:150: Module 'foss/2019a' conflicts with the currently loaded module(s) 'foss/2018a'
+foss/2019a(23):ERROR:102: Tcl command execution failed: conflict foss
+
+python/3.7.2-gcccore-8.2.0(43):ERROR:150: Module 'python/3.7.2-gcccore-8.2.0' conflicts with the currently loaded module(s) 'python/3.7.2-foss-2018a'
+python/3.7.2-gcccore-8.2.0(43):ERROR:102: Tcl command execution failed: conflict python
+
+gcc/8.3.0(24):ERROR:150: Module 'gcc/8.3.0' conflicts with the currently loaded module(s) 'gcc/6.4.0-2.28'
+gcc/8.3.0(24):ERROR:102: Tcl command execution failed: conflict gcc
+
+gcc/8.3.0(24):ERROR:150: Module 'gcc/8.3.0' conflicts with the currently loaded module(s) 'gcc/6.4.0-2.28'
+gcc/8.3.0(24):ERROR:102: Tcl command execution failed: conflict gcc
+
+openmpi/3.1.4-gcccuda-2019b(22):ERROR:150: Module 'openmpi/3.1.4-gcccuda-2019b' conflicts with the currently loaded module(s) 'openmpi/2.1.2-gcc-6.4.0-2.28'
+openmpi/3.1.4-gcccuda-2019b(22):ERROR:102: Tcl command execution failed: conflict openmpi
+
+openblas/0.3.7-gcc-8.3.0(22):ERROR:150: Module 'openblas/0.3.7-gcc-8.3.0' conflicts with the currently loaded module(s) 'openblas/0.2.20-gcc-6.4.0-2.28'
+openblas/0.3.7-gcc-8.3.0(22):ERROR:102: Tcl command execution failed: conflict openblas
+
+fftw/3.3.8-gompic-2019b(24):ERROR:150: Module 'fftw/3.3.8-gompic-2019b' conflicts with the currently loaded module(s) 'fftw/3.3.7-gompi-2018a'
+fftw/3.3.8-gompic-2019b(24):ERROR:102: Tcl command execution failed: conflict fftw
+
+scalapack/2.0.2-gompic-2019b(24):ERROR:150: Module 'scalapack/2.0.2-gompic-2019b' conflicts with the currently loaded module(s) 'scalapack/2.0.2-gompi-2018a-openblas-0.2.20'
+scalapack/2.0.2-gompic-2019b(24):ERROR:102: Tcl command execution failed: conflict scalapack
+
+gcc/8.3.0(24):ERROR:150: Module 'gcc/8.3.0' conflicts with the currently loaded module(s) 'gcc/6.4.0-2.28'
+gcc/8.3.0(24):ERROR:102: Tcl command execution failed: conflict gcc
+
+python/3.7.4-gcccore-8.3.0(47):ERROR:150: Module 'python/3.7.4-gcccore-8.3.0' conflicts with the currently loaded module(s) 'python/3.7.2-foss-2018a'
+python/3.7.4-gcccore-8.3.0(47):ERROR:102: Tcl command execution failed: conflict python
+
+python/3.7.4-gcccore-8.3.0(47):ERROR:150: Module 'python/3.7.4-gcccore-8.3.0' conflicts with the currently loaded module(s) 'python/3.7.2-foss-2018a'
+python/3.7.4-gcccore-8.3.0(47):ERROR:102: Tcl command execution failed: conflict python
+
+=>> PBS: job killed: walltime 319 exceeded limit 310
