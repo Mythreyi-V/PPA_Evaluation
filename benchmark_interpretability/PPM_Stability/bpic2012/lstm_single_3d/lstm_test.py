@@ -371,12 +371,12 @@ if generate_model_shap:
                     train_y = pickle.load(f)
                     
                 #import test set
-                #X_test_path = os.path.join(PATH, "%s/%s_%s/test_data/bucket_%s_prefixes.pickle" % (dataset_ref, cls_method, method_name, bucketID))
-                #Y_test_path = os.path.join(PATH, "%s/%s_%s/test_data/bucket_%s_labels.pickle" % (dataset_ref, cls_method, method_name, bucketID))
-                #with open(X_test_path, 'rb') as f:
-                #    dt_test_bucket = pickle.load(f)
-                #with open(Y_test_path, 'rb') as f:
-                #    test_y = pickle.load(f)
+                X_test_path = os.path.join(PATH, "%s/%s_%s/test_data/bucket_%s_prefixes.pickle" % (dataset_ref, cls_method, method_name, bucketID))
+                Y_test_path = os.path.join(PATH, "%s/%s_%s/test_data/bucket_%s_labels.pickle" % (dataset_ref, cls_method, method_name, bucketID))
+                with open(X_test_path, 'rb') as f:
+                    dt_test_bucket = pickle.load(f)
+                with open(Y_test_path, 'rb') as f:
+                    test_y = pickle.load(f)
 
                 #import previously identified samples
                 tn_path = os.path.join(PATH, "%s/%s_%s/samples/true_neg_bucket_%s_.pickle" % (dataset_ref, cls_method, method_name, bucketID))
@@ -624,10 +624,10 @@ if generate_lime:
                     dt_train_bucket = pickle.load(f)
                 with open (Y_train_path, 'rb') as f:
                     train_y = pickle.load(f)
-                #with open (X_test_path, 'rb') as f:
-                #    dt_test_bucket = pickle.load(f)
-                #with open (Y_test_path, 'rb') as f:
-                #    test_y = pickle.load(f)
+                with open (X_test_path, 'rb') as f:
+                    dt_test_bucket = pickle.load(f)
+                with open (Y_test_path, 'rb') as f:
+                    test_y = pickle.load(f)
 
                 #import previously identified samples
                 tn_path = os.path.join(PATH, "%s/%s_%s/samples/true_neg_bucket_%s_.pickle" % (dataset_ref, cls_method, method_name, bucketID))
@@ -654,9 +654,9 @@ if generate_lime:
 
                 #get the training data as a matrix
                 if cls_method == "lstm":
-                    trainingdata = dt_train_bucket
+                    trainingdata = dt_test_bucket
                 else:
-                    trainingdata = feature_combiner.fit_transform(dt_train_bucket);
+                    trainingdata = feature_combiner.fit_transform(dt_train_bucket)
                 
                 #print('Generating local Explanations for', instance['caseID'])
                 if cls_method == "lstm":
