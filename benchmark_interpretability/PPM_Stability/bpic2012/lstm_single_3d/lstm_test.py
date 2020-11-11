@@ -406,7 +406,8 @@ if generate_model_shap:
                     tree_explainer = shap.TreeExplainer(cls)
                 elif cls_method == "lstm":
                     print("creating explainer")
-                    deep_explainer = shap.DeepExplainer(cls, dt_test_bucket)
+                    training_sample = shap.kmeans(dt_train_bucket, 10000)
+                    deep_explainer = shap.DeepExplainer(cls, training_sample)
 
                 #explain the chosen instances and find the stability score
                 cat_no = 0
@@ -654,7 +655,7 @@ if generate_lime:
 
                 #get the training data as a matrix
                 if cls_method == "lstm":
-                    trainingdata = dt_test_bucket
+                    trainingdata = dt_train_bucket
                 else:
                     trainingdata = feature_combiner.fit_transform(dt_train_bucket)
                 
