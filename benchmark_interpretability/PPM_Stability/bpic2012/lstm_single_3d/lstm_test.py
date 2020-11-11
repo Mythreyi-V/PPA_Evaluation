@@ -283,14 +283,8 @@ if generate_model_shap:
                     with open(params_path, 'rb') as f:
                         args = pickle.load(f)
 
-                    args['max_len'] = 40
-                    args['data_dim'] = 102
-
-                    with open(params_path, 'wb') as f:
-                        pickle.dump(args, f)
-
                     #create model
-                    main_input = Input(shape=(max_len, data_dim), name='main_input')
+                    main_input = Input(shape=(args['max_len'], args['data_dim']), name='main_input')
 
                     if args["lstm_layers"]["layers"] == "one":
                         l2_3 = LSTM(args['lstm1_nodes'], input_shape=(max_len, data_dim), implementation=2, 
