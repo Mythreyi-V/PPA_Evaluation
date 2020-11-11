@@ -1,0 +1,149 @@
+/var/spool/PBS/mom_priv/jobs/8413448.pbs.SC: line 17: echoh5py loaded: command not found
+gcccore/8.3.0(24):ERROR:150: Module 'gcccore/8.3.0' conflicts with the currently loaded module(s) 'gcccore/5.4.0'
+gcccore/8.3.0(24):ERROR:102: Tcl command execution failed: conflict gcccore
+
+binutils/2.32-gcccore-8.3.0(22):ERROR:150: Module 'binutils/2.32-gcccore-8.3.0' conflicts with the currently loaded module(s) 'binutils/2.26-gcccore-5.4.0'
+binutils/2.32-gcccore-8.3.0(22):ERROR:102: Tcl command execution failed: conflict binutils
+
+cuda/10.1.243-gcc-8.3.0(28):ERROR:150: Module 'cuda/10.1.243-gcc-8.3.0' conflicts with the currently loaded module(s) 'cuda/9.0.176'
+cuda/10.1.243-gcc-8.3.0(28):ERROR:102: Tcl command execution failed: conflict cuda
+
+cuda/10.1.243-gcc-8.3.0(28):ERROR:150: Module 'cuda/10.1.243-gcc-8.3.0' conflicts with the currently loaded module(s) 'cuda/9.0.176'
+cuda/10.1.243-gcc-8.3.0(28):ERROR:102: Tcl command execution failed: conflict cuda
+
+zlib/1.2.11-gcccore-8.3.0(26):ERROR:150: Module 'zlib/1.2.11-gcccore-8.3.0' conflicts with the currently loaded module(s) 'zlib/1.2.8-intel-2016b'
+zlib/1.2.11-gcccore-8.3.0(26):ERROR:102: Tcl command execution failed: conflict zlib
+
+gcccore/8.3.0(24):ERROR:150: Module 'gcccore/8.3.0' conflicts with the currently loaded module(s) 'gcccore/5.4.0'
+gcccore/8.3.0(24):ERROR:102: Tcl command execution failed: conflict gcccore
+
+gcccore/8.3.0(24):ERROR:150: Module 'gcccore/8.3.0' conflicts with the currently loaded module(s) 'gcccore/5.4.0'
+gcccore/8.3.0(24):ERROR:102: Tcl command execution failed: conflict gcccore
+
+gcccore/8.3.0(24):ERROR:150: Module 'gcccore/8.3.0' conflicts with the currently loaded module(s) 'gcccore/5.4.0'
+gcccore/8.3.0(24):ERROR:102: Tcl command execution failed: conflict gcccore
+
+gcccore/8.3.0(24):ERROR:150: Module 'gcccore/8.3.0' conflicts with the currently loaded module(s) 'gcccore/5.4.0'
+gcccore/8.3.0(24):ERROR:102: Tcl command execution failed: conflict gcccore
+
+zlib/1.2.11-gcccore-8.3.0(26):ERROR:150: Module 'zlib/1.2.11-gcccore-8.3.0' conflicts with the currently loaded module(s) 'zlib/1.2.8-intel-2016b'
+zlib/1.2.11-gcccore-8.3.0(26):ERROR:102: Tcl command execution failed: conflict zlib
+
+gcccore/8.3.0(24):ERROR:150: Module 'gcccore/8.3.0' conflicts with the currently loaded module(s) 'gcccore/5.4.0'
+gcccore/8.3.0(24):ERROR:102: Tcl command execution failed: conflict gcccore
+
+cuda/10.1.243-gcc-8.3.0(28):ERROR:150: Module 'cuda/10.1.243-gcc-8.3.0' conflicts with the currently loaded module(s) 'cuda/9.0.176'
+cuda/10.1.243-gcc-8.3.0(28):ERROR:102: Tcl command execution failed: conflict cuda
+
+python/3.7.4-gcccore-8.3.0(47):ERROR:150: Module 'python/3.7.4-gcccore-8.3.0' conflicts with the currently loaded module(s) 'python/2.7.12-intel-2016b'
+python/3.7.4-gcccore-8.3.0(47):ERROR:102: Tcl command execution failed: conflict python
+
+h5py/2.10.0-fosscuda-2019b-python-3.7.4(26):ERROR:150: Module 'h5py/2.10.0-fosscuda-2019b-python-3.7.4' conflicts with the currently loaded module(s) 'h5py/2.6.0-intel-2016b-python-2.7.12-hdf5-1.8.17'
+h5py/2.10.0-fosscuda-2019b-python-3.7.4(26):ERROR:102: Tcl command execution failed: conflict h5py
+
+gcccore/8.3.0(24):ERROR:150: Module 'gcccore/8.3.0' conflicts with the currently loaded module(s) 'gcccore/5.4.0'
+gcccore/8.3.0(24):ERROR:102: Tcl command execution failed: conflict gcccore
+
+zlib/1.2.11-gcccore-8.3.0(26):ERROR:150: Module 'zlib/1.2.11-gcccore-8.3.0' conflicts with the currently loaded module(s) 'zlib/1.2.8-intel-2016b'
+zlib/1.2.11-gcccore-8.3.0(26):ERROR:102: Tcl command execution failed: conflict zlib
+
+gcccore/8.3.0(24):ERROR:150: Module 'gcccore/8.3.0' conflicts with the currently loaded module(s) 'gcccore/5.4.0'
+gcccore/8.3.0(24):ERROR:102: Tcl command execution failed: conflict gcccore
+
+gcccore/8.3.0(24):ERROR:150: Module 'gcccore/8.3.0' conflicts with the currently loaded module(s) 'gcccore/5.4.0'
+gcccore/8.3.0(24):ERROR:102: Tcl command execution failed: conflict gcccore
+
+gcccore/8.3.0(24):ERROR:150: Module 'gcccore/8.3.0' conflicts with the currently loaded module(s) 'gcccore/5.4.0'
+gcccore/8.3.0(24):ERROR:102: Tcl command execution failed: conflict gcccore
+
+gcccore/8.3.0(24):ERROR:150: Module 'gcccore/8.3.0' conflicts with the currently loaded module(s) 'gcccore/5.4.0'
+gcccore/8.3.0(24):ERROR:102: Tcl command execution failed: conflict gcccore
+
+gcccore/8.3.0(24):ERROR:150: Module 'gcccore/8.3.0' conflicts with the currently loaded module(s) 'gcccore/5.4.0'
+gcccore/8.3.0(24):ERROR:102: Tcl command execution failed: conflict gcccore
+
+gcccore/8.3.0(24):ERROR:150: Module 'gcccore/8.3.0' conflicts with the currently loaded module(s) 'gcccore/5.4.0'
+gcccore/8.3.0(24):ERROR:102: Tcl command execution failed: conflict gcccore
+
+gcccore/8.3.0(24):ERROR:150: Module 'gcccore/8.3.0' conflicts with the currently loaded module(s) 'gcccore/5.4.0'
+gcccore/8.3.0(24):ERROR:102: Tcl command execution failed: conflict gcccore
+
+gcccore/8.3.0(24):ERROR:150: Module 'gcccore/8.3.0' conflicts with the currently loaded module(s) 'gcccore/5.4.0'
+gcccore/8.3.0(24):ERROR:102: Tcl command execution failed: conflict gcccore
+
+gcccore/8.3.0(24):ERROR:150: Module 'gcccore/8.3.0' conflicts with the currently loaded module(s) 'gcccore/5.4.0'
+gcccore/8.3.0(24):ERROR:102: Tcl command execution failed: conflict gcccore
+
+sqlite/3.29.0-gcccore-8.3.0(22):ERROR:150: Module 'sqlite/3.29.0-gcccore-8.3.0' conflicts with the currently loaded module(s) 'sqlite/3.13.0-intel-2016b'
+sqlite/3.29.0-gcccore-8.3.0(22):ERROR:102: Tcl command execution failed: conflict sqlite
+
+gcccore/8.3.0(24):ERROR:150: Module 'gcccore/8.3.0' conflicts with the currently loaded module(s) 'gcccore/5.4.0'
+gcccore/8.3.0(24):ERROR:102: Tcl command execution failed: conflict gcccore
+
+bzip2/1.0.8-gcccore-8.3.0(30):ERROR:150: Module 'bzip2/1.0.8-gcccore-8.3.0' conflicts with the currently loaded module(s) 'bzip2/1.0.6-intel-2016b'
+bzip2/1.0.8-gcccore-8.3.0(30):ERROR:102: Tcl command execution failed: conflict bzip2
+
+zlib/1.2.11-gcccore-8.3.0(26):ERROR:150: Module 'zlib/1.2.11-gcccore-8.3.0' conflicts with the currently loaded module(s) 'zlib/1.2.8-intel-2016b'
+zlib/1.2.11-gcccore-8.3.0(26):ERROR:102: Tcl command execution failed: conflict zlib
+
+python/3.7.4-gcccore-8.3.0(47):ERROR:150: Module 'python/3.7.4-gcccore-8.3.0' conflicts with the currently loaded module(s) 'python/2.7.12-intel-2016b'
+python/3.7.4-gcccore-8.3.0(47):ERROR:102: Tcl command execution failed: conflict python
+
+gcccore/8.3.0(24):ERROR:150: Module 'gcccore/8.3.0' conflicts with the currently loaded module(s) 'gcccore/5.4.0'
+gcccore/8.3.0(24):ERROR:102: Tcl command execution failed: conflict gcccore
+
+gcccore/8.3.0(24):ERROR:150: Module 'gcccore/8.3.0' conflicts with the currently loaded module(s) 'gcccore/5.4.0'
+gcccore/8.3.0(24):ERROR:102: Tcl command execution failed: conflict gcccore
+
+zlib/1.2.11-gcccore-8.3.0(26):ERROR:150: Module 'zlib/1.2.11-gcccore-8.3.0' conflicts with the currently loaded module(s) 'zlib/1.2.8-intel-2016b'
+zlib/1.2.11-gcccore-8.3.0(26):ERROR:102: Tcl command execution failed: conflict zlib
+
+gcccore/8.3.0(24):ERROR:150: Module 'gcccore/8.3.0' conflicts with the currently loaded module(s) 'gcccore/5.4.0'
+gcccore/8.3.0(24):ERROR:102: Tcl command execution failed: conflict gcccore
+
+gcccore/8.3.0(24):ERROR:150: Module 'gcccore/8.3.0' conflicts with the currently loaded module(s) 'gcccore/5.4.0'
+gcccore/8.3.0(24):ERROR:102: Tcl command execution failed: conflict gcccore
+
+zlib/1.2.11-gcccore-8.3.0(26):ERROR:150: Module 'zlib/1.2.11-gcccore-8.3.0' conflicts with the currently loaded module(s) 'zlib/1.2.8-intel-2016b'
+zlib/1.2.11-gcccore-8.3.0(26):ERROR:102: Tcl command execution failed: conflict zlib
+
+zlib/1.2.11-gcccore-8.3.0(26):ERROR:150: Module 'zlib/1.2.11-gcccore-8.3.0' conflicts with the currently loaded module(s) 'zlib/1.2.8-intel-2016b'
+zlib/1.2.11-gcccore-8.3.0(26):ERROR:102: Tcl command execution failed: conflict zlib
+
+Cache entry deserialization failed, entry ignored
+  Cache entry deserialization failed, entry ignored
+You are using pip version 8.1.2, however version 20.2.4 is available.
+You should consider upgrading via the 'pip install --upgrade pip' command.
+  Cache entry deserialization failed, entry ignored
+  Cache entry deserialization failed, entry ignored
+  Cache entry deserialization failed, entry ignored
+Command "python setup.py egg_info" failed with error code 1 in /data1/pbs.8413448.pbs/pip-build-nR7sgi/matplotlib/
+You are using pip version 8.1.2, however version 20.2.4 is available.
+You should consider upgrading via the 'pip install --upgrade pip' command.
+  Cache entry deserialization failed, entry ignored
+  Cache entry deserialization failed, entry ignored
+  Cache entry deserialization failed, entry ignored
+  Cache entry deserialization failed, entry ignored
+  Cache entry deserialization failed, entry ignored
+  Cache entry deserialization failed, entry ignored
+Command "python setup.py egg_info" failed with error code 1 in /data1/pbs.8413448.pbs/pip-build-nqdrCw/joblib/
+You are using pip version 8.1.2, however version 20.2.4 is available.
+You should consider upgrading via the 'pip install --upgrade pip' command.
+  Cache entry deserialization failed, entry ignored
+  Cache entry deserialization failed, entry ignored
+  Cache entry deserialization failed, entry ignored
+  Cache entry deserialization failed, entry ignored
+You are using pip version 8.1.2, however version 20.2.4 is available.
+You should consider upgrading via the 'pip install --upgrade pip' command.
+Cache entry deserialization failed, entry ignored
+Command "python setup.py egg_info" failed with error code 1 in /data1/pbs.8413448.pbs/pip-build-gc0EVf/pandas/
+You are using pip version 8.1.2, however version 20.2.4 is available.
+You should consider upgrading via the 'pip install --upgrade pip' command.
+Traceback (most recent call last):
+  File "lstm_test.py", line 8, in <module>
+    import EncoderFactory
+  File "/home/n9455647/PPM_Evaluation/Stability-Experiments/benchmark_interpretability/PPM_Stability/EncoderFactory.py", line 1, in <module>
+    from transformers.StaticTransformer import StaticTransformer
+  File "/home/n9455647/PPM_Evaluation/Stability-Experiments/benchmark_interpretability/PPM_Stability/transformers/StaticTransformer.py", line 1, in <module>
+    from sklearn.base import TransformerMixin
+ImportError: No module named sklearn.base

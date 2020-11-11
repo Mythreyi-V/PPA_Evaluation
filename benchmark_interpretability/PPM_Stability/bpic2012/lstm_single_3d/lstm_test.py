@@ -28,13 +28,12 @@ import random
 import joblib
 
 from sklearn.ensemble import RandomForestClassifier
-import xgboost as xgb
 from sklearn.linear_model import LogisticRegression
 from sklearn.svm import SVC
 
 from tensorflow.keras.backend import print_tensor
 from keras.models import Sequential, Model, load_model
-from tensorflow.compat.v1 import disable_v2_behavior
+from tensorflow.compat.v1 import disable_v2_behavior#, ConfigProto, Session
 from tensorflow.compat.v1.keras.backend import get_session
 disable_v2_behavior()
 
@@ -46,6 +45,14 @@ import shap
 
 import warnings
 warnings.filterwarnings('ignore')
+
+#configure thread pool
+#NUM_PARALLEL_EXEC_UNITS = 2
+#config = ConfigProto(intra_op_parallelism_threads=NUM_PARALLEL_EXEC_UNITS, 
+#                        inter_op_parallelism_threads=2, 
+#                        allow_soft_placement=True,
+#                        device_count = {'CPU': NUM_PARALLEL_EXEC_UNITS})
+#session = Session(config=config)
 
 #Define functionsimport matplotlib.pyplot as plt
 def imp_df(column_names, importances):
@@ -265,8 +272,64 @@ if generate_model_shap:
 
                 #import everything needed to sort and predict
                 if cls_method == "lstm":
-                    cls_path = os.path.join(PATH, "%s/%s_%s/cls/pred_cls.h5" % (dataset_ref, cls_method, method_name))
-                    pred_cls = load_model(cls_path)
+                    params_path = os.path.join(PATH, "%s/%s_%s/cls/params_new.pickle" % (dataset_ref, cls_method, method_name))
+                    with open(params_path, 'rb') as f:
+                        args = pickle.load(f)
+
+                    #create model
+                    main_input = Input(shape=(max_len, data_dim), name='main_input')
+
+                    if args["lstm_layers"]["layers"] == "one":
+                        l2_3 = LSTM(args['lstm1_nodes'], input_shape=(max_len, data_dim), implementation=2, 
+                                    kernel_initializer='glorot_uniform', return_sequences=False, 
+                                    recurrent_dropout=args['lstm1_dropouts'], stateful = False)(main_input)
+                        b2_3 = BatchNormalization()(l2_3)
+
+                    if args["lstm_layers"]["layers"] == "two":
+                        l1 = LSTM(args['lstm1_nodes'], input_shape=(max_len, data_dim), implementation=2, 
+                                kernel_initializer='glorot_uniform', return_sequences=True, 
+                                recurrent_dropout=args['lstm1_dropouts'], stateful = False)(main_input)
+                        b1 = BatchNormalization()(l1)
+                        l2_3 = LSTM(args["lstm_layers"]["lstm2_nodes"], activation="sigmoid", 
+                                    implementation=2, kernel_initializer='glorot_uniform', return_sequences=False, 
+                                    recurrent_dropout=args["lstm_layers"]["lstm2_dropouts"], stateful = False)(b1)
+                        b2_3 = BatchNormalization()(l2_3)
+                        
+                    if args["lstm_layers"]["layers"] == "three":
+                        l1 = LSTM(args['lstm1_nodes'], input_shape=(max_len, data_dim),implementation=2, 
+                                kernel_initializer='glorot_uniform', return_sequences=True, 
+                                recurrent_dropout=args['lstm1_dropouts'], stateful = False)(main_input)
+                        b1 = BatchNormalization()(l1)
+                        l2 = LSTM(args["lstm_layers"]["lstm2_nodes"], activation="sigmoid", 
+                                    implementation=2, kernel_initializer='glorot_uniform', return_sequences=True, 
+                                    recurrent_dropout=args["lstm_layers"]["lstm2_dropouts"], stateful = False)(b1)
+                        b2 = BatchNormalization()(l2)
+                        l2_3 = LSTM(args["lstm_layers"]["lstm3_nodes"], activation="sigmoid", 
+                                    implementation=2, kernel_initializer='glorot_uniform', return_sequences=False, 
+                                    recurrent_dropout=args["lstm_layers"]["lstm3_dropouts"], stateful = False)(b2)
+                        b2_3 = BatchNormalization()(l2_3)
+
+
+                    if args['dense_layers']['layers'] == "two":
+                        d1 = Dense(args['dense_layers']['dense2_nodes'], activation = "relu")(b2_3)
+                        outcome_output = Dense(2, activation='sigmoid', kernel_initializer='glorot_uniform', name='outcome_output')(d1)
+
+                    else:
+                        outcome_output = Dense(2, activation='sigmoid', kernel_initializer='glorot_uniform', name='outcome_output')(b2_3)
+
+                    cls = Model(inputs=[main_input], outputs=[outcome_output])
+
+                    if args['optimizer'] == "adam":
+                        opt = Nadam(lr=args['learning_rate'], beta_1=0.9, beta_2=0.999, epsilon=1e-08, schedule_decay=0.004, clipvalue=3)
+                    elif args['optimizer'] == "rmsprop":
+                        opt = RMSprop(lr=args['learning_rate'], rho=0.9, epsilon=1e-08, decay=0.0)
+                    
+                    checkpoint_path = os.path.join(PATH, "%s/%s_%s/cls/checkpoint_new.cpt" % (dataset_ref, cls_method, method_name))
+                    weights = cls.load_weights(checkpoint_path)
+                    print(weights.assert_consumed())
+
+            #        cls_path = os.path.join(PATH, "%s/%s_%s/cls/pred_cls.h5" % (dataset_ref, cls_method, method_name))
+             #       pred_cls = load_model(cls_path)
                 else:
                     pipeline_path = os.path.join(PATH, "%s/%s_%s/pipelines/pipeline_bucket_%s.joblib" % (dataset_ref, cls_method, method_name, bucketID))
                     feat_comb_path = os.path.join(PATH, "%s/%s_%s/bucketers_and_encoders/feature_combiner_bucket_%s.joblib" % (dataset_ref, cls_method, method_name, bucketID))
