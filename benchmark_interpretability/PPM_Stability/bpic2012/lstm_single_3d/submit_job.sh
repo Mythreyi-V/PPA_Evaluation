@@ -11,9 +11,8 @@ echo "queue started"
 module purge
 echo "modules purged"
 
-module load cuda/9.0.176
+module load cuda/9.2.88
 echo "cuda loaded"
-
 module load tensorflow/2.3.1-fosscuda-2019b-python-3.7.4
 echo "tensorflow loaded"
  

@@ -336,7 +336,7 @@ if generate_model_shap:
                     
                     checkpoint_path = os.path.join(PATH, "%s/%s_%s/cls/checkpoint_new.cpt" % (dataset_ref, cls_method, method_name))
                     weights = cls.load_weights(checkpoint_path)
-                    print(weights.assert_consumed())
+                    #print(weights.assert_consumed())
 
             #        cls_path = os.path.join(PATH, "%s/%s_%s/cls/pred_cls.h5" % (dataset_ref, cls_method, method_name))
              #       pred_cls = load_model(cls_path)
@@ -580,7 +580,7 @@ if generate_lime:
                     
                     checkpoint_path = os.path.join(PATH, "%s/%s_%s/cls/checkpoint_new.cpt" % (dataset_ref, cls_method, method_name))
                     weights = cls.load_weights(checkpoint_path)
-                    print(weights.assert_consumed())
+                    #print(weights.assert_consumed())
 
                     #cls_path = os.path.join(PATH, "%s/%s_%s/cls/pred_cls.h5" % (dataset_ref, cls_method, method_name))
                     #cls = load_model(cls_path)
