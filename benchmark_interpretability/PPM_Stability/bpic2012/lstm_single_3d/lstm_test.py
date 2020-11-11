@@ -279,20 +279,20 @@ if generate_model_shap:
 
                 #import everything needed to sort and predict
                 if cls_method == "lstm":
-		    print ("about to creat model")
+                    print("get everything to create model")
                     params_path = os.path.join(PATH, "%s/%s_%s/cls/params_new.pickle" % (dataset_ref, cls_method, method_name))
                     with open(params_path, 'rb') as f:
                         args = pickle.load(f)
 
                     max_len = args['max_len']
                     data_dim = args['data_dim']
-		    print("Parameters loaded")
+                    print("Parameters loaded")
 
                     #create model
-		    print("creating model")
+                    print("defining input layer")
                     main_input = Input(shape=(max_len, data_dim), name='main_input')
-
-		    print("adding lstm layers")
+                    
+                    print("adding lstm layers")
                     if args["lstm_layers"]["layers"] == "one":
                         l2_3 = LSTM(args['lstm1_nodes'], input_shape=(max_len, data_dim), implementation=2, 
                                     kernel_initializer='glorot_uniform', return_sequences=False, 
@@ -322,29 +322,31 @@ if generate_model_shap:
                                     implementation=2, kernel_initializer='glorot_uniform', return_sequences=False, 
                                     recurrent_dropout=args["lstm_layers"]["lstm3_dropouts"], stateful = False)(b2)
                         b2_3 = BatchNormalization()(l2_3)
-
-
-		    print("adding dense layers")
+                    
+                    print("adding dense layers")
                     if args['dense_layers']['layers'] == "two":
                         d1 = Dense(args['dense_layers']['dense2_nodes'], activation = "relu")(b2_3)
                         outcome_output = Dense(2, activation='sigmoid', kernel_initializer='glorot_uniform', name='outcome_output')(d1)
 
                     else:
                         outcome_output = Dense(2, activation='sigmoid', kernel_initializer='glorot_uniform', name='outcome_output')(b2_3)
-
-		    print("putting together layers")
+                    
+                    print("putting together layers")
                     cls = Model(inputs=[main_input], outputs=[outcome_output])
-
-		    print("choosing optimiser")
+                    
+                    print("choosing optimiser")
                     if args['optimizer'] == "adam":
                         opt = Nadam(lr=args['learning_rate'], beta_1=0.9, beta_2=0.999, epsilon=1e-08, schedule_decay=0.004, clipvalue=3)
                     elif args['optimizer'] == "rmsprop":
                         opt = RMSprop(lr=args['learning_rate'], rho=0.9, epsilon=1e-08, decay=0.0)
-                    
-		    print("adding weights to model")
+                        
+                    print("adding weights to model")
                     checkpoint_path = os.path.join(PATH, "%s/%s_%s/cls/checkpoint_new.cpt" % (dataset_ref, cls_method, method_name))
                     weights = cls.load_weights(checkpoint_path)
                     #print(weights.assert_consumed())
+                     
+                    print("compiling model")
+                    cls.compile(loss='binary_crossentropy', optimizer=opt)
 
             #        cls_path = os.path.join(PATH, "%s/%s_%s/cls/pred_cls.h5" % (dataset_ref, cls_method, method_name))
              #       pred_cls = load_model(cls_path)
@@ -403,7 +405,7 @@ if generate_model_shap:
                 if cls_method == "xgboost":
                     tree_explainer = shap.TreeExplainer(cls)
                 elif cls_method == "lstm":
-		    print("creating explainer")
+                    print("creating explainer")
                     deep_explainer = shap.DeepExplainer(cls, dt_train_bucket)
 
                 #explain the chosen instances and find the stability score
@@ -532,16 +534,20 @@ if generate_lime:
 
                 #import everything needed to sort and predict
                 if cls_method == "lstm":
+                    print ("get everything to create model")
                     params_path = os.path.join(PATH, "%s/%s_%s/cls/params_new.pickle" % (dataset_ref, cls_method, method_name))
                     with open(params_path, 'rb') as f:
                         args = pickle.load(f)
-                    
+
                     max_len = args['max_len']
                     data_dim = args['data_dim']
+                    print("Parameters loaded")
 
                     #create model
-                    main_input = Input(shape=(args['max_len'], args['data_dim']), name='main_input')
-
+                    print("defining input layer")
+                    main_input = Input(shape=(max_len, data_dim), name='main_input')
+                    
+                    print("adding lstm layers")
                     if args["lstm_layers"]["layers"] == "one":
                         l2_3 = LSTM(args['lstm1_nodes'], input_shape=(max_len, data_dim), implementation=2, 
                                     kernel_initializer='glorot_uniform', return_sequences=False, 
@@ -571,25 +577,31 @@ if generate_lime:
                                     implementation=2, kernel_initializer='glorot_uniform', return_sequences=False, 
                                     recurrent_dropout=args["lstm_layers"]["lstm3_dropouts"], stateful = False)(b2)
                         b2_3 = BatchNormalization()(l2_3)
-
-
+                        
+                    print("adding dense layers")
                     if args['dense_layers']['layers'] == "two":
                         d1 = Dense(args['dense_layers']['dense2_nodes'], activation = "relu")(b2_3)
                         outcome_output = Dense(2, activation='sigmoid', kernel_initializer='glorot_uniform', name='outcome_output')(d1)
 
                     else:
                         outcome_output = Dense(2, activation='sigmoid', kernel_initializer='glorot_uniform', name='outcome_output')(b2_3)
-
+                    
+                    print("putting together layers")
                     cls = Model(inputs=[main_input], outputs=[outcome_output])
-
+                    
+                    print("choosing optimiser")
                     if args['optimizer'] == "adam":
                         opt = Nadam(lr=args['learning_rate'], beta_1=0.9, beta_2=0.999, epsilon=1e-08, schedule_decay=0.004, clipvalue=3)
                     elif args['optimizer'] == "rmsprop":
                         opt = RMSprop(lr=args['learning_rate'], rho=0.9, epsilon=1e-08, decay=0.0)
-                    
+                        
+                    print("adding weights to model")
                     checkpoint_path = os.path.join(PATH, "%s/%s_%s/cls/checkpoint_new.cpt" % (dataset_ref, cls_method, method_name))
                     weights = cls.load_weights(checkpoint_path)
                     #print(weights.assert_consumed())
+                     
+                    print("compiling model")
+                    cls.compile(loss='binary_crossentropy', optimizer=opt)
 
                     #cls_path = os.path.join(PATH, "%s/%s_%s/cls/pred_cls.h5" % (dataset_ref, cls_method, method_name))
                     #cls = load_model(cls_path)
