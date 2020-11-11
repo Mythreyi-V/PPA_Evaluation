@@ -395,7 +395,7 @@ if generate_model_shap:
                 if cls_method == "xgboost":
                     tree_explainer = shap.TreeExplainer(cls)
                 elif cls_method == "lstm":
-                    deep_explainer = shap.DeepExplainer(pred_cls, dt_train_bucket)
+                    deep_explainer = shap.DeepExplainer(cls, dt_train_bucket)
 
                 #explain the chosen instances and find the stability score
                 cat_no = 0
