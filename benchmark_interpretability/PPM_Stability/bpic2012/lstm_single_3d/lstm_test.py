@@ -406,7 +406,7 @@ if generate_model_shap:
                     tree_explainer = shap.TreeExplainer(cls)
                 elif cls_method == "lstm":
                     print("creating explainer")
-                    training_sample = shap.kmeans(dt_train_bucket, 10000)
+                    training_sample = shap.sample(dt_train_bucket, 10000)
                     deep_explainer = shap.DeepExplainer(cls, training_sample)
 
                 #explain the chosen instances and find the stability score
