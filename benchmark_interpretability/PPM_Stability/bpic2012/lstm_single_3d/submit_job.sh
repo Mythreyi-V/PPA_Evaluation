@@ -2,7 +2,7 @@
 #PBS -N first_trial
 #PBS -l ncpus=4
 #PBS -l ngpus=2
-#PBS -l mem=10gb
+#PBS -l mem=20gb
 #PBS -l walltime=45:00
 
 cd $PBS_O_WORKDIR
