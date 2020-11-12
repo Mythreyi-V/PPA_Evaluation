@@ -719,6 +719,7 @@ if generate_lime:
                                         each = feat_list[i]#[j]
                                         for explanation in lime_exp.as_list():
                                             if each in explanation[0]:
+                                                print(explanation[0])
                                                 parts = explanation[0].split(' ')
                                                 feat_name = parts[0].split('-')
                                                 ts = int(feat_name[-1])
