@@ -28,24 +28,38 @@ import random
 import joblib
 
 from sklearn.ensemble import RandomForestClassifier
-import xgboost as xgb
 from sklearn.linear_model import LogisticRegression
 from sklearn.svm import SVC
 
-from tensorflow.keras.backend import print_tensor
 from keras.models import Sequential, Model, load_model
-from tensorflow.compat.v1 import disable_v2_behavior
+from keras.layers.core import Dense, Activation, Dropout
+from keras.preprocessing import sequence
+from keras.layers import Dense, Embedding, Flatten, Input, LSTM
+from keras.optimizers import Nadam, RMSprop
+from keras.layers.normalization import BatchNormalization
+
+from tensorflow.keras.backend import print_tensor
+from tensorflow.keras.utils import plot_model
+from tensorflow.compat.v1 import disable_v2_behavior#, ConfigProto, Session
 from tensorflow.compat.v1.keras.backend import get_session
 disable_v2_behavior()
 
 import lime
 import lime.lime_tabular
-from lime import submodular_pick;
+from lime import submodular_pick
 
 import shap
 
 import warnings
 warnings.filterwarnings('ignore')
+
+#configure thread pool
+#NUM_PARALLEL_EXEC_UNITS = 2
+#config = ConfigProto(intra_op_parallelism_threads=NUM_PARALLEL_EXEC_UNITS, 
+#                        inter_op_parallelism_threads=2, 
+#                        allow_soft_placement=True,
+#                        device_count = {'CPU': NUM_PARALLEL_EXEC_UNITS})
+#session = Session(config=config)
 
 #Define functionsimport matplotlib.pyplot as plt
 def imp_df(column_names, importances):
@@ -99,20 +113,8 @@ def create_samples(shap_explainer, iterations, row, features, top = None):
     
     for j in range(iterations):
         
-        #if shap_type == "kernel":
-        #    shap_explainer = shap.KernelExplainer(cls.predict, trainingsample)
-        #elif shap_type == "tree":
-        #    shap_explainer = shap.TreeExplainer(cls)
-        #elif shap_type == "deep":
-        #    shap_explainer = shap.DeepExplainer(cls, background)
-        #print(row.shape)
-        #for each in row:
-        #    print (each.shape)
-        
-        #print(X_test_frame.loc[row])
         shap_values = shap_explainer.shap_values(row)
-        #print(shap_values)
-
+        
         importances = []
         
         if type(shap_explainer) == shap.explainers.kernel.KernelExplainer:
@@ -146,8 +148,7 @@ def create_samples(shap_explainer, iterations, row, features, top = None):
                     abs_val = abs(shap_values[0][0][i])
                     entry = (feat, shap_val, abs_val)
                     importances.append(entry)
-        
-        #print(importances[0])
+    
         importances.sort(key=lambda tup: tup[2], reverse = True)
         
         exp.append(importances)
@@ -177,11 +178,6 @@ def dispersal(weights, features):
             feat_weight.append(iteration[i])
         weights_by_feat.append(feat_weight)
         
-    #for iteration in weights:
-     #   for val in iteration:
-      #      idx = iteration.index(val)
-       #     print(idx)
-        #    weights_by_feat[idx].append(val)
     
     dispersal = []
     dispersal_no_outlier = []
@@ -261,6 +257,7 @@ dataset_ref_to_datasets = {
 datasets = [dataset_ref] if dataset_ref not in dataset_ref_to_datasets else dataset_ref_to_datasets[dataset_ref]
 
 #Try SHAP
+print("----------------------------------------------SHAP----------------------------------------------")
 start_time = time.time()
 
 if generate_model_shap:
@@ -282,8 +279,77 @@ if generate_model_shap:
 
                 #import everything needed to sort and predict
                 if cls_method == "lstm":
-                    cls_path = os.path.join(PATH, "%s/%s_%s/cls/pred_cls.h5" % (dataset_ref, cls_method, method_name))
-                    pred_cls = load_model(cls_path)
+                    print("get everything to create model")
+                    params_path = os.path.join(PATH, "%s/%s_%s/cls/params_new.pickle" % (dataset_ref, cls_method, method_name))
+                    with open(params_path, 'rb') as f:
+                        args = pickle.load(f)
+
+                    max_len = args['max_len']
+                    data_dim = args['data_dim']
+                    print("Parameters loaded")
+
+                    #create model
+                    print("defining input layer")
+                    main_input = Input(shape=(max_len, data_dim), name='main_input')
+                    
+                    print("adding lstm layers")
+                    if args["lstm_layers"]["layers"] == "one":
+                        l2_3 = LSTM(args['lstm1_nodes'], input_shape=(max_len, data_dim), implementation=2, 
+                                    kernel_initializer='glorot_uniform', return_sequences=False, 
+                                    recurrent_dropout=args['lstm1_dropouts'], stateful = False)(main_input)
+                        b2_3 = BatchNormalization()(l2_3)
+
+                    if args["lstm_layers"]["layers"] == "two":
+                        l1 = LSTM(args['lstm1_nodes'], input_shape=(max_len, data_dim), implementation=2, 
+                                kernel_initializer='glorot_uniform', return_sequences=True, 
+                                recurrent_dropout=args['lstm1_dropouts'], stateful = False)(main_input)
+                        b1 = BatchNormalization()(l1)
+                        l2_3 = LSTM(args["lstm_layers"]["lstm2_nodes"], activation="sigmoid", 
+                                    implementation=2, kernel_initializer='glorot_uniform', return_sequences=False, 
+                                    recurrent_dropout=args["lstm_layers"]["lstm2_dropouts"], stateful = False)(b1)
+                        b2_3 = BatchNormalization()(l2_3)
+                        
+                    if args["lstm_layers"]["layers"] == "three":
+                        l1 = LSTM(args['lstm1_nodes'], input_shape=(max_len, data_dim),implementation=2, 
+                                kernel_initializer='glorot_uniform', return_sequences=True, 
+                                recurrent_dropout=args['lstm1_dropouts'], stateful = False)(main_input)
+                        b1 = BatchNormalization()(l1)
+                        l2 = LSTM(args["lstm_layers"]["lstm2_nodes"], activation="sigmoid", 
+                                    implementation=2, kernel_initializer='glorot_uniform', return_sequences=True, 
+                                    recurrent_dropout=args["lstm_layers"]["lstm2_dropouts"], stateful = False)(b1)
+                        b2 = BatchNormalization()(l2)
+                        l2_3 = LSTM(args["lstm_layers"]["lstm3_nodes"], activation="sigmoid", 
+                                    implementation=2, kernel_initializer='glorot_uniform', return_sequences=False, 
+                                    recurrent_dropout=args["lstm_layers"]["lstm3_dropouts"], stateful = False)(b2)
+                        b2_3 = BatchNormalization()(l2_3)
+                    
+                    print("adding dense layers")
+                    if args['dense_layers']['layers'] == "two":
+                        d1 = Dense(args['dense_layers']['dense2_nodes'], activation = "relu")(b2_3)
+                        outcome_output = Dense(2, activation='sigmoid', kernel_initializer='glorot_uniform', name='outcome_output')(d1)
+
+                    else:
+                        outcome_output = Dense(2, activation='sigmoid', kernel_initializer='glorot_uniform', name='outcome_output')(b2_3)
+                    
+                    print("putting together layers")
+                    cls = Model(inputs=[main_input], outputs=[outcome_output])
+                    
+                    print("choosing optimiser")
+                    if args['optimizer'] == "adam":
+                        opt = Nadam(lr=args['learning_rate'], beta_1=0.9, beta_2=0.999, epsilon=1e-08, schedule_decay=0.004, clipvalue=3)
+                    elif args['optimizer'] == "rmsprop":
+                        opt = RMSprop(lr=args['learning_rate'], rho=0.9, epsilon=1e-08, decay=0.0)
+                        
+                    print("adding weights to model")
+                    checkpoint_path = os.path.join(PATH, "%s/%s_%s/cls/checkpoint_new.cpt" % (dataset_ref, cls_method, method_name))
+                    weights = cls.load_weights(checkpoint_path)
+                    #print(weights.assert_consumed())
+                     
+                    print("compiling model")
+                    cls.compile(loss='binary_crossentropy', optimizer=opt)
+
+            #        cls_path = os.path.join(PATH, "%s/%s_%s/cls/pred_cls.h5" % (dataset_ref, cls_method, method_name))
+             #       pred_cls = load_model(cls_path)
                 else:
                     pipeline_path = os.path.join(PATH, "%s/%s_%s/pipelines/pipeline_bucket_%s.joblib" % (dataset_ref, cls_method, method_name, bucketID))
                     feat_comb_path = os.path.join(PATH, "%s/%s_%s/bucketers_and_encoders/feature_combiner_bucket_%s.joblib" % (dataset_ref, cls_method, method_name, bucketID))
@@ -339,11 +405,13 @@ if generate_model_shap:
                 if cls_method == "xgboost":
                     tree_explainer = shap.TreeExplainer(cls)
                 elif cls_method == "lstm":
-                    deep_explainer = shap.DeepExplainer(pred_cls, dt_train_bucket)
+                    print("creating explainer")
+                    training_sample = shap.sample(dt_train_bucket, 10000)
+                    deep_explainer = shap.DeepExplainer(cls, training_sample)
 
                 #explain the chosen instances and find the stability score
                 cat_no = 0
-                for category in sample_instances:
+                for category in sample_instances[:1]:
                     cat_no += 1
                     instance_no = 0
                     
@@ -373,8 +441,9 @@ if generate_model_shap:
                         feat_pres = []
                         feat_weights = []
 
+                        print("Computing feature presence in each iteration")
                         for iteration in rel_exp:
-                            print("Computing feature presence for iteration", rel_exp.index(iteration))
+                            #print("Computing feature presence for iteration", rel_exp.index(iteration))
                             
                             if cls_encoding == "3d":
                                 #The stability measure functions can only handle two dimensional arrays and lists
@@ -395,9 +464,10 @@ if generate_model_shap:
                                         presence_list[list_idx] = 1
 
                             feat_pres.append(presence_list)
-                            
+
+                        print("Computing feature weights in each iteration")                            
                         for iteration in exp:
-                            print("Compiling feature weights for iteration", exp.index(iteration))
+                            #print("Compiling feature weights for iteration", exp.index(iteration))
                             
                             if cls_encoding == "3d":
                                 #The stability measure functions can only handle two dimensional arrays and lists
@@ -445,6 +515,7 @@ elapsed = time.time() - start_time
 print("Time taken by SHAP:", elapsed)
 
 #Try LIME
+print("----------------------------------------------LIME----------------------------------------------")
 start_time = time.time()
 if generate_lime:
     
@@ -464,8 +535,77 @@ if generate_lime:
 
                 #import everything needed to sort and predict
                 if cls_method == "lstm":
-                    cls_path = os.path.join(PATH, "%s/%s_%s/cls/pred_cls.h5" % (dataset_ref, cls_method, method_name))
-                    cls = load_model(cls_path)
+                    print ("get everything to create model")
+                    params_path = os.path.join(PATH, "%s/%s_%s/cls/params_new.pickle" % (dataset_ref, cls_method, method_name))
+                    with open(params_path, 'rb') as f:
+                        args = pickle.load(f)
+
+                    max_len = args['max_len']
+                    data_dim = args['data_dim']
+                    print("Parameters loaded")
+
+                    #create model
+                    print("defining input layer")
+                    main_input = Input(shape=(max_len, data_dim), name='main_input')
+                    
+                    print("adding lstm layers")
+                    if args["lstm_layers"]["layers"] == "one":
+                        l2_3 = LSTM(args['lstm1_nodes'], input_shape=(max_len, data_dim), implementation=2, 
+                                    kernel_initializer='glorot_uniform', return_sequences=False, 
+                                    recurrent_dropout=args['lstm1_dropouts'], stateful = False)(main_input)
+                        b2_3 = BatchNormalization()(l2_3)
+
+                    if args["lstm_layers"]["layers"] == "two":
+                        l1 = LSTM(args['lstm1_nodes'], input_shape=(max_len, data_dim), implementation=2, 
+                                kernel_initializer='glorot_uniform', return_sequences=True, 
+                                recurrent_dropout=args['lstm1_dropouts'], stateful = False)(main_input)
+                        b1 = BatchNormalization()(l1)
+                        l2_3 = LSTM(args["lstm_layers"]["lstm2_nodes"], activation="sigmoid", 
+                                    implementation=2, kernel_initializer='glorot_uniform', return_sequences=False, 
+                                    recurrent_dropout=args["lstm_layers"]["lstm2_dropouts"], stateful = False)(b1)
+                        b2_3 = BatchNormalization()(l2_3)
+                        
+                    if args["lstm_layers"]["layers"] == "three":
+                        l1 = LSTM(args['lstm1_nodes'], input_shape=(max_len, data_dim),implementation=2, 
+                                kernel_initializer='glorot_uniform', return_sequences=True, 
+                                recurrent_dropout=args['lstm1_dropouts'], stateful = False)(main_input)
+                        b1 = BatchNormalization()(l1)
+                        l2 = LSTM(args["lstm_layers"]["lstm2_nodes"], activation="sigmoid", 
+                                    implementation=2, kernel_initializer='glorot_uniform', return_sequences=True, 
+                                    recurrent_dropout=args["lstm_layers"]["lstm2_dropouts"], stateful = False)(b1)
+                        b2 = BatchNormalization()(l2)
+                        l2_3 = LSTM(args["lstm_layers"]["lstm3_nodes"], activation="sigmoid", 
+                                    implementation=2, kernel_initializer='glorot_uniform', return_sequences=False, 
+                                    recurrent_dropout=args["lstm_layers"]["lstm3_dropouts"], stateful = False)(b2)
+                        b2_3 = BatchNormalization()(l2_3)
+                        
+                    print("adding dense layers")
+                    if args['dense_layers']['layers'] == "two":
+                        d1 = Dense(args['dense_layers']['dense2_nodes'], activation = "relu")(b2_3)
+                        outcome_output = Dense(2, activation='sigmoid', kernel_initializer='glorot_uniform', name='outcome_output')(d1)
+
+                    else:
+                        outcome_output = Dense(2, activation='sigmoid', kernel_initializer='glorot_uniform', name='outcome_output')(b2_3)
+                    
+                    print("putting together layers")
+                    cls = Model(inputs=[main_input], outputs=[outcome_output])
+                    
+                    print("choosing optimiser")
+                    if args['optimizer'] == "adam":
+                        opt = Nadam(lr=args['learning_rate'], beta_1=0.9, beta_2=0.999, epsilon=1e-08, schedule_decay=0.004, clipvalue=3)
+                    elif args['optimizer'] == "rmsprop":
+                        opt = RMSprop(lr=args['learning_rate'], rho=0.9, epsilon=1e-08, decay=0.0)
+                        
+                    print("adding weights to model")
+                    checkpoint_path = os.path.join(PATH, "%s/%s_%s/cls/checkpoint_new.cpt" % (dataset_ref, cls_method, method_name))
+                    weights = cls.load_weights(checkpoint_path)
+                    #print(weights.assert_consumed())
+                     
+                    print("compiling model")
+                    cls.compile(loss='binary_crossentropy', optimizer=opt)
+
+                    #cls_path = os.path.join(PATH, "%s/%s_%s/cls/pred_cls.h5" % (dataset_ref, cls_method, method_name))
+                    #cls = load_model(cls_path)
                 else:
                     pipeline_path = os.path.join(PATH, "%s/%s_%s/pipelines/pipeline_bucket_%s.joblib" % (dataset_ref, cls_method, method_name, bucketID))
                     feat_comb_path = os.path.join(PATH, "%s/%s_%s/bucketers_and_encoders/feature_combiner_bucket_%s.joblib" % (dataset_ref, cls_method, method_name, bucketID))
@@ -485,10 +625,10 @@ if generate_lime:
                     dt_train_bucket = pickle.load(f)
                 with open (Y_train_path, 'rb') as f:
                     train_y = pickle.load(f)
-                #with open (X_test_path, 'rb') as f:
-                #    dt_test_bucket = pickle.load(f)
-                #with open (Y_test_path, 'rb') as f:
-                #    test_y = pickle.load(f)
+                with open (X_test_path, 'rb') as f:
+                    dt_test_bucket = pickle.load(f)
+                with open (Y_test_path, 'rb') as f:
+                    test_y = pickle.load(f)
 
                 #import previously identified samples
                 tn_path = os.path.join(PATH, "%s/%s_%s/samples/true_neg_bucket_%s_.pickle" % (dataset_ref, cls_method, method_name, bucketID))
@@ -517,7 +657,7 @@ if generate_lime:
                 if cls_method == "lstm":
                     trainingdata = dt_train_bucket
                 else:
-                    trainingdata = feature_combiner.fit_transform(dt_train_bucket);
+                    trainingdata = feature_combiner.fit_transform(dt_train_bucket)
                 
                 #print('Generating local Explanations for', instance['caseID'])
                 if cls_method == "lstm":
@@ -531,7 +671,7 @@ if generate_lime:
                 
                 #explain the chosen instances and find the stability score
                 cat_no = 0
-                for category in sample_instances:
+                for category in sample_instances[:1]:
                     cat_no += 1
                     instance_no = 0
                     for instance in category[:1]:
@@ -580,7 +720,7 @@ if generate_lime:
                                         for explanation in lime_exp.as_list():
                                             if each in explanation[0]:
                                                 parts = explanation[0].split(' ')
-                                                feat_name = parts[0].split('-')
+                                                feat_name = parts[-3].split('-')
                                                 ts = int(feat_name[-1])
                                                 list_idx = ts*length+i
                                                 weights[list_idx] = explanation[1]

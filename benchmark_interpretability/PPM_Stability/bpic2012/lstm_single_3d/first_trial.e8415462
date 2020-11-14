@@ -1,0 +1,14 @@
+cuda/10.0.130(27):ERROR:150: Module 'cuda/10.0.130' conflicts with the currently loaded module(s) 'cuda/10.1.243-gcc-8.3.0'
+cuda/10.0.130(27):ERROR:102: Tcl command execution failed: conflict cuda
+
+cudnn/7.6.4.38-gcccuda-2019b(24):ERROR:150: Module 'cudnn/7.6.4.38-gcccuda-2019b' conflicts with the currently loaded module(s) 'cudnn/7.4.2.24-cuda-10.0.130'
+cudnn/7.6.4.38-gcccuda-2019b(24):ERROR:102: Tcl command execution failed: conflict cudnn
+
+  WARNING: The script tensorboard is installed in '/home/n9455647/.local/bin' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+  WARNING: The scripts estimator_ckpt_converter, saved_model_cli, tensorboard, tf_upgrade_v2, tflite_convert, toco and toco_from_protos are installed in '/home/n9455647/.local/bin' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+  File "lstm_test.py", line 282
+    print ("about to creat model")
+                                 ^
+TabError: inconsistent use of tabs and spaces in indentation

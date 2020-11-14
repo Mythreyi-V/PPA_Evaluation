@@ -1,0 +1,66 @@
+queue started
+modules purged
+python loaded
+cuda loaded
+h5py loaded
+tensorflow loaded
+Requirement already up-to-date: pip in /home/n9455647/.local/lib/python3.7/site-packages (20.2.4)
+pip upgraded
+Requirement already satisfied: lime==0.2.0.1 in /home/n9455647/.local/lib/python3.7/site-packages (0.2.0.1)
+Requirement already satisfied: scikit-image>=0.12 in /home/n9455647/.local/lib/python3.7/site-packages (from lime==0.2.0.1) (0.17.2)
+Requirement already satisfied: scikit-learn>=0.18 in /home/n9455647/.local/lib/python3.7/site-packages (from lime==0.2.0.1) (0.23.2)
+Requirement already satisfied: matplotlib in /home/n9455647/.local/lib/python3.7/site-packages (from lime==0.2.0.1) (3.3.2)
+Requirement already satisfied: tqdm in /home/n9455647/.local/lib/python3.7/site-packages (from lime==0.2.0.1) (4.51.0)
+Requirement already satisfied: scipy in /pkg/suse12/software/python/3.7.2-foss-2018a/lib/python3.7/site-packages/scipy-1.2.0-py3.7-linux-x86_64.egg (from lime==0.2.0.1) (1.2.0)
+Requirement already satisfied: numpy in /pkg/suse12/software/python/2.7.12-intel-2016b/lib/python2.7/site-packages/numpy-1.11.1-py2.7-linux-x86_64.egg (from lime==0.2.0.1) (1.11.1)
+Requirement already satisfied: tifffile>=2019.7.26 in /home/n9455647/.local/lib/python3.7/site-packages (from scikit-image>=0.12->lime==0.2.0.1) (2020.10.1)
+Requirement already satisfied: imageio>=2.3.0 in /home/n9455647/.local/lib/python3.7/site-packages (from scikit-image>=0.12->lime==0.2.0.1) (2.9.0)
+Requirement already satisfied: pillow!=7.1.0,!=7.1.1,>=4.3.0 in /home/n9455647/.local/lib/python3.7/site-packages (from scikit-image>=0.12->lime==0.2.0.1) (8.0.1)
+Requirement already satisfied: networkx>=2.0 in /home/n9455647/.local/lib/python3.7/site-packages (from scikit-image>=0.12->lime==0.2.0.1) (2.5)
+Requirement already satisfied: PyWavelets>=1.1.1 in /home/n9455647/.local/lib/python3.7/site-packages (from scikit-image>=0.12->lime==0.2.0.1) (1.1.1)
+Requirement already satisfied: threadpoolctl>=2.0.0 in /home/n9455647/.local/lib/python3.7/site-packages (from scikit-learn>=0.18->lime==0.2.0.1) (2.1.0)
+Requirement already satisfied: joblib>=0.11 in /home/n9455647/.local/lib/python3.7/site-packages (from scikit-learn>=0.18->lime==0.2.0.1) (0.17.0)
+Requirement already satisfied: cycler>=0.10 in /home/n9455647/.local/lib/python3.7/site-packages (from matplotlib->lime==0.2.0.1) (0.10.0)
+Requirement already satisfied: pyparsing!=2.0.4,!=2.1.2,!=2.1.6,>=2.0.3 in /pkg/suse12/software/python/3.7.2-foss-2018a/lib/python3.7/site-packages/pyparsing-2.3.1-py3.7.egg (from matplotlib->lime==0.2.0.1) (2.3.1)
+Requirement already satisfied: kiwisolver>=1.0.1 in /home/n9455647/.local/lib/python3.7/site-packages (from matplotlib->lime==0.2.0.1) (1.3.1)
+Requirement already satisfied: certifi>=2020.06.20 in /home/n9455647/.local/lib/python3.7/site-packages (from matplotlib->lime==0.2.0.1) (2020.11.8)
+Requirement already satisfied: python-dateutil>=2.1 in /pkg/suse12/software/python/3.7.2-foss-2018a/lib/python3.7/site-packages/python_dateutil-2.7.5-py3.7.egg (from matplotlib->lime==0.2.0.1) (2.7.5)
+Requirement already satisfied: decorator>=4.3.0 in /pkg/suse12/software/python/3.7.2-foss-2018a/lib/python3.7/site-packages/decorator-4.3.2-py3.7.egg (from networkx>=2.0->scikit-image>=0.12->lime==0.2.0.1) (4.3.2)
+Requirement already satisfied: six in /pkg/suse12/software/python/2.7.12-intel-2016b/lib/python2.7/site-packages/six-1.10.0-py2.7.egg (from cycler>=0.10->matplotlib->lime==0.2.0.1) (1.10.0)
+lime installed
+Requirement already satisfied: shap==0.35.0 in /home/n9455647/.local/lib/python3.7/site-packages (0.35.0)
+Requirement already satisfied: scikit-learn in /home/n9455647/.local/lib/python3.7/site-packages (from shap==0.35.0) (0.23.2)
+Requirement already satisfied: tqdm>4.25.0 in /home/n9455647/.local/lib/python3.7/site-packages (from shap==0.35.0) (4.51.0)
+Requirement already satisfied: numpy in /pkg/suse12/software/python/2.7.12-intel-2016b/lib/python2.7/site-packages/numpy-1.11.1-py2.7-linux-x86_64.egg (from shap==0.35.0) (1.11.1)
+Requirement already satisfied: pandas in /home/n9455647/.local/lib/python3.7/site-packages (from shap==0.35.0) (1.1.4)
+Requirement already satisfied: scipy in /pkg/suse12/software/python/3.7.2-foss-2018a/lib/python3.7/site-packages/scipy-1.2.0-py3.7-linux-x86_64.egg (from shap==0.35.0) (1.2.0)
+Requirement already satisfied: threadpoolctl>=2.0.0 in /home/n9455647/.local/lib/python3.7/site-packages (from scikit-learn->shap==0.35.0) (2.1.0)
+Requirement already satisfied: joblib>=0.11 in /home/n9455647/.local/lib/python3.7/site-packages (from scikit-learn->shap==0.35.0) (0.17.0)
+Requirement already satisfied: pytz>=2017.2 in /pkg/suse12/software/python/3.7.2-foss-2018a/lib/python3.7/site-packages/pytz-2018.9-py3.7.egg (from pandas->shap==0.35.0) (2018.9)
+Requirement already satisfied: python-dateutil>=2.7.3 in /pkg/suse12/software/python/3.7.2-foss-2018a/lib/python3.7/site-packages/python_dateutil-2.7.5-py3.7.egg (from pandas->shap==0.35.0) (2.7.5)
+Requirement already satisfied: six>=1.5 in /pkg/suse12/software/python/2.7.12-intel-2016b/lib/python2.7/site-packages/six-1.10.0-py2.7.egg (from python-dateutil>=2.7.3->pandas->shap==0.35.0) (1.10.0)
+shap installed
+Requirement already satisfied: keras in /home/n9455647/.local/lib/python3.7/site-packages (2.4.3)
+Requirement already satisfied: numpy>=1.9.1 in /pkg/suse12/software/python/2.7.12-intel-2016b/lib/python2.7/site-packages/numpy-1.11.1-py2.7-linux-x86_64.egg (from keras) (1.11.1)
+Requirement already satisfied: scipy>=0.14 in /pkg/suse12/software/python/3.7.2-foss-2018a/lib/python3.7/site-packages/scipy-1.2.0-py3.7-linux-x86_64.egg (from keras) (1.2.0)
+Requirement already satisfied: pyyaml in /home/n9455647/.local/lib/python3.7/site-packages (from keras) (5.3.1)
+Requirement already satisfied: h5py in /pkg/suse12/software/h5py/2.6.0-intel-2016b-python-2.7.12-hdf5-1.8.17/lib/python2.7/site-packages/h5py-2.6.0-py2.7-linux-x86_64.egg (from keras) (2.6.0)
+Requirement already satisfied: six in /pkg/suse12/software/python/2.7.12-intel-2016b/lib/python2.7/site-packages/six-1.10.0-py2.7.egg (from h5py->keras) (1.10.0)
+keras installed
+Requirement already up-to-date: pandas in /home/n9455647/.local/lib/python3.7/site-packages (1.1.4)
+Requirement already satisfied, skipping upgrade: python-dateutil>=2.7.3 in /pkg/suse12/software/python/3.7.2-foss-2018a/lib/python3.7/site-packages/python_dateutil-2.7.5-py3.7.egg (from pandas) (2.7.5)
+Collecting numpy>=1.15.4
+  Using cached numpy-1.19.4-cp37-cp37m-manylinux2010_x86_64.whl (14.5 MB)
+Requirement already satisfied, skipping upgrade: pytz>=2017.2 in /pkg/suse12/software/python/3.7.2-foss-2018a/lib/python3.7/site-packages/pytz-2018.9-py3.7.egg (from pandas) (2018.9)
+Requirement already satisfied, skipping upgrade: six>=1.5 in /pkg/suse12/software/python/2.7.12-intel-2016b/lib/python2.7/site-packages/six-1.10.0-py2.7.egg (from python-dateutil>=2.7.3->pandas) (1.10.0)
+Installing collected packages: numpy
+Successfully installed numpy-1.19.4
+pandas upgraded
+starting test
+test ended
+
+-----
+PBS Job 8413469.pbs
+CPU time  : 00:00:00
+Wall time : 00:00:36
+Mem usage : 0b

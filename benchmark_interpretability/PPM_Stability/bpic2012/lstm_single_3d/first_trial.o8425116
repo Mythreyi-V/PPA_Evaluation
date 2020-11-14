@@ -1,0 +1,48 @@
+queue started
+modules purged
+cuda loaded
+tensorflow loaded
+Requirement already up-to-date: pip in /home/n9455647/.local/lib/python3.4/site-packages (19.1.1)
+pip upgraded
+Collecting lime==0.2.0.1
+lime installed
+Requirement already satisfied: shap==0.35.0 in /home/n9455647/.local/lib/python3.4/site-packages (0.35.0)
+Collecting numpy (from shap==0.35.0)
+  Using cached https://files.pythonhosted.org/packages/b7/6f/24647f014eef9b67a24adfcbcd4f4928349b4a0f8393b3d7fe648d4d2de3/numpy-1.16.6.zip
+Requirement already satisfied: scipy in /home/n9455647/.local/lib/python3.4/site-packages (from shap==0.35.0) (1.2.3)
+Requirement already satisfied: scikit-learn in /home/n9455647/.local/lib/python3.4/site-packages (from shap==0.35.0) (0.20.4)
+Requirement already satisfied: pandas in /home/n9455647/.local/lib/python3.4/site-packages (from shap==0.35.0) (0.22.0)
+Requirement already satisfied: tqdm>4.25.0 in /home/n9455647/.local/lib/python3.4/site-packages (from shap==0.35.0) (4.51.0)
+Requirement already satisfied: python-dateutil>=2 in /home/n9455647/.local/lib/python3.4/site-packages (from pandas->shap==0.35.0) (2.8.1)
+Requirement already satisfied: pytz>=2011k in /home/n9455647/.local/lib/python3.4/site-packages (from pandas->shap==0.35.0) (2020.4)
+Collecting six>=1.5 (from python-dateutil>=2->pandas->shap==0.35.0)
+  Using cached https://files.pythonhosted.org/packages/ee/ff/48bde5c0f013094d729fe4b0316ba2a24774b3ff1c52d924a8a4cb04078a/six-1.15.0-py2.py3-none-any.whl
+Installing collected packages: numpy, six
+  Running setup.py install for numpy: started
+    Running setup.py install for numpy: still running...
+    Running setup.py install for numpy: finished with status 'done'
+Successfully installed numpy-1.16.6 six-1.15.0
+shap installed
+Collecting keras
+  Using cached https://files.pythonhosted.org/packages/44/e1/dc0757b20b56c980b5553c1b5c4c32d378c7055ab7bfa92006801ad359ab/Keras-2.4.3-py2.py3-none-any.whl
+Collecting h5py (from keras)
+  Downloading https://files.pythonhosted.org/packages/9c/1a/7e7daac13bb7ecb02637cd2d2df5dad8d7fe21842214c5714d968b4c50df/h5py-2.10.0-cp34-cp34m-manylinux1_x86_64.whl (2.8MB)
+Collecting pyyaml (from keras)
+  Using cached https://files.pythonhosted.org/packages/64/c2/b80047c7ac2478f9501676c988a5411ed5572f35d1beff9cae07d321512c/PyYAML-5.3.1.tar.gz
+keras installed
+Collecting tensorflow==2.2.0
+tensorflow downgraded
+Requirement already up-to-date: pandas in /home/n9455647/.local/lib/python3.4/site-packages (0.22.0)
+Requirement already satisfied, skipping upgrade: pytz>=2011k in /home/n9455647/.local/lib/python3.4/site-packages (from pandas) (2020.4)
+Requirement already satisfied, skipping upgrade: python-dateutil>=2 in /home/n9455647/.local/lib/python3.4/site-packages (from pandas) (2.8.1)
+Requirement already satisfied, skipping upgrade: numpy>=1.9.0 in /home/n9455647/.local/lib/python3.4/site-packages (from pandas) (1.16.6)
+Requirement already satisfied, skipping upgrade: six>=1.5 in /home/n9455647/.local/lib/python3.4/site-packages (from python-dateutil>=2->pandas) (1.15.0)
+pandas upgraded
+starting test
+test ended
+
+-----
+PBS Job 8425116.pbs
+CPU time  : 00:02:07
+Wall time : 00:01:49
+Mem usage : 979152kb
