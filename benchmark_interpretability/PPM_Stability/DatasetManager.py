@@ -11,7 +11,6 @@ from keras_preprocessing.sequence import pad_sequences
 from sklearn.utils import resample
 
 
-
 class DatasetManager:
     
     def __init__(self, dataset_name):
