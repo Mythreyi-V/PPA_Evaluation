@@ -1,5 +1,6 @@
-
+*.pyc
 *.csv
+*all_prefixes.pickle
 benchmark_interpretability/PPM_Stability/bpic2012/xgboost_single_agg/test_data/bucket_1_labels.pickle
 benchmark_interpretability/PPM_Stability/bpic2012/xgboost_single_agg/test_data/bucket_1_prefixes.pickle
 benchmark_interpretability/PPM_Stability/bpic2012/xgboost_single_agg/train_data/bucket_1_labels.pickle
@@ -64,3 +65,7 @@ benchmark_interpretability/PPM_Stability/bpic2012/lstm_single_3d/instances/true_
 benchmark_interpretability/PPM_Stability/bpic2012/lstm_single_3d/instances/true_neg_bucket_all_.pickle
 benchmark_interpretability/PPM_Stability/bpic2012/lstm_single_3d/instances/false_pos_bucket_all_.pickle
 benchmark_interpretability/PPM_Stability/bpic2012/lstm_single_3d/instances/false_neg_bucket_all_.pickle
+benchmark_interpretability/PPM_Stability/bpic2012/lstm_single_3d/instances/false_neg_bucket_all_.pickle
+benchmark_interpretability/PPM_Stability/bpic2012/lstm_single_3d/instances/false_pos_bucket_all_.pickle
+benchmark_interpretability/PPM_Stability/bpic2012/lstm_single_3d/instances/true_neg_bucket_all_.pickle
+benchmark_interpretability/PPM_Stability/bpic2012/lstm_single_3d/instances/true_pos_bucket_all_.pickle

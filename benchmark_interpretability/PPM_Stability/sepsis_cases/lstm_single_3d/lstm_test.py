@@ -223,7 +223,7 @@ def dispersal(weights, features):
     return dispersal, dispersal_no_outlier
 
 #Set up dataset
-dataset_ref = "bpic2012"
+dataset_ref = "sepsis_cases"
 params_dir = PATH + "params"
 results_dir = "results"
 bucket_method = "single"
@@ -249,9 +249,10 @@ dataset_ref_to_datasets = {
     #"bpic2011": ["bpic2011_f%s"%formula for formula in range(1,5)],
     "bpic2015": ["bpic2015_%s_f2"%(municipality) for municipality in range(5,6)],
     "bpic2017" : ["bpic2017_accepted"],
-    "bpic2012" : ["bpic2012_accepted"]
+    "bpic2012" : ["bpic2012_accepted"],
     #"insurance": ["insurance_activity", "insurance_followup"],
-    #"sepsis_cases": ["sepsis_cases_1", "sepsis_cases_2", "sepsis_cases_4"]
+    "sepsis_cases": ["sepsis_cases_1"],# "sepsis_cases_2", "sepsis_cases_4"]
+    "production" : ["production"]
 }
 
 datasets = [dataset_ref] if dataset_ref not in dataset_ref_to_datasets else dataset_ref_to_datasets[dataset_ref]
@@ -280,7 +281,7 @@ if generate_model_shap:
                 #import everything needed to sort and predict
                 if cls_method == "lstm":
                     print("get everything to create model")
-                    params_path = os.path.join(PATH, "%s/%s_%s/cls/params_new.pickle" % (dataset_ref, cls_method, method_name))
+                    params_path = os.path.join(PATH, "%s/%s_%s/cls/params.pickle" % (dataset_ref, cls_method, method_name))
                     with open(params_path, 'rb') as f:
                         args = pickle.load(f)
 
@@ -341,7 +342,7 @@ if generate_model_shap:
                         opt = RMSprop(lr=args['learning_rate'], rho=0.9, epsilon=1e-08, decay=0.0)
                         
                     print("adding weights to model")
-                    checkpoint_path = os.path.join(PATH, "%s/%s_%s/cls/checkpoint_new.cpt" % (dataset_ref, cls_method, method_name))
+                    checkpoint_path = os.path.join(PATH, "%s/%s_%s/cls/checkpoint.cpt" % (dataset_ref, cls_method, method_name))
                     weights = cls.load_weights(checkpoint_path)
                     #print(weights.assert_consumed())
                      
@@ -536,7 +537,7 @@ if generate_lime:
                 #import everything needed to sort and predict
                 if cls_method == "lstm":
                     print ("get everything to create model")
-                    params_path = os.path.join(PATH, "%s/%s_%s/cls/params_new.pickle" % (dataset_ref, cls_method, method_name))
+                    params_path = os.path.join(PATH, "%s/%s_%s/cls/params.pickle" % (dataset_ref, cls_method, method_name))
                     with open(params_path, 'rb') as f:
                         args = pickle.load(f)
 
@@ -597,7 +598,7 @@ if generate_lime:
                         opt = RMSprop(lr=args['learning_rate'], rho=0.9, epsilon=1e-08, decay=0.0)
                         
                     print("adding weights to model")
-                    checkpoint_path = os.path.join(PATH, "%s/%s_%s/cls/checkpoint_new.cpt" % (dataset_ref, cls_method, method_name))
+                    checkpoint_path = os.path.join(PATH, "%s/%s_%s/cls/checkpoint.cpt" % (dataset_ref, cls_method, method_name))
                     weights = cls.load_weights(checkpoint_path)
                     #print(weights.assert_consumed())
                      
