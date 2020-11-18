@@ -415,11 +415,11 @@ if generate_model_shap:
 
                 #explain the chosen instances and find the stability score
                 cat_no = 0
-                for category in sample_instances[:1]:
+                for category in sample_instances:
                     cat_no += 1
                     instance_no = 0
                     
-                    for instance in category[:1]:
+                    for instance in category:
                         instance_no += 1    
                         print("Category", cat_no, "of", len(sample_instances), ". Testing", instance_no, "of", len(category), ".")
 
@@ -675,10 +675,10 @@ if generate_lime:
                 
                 #explain the chosen instances and find the stability score
                 cat_no = 0
-                for category in sample_instances[:1]:
+                for category in sample_instances:
                     cat_no += 1
                     instance_no = 0
-                    for instance in category[:1]:
+                    for instance in category:
                         instance_no += 1
                         
                         print("Category", cat_no, "of", len(sample_instances), ". Testing", instance_no, "of", len(category), ".")

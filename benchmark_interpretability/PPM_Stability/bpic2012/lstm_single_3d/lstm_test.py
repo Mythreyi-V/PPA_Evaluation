@@ -223,7 +223,7 @@ def dispersal(weights, features):
     return dispersal, dispersal_no_outlier
 
 #Set up dataset
-dataset_ref = "production"
+dataset_ref = "bpic2012"
 params_dir = PATH + "params"
 results_dir = "results"
 bucket_method = "single"
