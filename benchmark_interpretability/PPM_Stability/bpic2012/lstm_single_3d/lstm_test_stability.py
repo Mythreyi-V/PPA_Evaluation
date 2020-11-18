@@ -280,7 +280,7 @@ if generate_model_shap:
                 #import everything needed to sort and predict
                 if cls_method == "lstm":
                     print("get everything to create model")
-                    params_path = os.path.join(PATH, "%s/%s_%s/cls/params_new.pickle" % (dataset_ref, cls_method, method_name))
+                    params_path = os.path.join(PATH, "%s/%s_%s/cls/params.pickle" % (dataset_ref, cls_method, method_name))
                     with open(params_path, 'rb') as f:
                         args = pickle.load(f)
 
@@ -341,7 +341,7 @@ if generate_model_shap:
                         opt = RMSprop(lr=args['learning_rate'], rho=0.9, epsilon=1e-08, decay=0.0)
                         
                     print("adding weights to model")
-                    checkpoint_path = os.path.join(PATH, "%s/%s_%s/cls/checkpoint_new.cpt" % (dataset_ref, cls_method, method_name))
+                    checkpoint_path = os.path.join(PATH, "%s/%s_%s/cls/checkpoint.cpt" % (dataset_ref, cls_method, method_name))
                     weights = cls.load_weights(checkpoint_path)
                     #print(weights.assert_consumed())
                      
@@ -406,7 +406,10 @@ if generate_model_shap:
                     tree_explainer = shap.TreeExplainer(cls)
                 elif cls_method == "lstm":
                     print("creating explainer")
-                    training_sample = shap.sample(dt_train_bucket, 10000)
+                    if len(dt_train_bucket) > 10000:
+                        training_sample = shap.sample(dt_train_bucket, 10000)
+                    else:
+                        training_sample = dt_train_bucket
                     deep_explainer = shap.DeepExplainer(cls, training_sample)
 
                 #explain the chosen instances and find the stability score
@@ -536,7 +539,7 @@ if generate_lime:
                 #import everything needed to sort and predict
                 if cls_method == "lstm":
                     print ("get everything to create model")
-                    params_path = os.path.join(PATH, "%s/%s_%s/cls/params_new.pickle" % (dataset_ref, cls_method, method_name))
+                    params_path = os.path.join(PATH, "%s/%s_%s/cls/params.pickle" % (dataset_ref, cls_method, method_name))
                     with open(params_path, 'rb') as f:
                         args = pickle.load(f)
 
@@ -597,7 +600,7 @@ if generate_lime:
                         opt = RMSprop(lr=args['learning_rate'], rho=0.9, epsilon=1e-08, decay=0.0)
                         
                     print("adding weights to model")
-                    checkpoint_path = os.path.join(PATH, "%s/%s_%s/cls/checkpoint_new.cpt" % (dataset_ref, cls_method, method_name))
+                    checkpoint_path = os.path.join(PATH, "%s/%s_%s/cls/checkpoint.cpt" % (dataset_ref, cls_method, method_name))
                     weights = cls.load_weights(checkpoint_path)
                     #print(weights.assert_consumed())
                      
