@@ -1,9 +1,9 @@
 #!/bin/bash -l
 #PBS -N first_trial
 #PBS -l ncpus=4
-#PBS -l ngpus=2
+#PBS -l ngpus=1
 #PBS -l mem=20gb
-#PBS -l walltime=70:00:00
+#PBS -l walltime=60:30:00
 
 cd $PBS_O_WORKDIR
 echo "queue started"
@@ -31,5 +31,6 @@ python3 -m pip install --upgrade pandas --user
 echo "pandas upgraded"
 
 echo "starting test"
+#python3 lstm_test.py
 python3 lstm_test_stability.py
 echo "test ended"
