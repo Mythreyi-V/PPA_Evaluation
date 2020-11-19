@@ -1,9 +1,9 @@
 #!/bin/bash -l
 #PBS -N bpic2012
 #PBS -l ncpus=6
-#PBS -l ngpus=1
+#PBS -l ngpus=2
 #PBS -l mem=20gb
-#PBS -l walltime=49:59:59
+#PBS -l walltime=70:30:00
 
 cd $PBS_O_WORKDIR
 echo "queue started"
@@ -32,7 +32,7 @@ echo "pandas upgraded"
 
 echo "starting test"
 #python3 lstm_test.py
-#python3 lstm_test_stability.py
-python3 lstm_test_lime_stability.py
+python3 lstm_test_stability.py
+#python3 lstm_test_lime_stability.py
 #python3 lstm_test_shap_stability.py
 echo "test ended"
