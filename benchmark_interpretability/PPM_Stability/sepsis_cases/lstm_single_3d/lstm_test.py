@@ -235,7 +235,7 @@ n_iter = 1
 
 method_name = "%s_%s"%(bucket_method, cls_encoding)
 
-generate_samples = False
+generate_samples = True
 generate_lime = True
 generate_kernel_shap = False
 generate_model_shap = True
@@ -243,7 +243,7 @@ generate_model_shap = True
 sample_size = 2
 exp_iter = 10
 max_feat = 10
-max_prefix = 25
+max_prefix = 20
 
 dataset_ref_to_datasets = {
     #"bpic2011": ["bpic2011_f%s"%formula for formula in range(1,5)],
@@ -407,7 +407,10 @@ if generate_model_shap:
                     tree_explainer = shap.TreeExplainer(cls)
                 elif cls_method == "lstm":
                     print("creating explainer")
-                    training_sample = shap.sample(dt_train_bucket, 10000)
+                    if len(dt_train_bucket) > 10000:
+                        training_sample = shap.sample(dt_train_bucket, 10000)
+                    else:
+                        training_sample = dt_train_bucket
                     deep_explainer = shap.DeepExplainer(cls, training_sample)
 
                 #explain the chosen instances and find the stability score
@@ -454,7 +457,7 @@ if generate_model_shap:
                                     for j in range(len(feat_list[i])):
                                         each = feat_list[i][j]
                                         for explanation in iteration:
-                                            if each in explanation[0]:
+                                            if each == explanation[0]:
                                                 list_idx = i*length+j
                                                 presence_list[list_idx] = 1
                             else:
@@ -478,7 +481,7 @@ if generate_model_shap:
                                     for j in range(len(feat_list[i])):
                                         each = feat_list[i][j]
                                         for explanation in iteration:
-                                            if each in explanation[0]:
+                                            if each == explanation[0]:
                                                 list_idx = i*length+j
                                                 weights[list_idx] = explanation[1]
                             else:
@@ -667,6 +670,10 @@ if generate_lime:
                         file = f.read()
                         orig_list = np.array(pickle.loads(file))
                         feat_list = orig_list[0]
+                        comparison_list = []
+                        for i in range(max_len):
+                            nl = [name+"_t-"+str(i) for name in feat_list]
+                            comparison_list.append(nl)
                 else:
                     feat_list = feature_combiner.get_feature_names()
                 
@@ -715,9 +722,9 @@ if generate_lime:
                                 presence_list = [0]*(orig_list.shape[0]*orig_list.shape[1])
                                 weights = [0]*(orig_list.shape[0]*orig_list.shape[1])
                                 length = orig_list.shape[1]
-                                for i in range(len(feat_list)):
-                                    #for j in range(len(feat_list[i])):
-                                        each = feat_list[i]#[j]
+                                for i in range(len(comparison_list)):
+                                    for j in range(len(comparison_list[i])):
+                                        each = comparison_list[i][j]
                                         for explanation in lime_exp.as_list():
                                             if each in explanation[0]:
                                                 parts = explanation[0].split(' ')

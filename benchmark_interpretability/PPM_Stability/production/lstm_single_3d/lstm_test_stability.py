@@ -457,7 +457,7 @@ if generate_model_shap:
                                     for j in range(len(feat_list[i])):
                                         each = feat_list[i][j]
                                         for explanation in iteration:
-                                            if each in explanation[0]:
+                                            if each == explanation[0]:
                                                 list_idx = i*length+j
                                                 presence_list[list_idx] = 1
                             else:
@@ -481,7 +481,7 @@ if generate_model_shap:
                                     for j in range(len(feat_list[i])):
                                         each = feat_list[i][j]
                                         for explanation in iteration:
-                                            if each in explanation[0]:
+                                            if each == explanation[0]:
                                                 list_idx = i*length+j
                                                 weights[list_idx] = explanation[1]
                             else:
@@ -670,6 +670,10 @@ if generate_lime:
                         file = f.read()
                         orig_list = np.array(pickle.loads(file))
                         feat_list = orig_list[0]
+                        comparison_list = []
+                        for i in range(max_len):
+                            nl = [name+"_t-"+str(i) for name in feat_list]
+                            comparison_list.append(nl)
                 else:
                     feat_list = feature_combiner.get_feature_names()
                 
@@ -718,9 +722,9 @@ if generate_lime:
                                 presence_list = [0]*(orig_list.shape[0]*orig_list.shape[1])
                                 weights = [0]*(orig_list.shape[0]*orig_list.shape[1])
                                 length = orig_list.shape[1]
-                                for i in range(len(feat_list)):
-                                    #for j in range(len(feat_list[i])):
-                                        each = feat_list[i]#[j]
+                                for i in range(len(comparison_list)):
+                                    for j in range(len(comparison_list[i])):
+                                        each = comparison_list[i][j]
                                         for explanation in lime_exp.as_list():
                                             if each in explanation[0]:
                                                 parts = explanation[0].split(' ')
