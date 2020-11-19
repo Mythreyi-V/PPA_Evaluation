@@ -1,5 +1,5 @@
 #!/bin/bash -l
-#PBS -N first_trial
+#PBS -N sepsis_cases
 #PBS -l ncpus=4
 #PBS -l ngpus=1
 #PBS -l mem=20gb
