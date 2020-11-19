@@ -682,7 +682,7 @@ if generate_lime:
                 for category in sample_instances:
                     cat_no += 1
                     instance_no = 0
-                    for instance in category:
+                    for instance in category[:1]:
                         instance_no += 1
                         
                         print("Category", cat_no, "of", len(sample_instances), ". Testing", instance_no, "of", len(category), ".")
@@ -762,6 +762,7 @@ if generate_lime:
                         adj_dispersal = np.mean(second_var)
                         print ("Dispersal with no outliers:", round(adj_dispersal, 2))
                         instance['adjusted_lime_weights_dispersal'] = second_var
+			print(instance.keys())
                                         
                 #Save dictionaries updated with stability scores
                 with open(tn_path, 'wb') as f:
