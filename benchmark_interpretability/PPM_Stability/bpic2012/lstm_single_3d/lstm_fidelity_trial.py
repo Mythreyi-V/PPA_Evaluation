@@ -4,7 +4,7 @@ import os
 PATH = "/home/n9455647/PPM_Evaluation/Stability-Experiments/benchmark_interpretability/PPM_Stability/"
 sys.path.append(PATH)
 
-#import required modules
+#import modules
 import EncoderFactory
 from DatasetManager import DatasetManager
 import BucketFactory
@@ -13,6 +13,7 @@ import stability as st #Nogueira, Sechidis, Brown.
 import pandas as pd
 import numpy as np
 from scipy import stats
+import math
 
 from sklearn.metrics import roc_auc_score
 from sklearn.pipeline import FeatureUnion, Pipeline
@@ -23,11 +24,12 @@ import os
 import sys
 from sys import argv
 import pickle
-from collections import defaultdict
+from collections import defaultdict, Counter
 import random
 import joblib
 
 from sklearn.ensemble import RandomForestClassifier
+import xgboost as xgb
 from sklearn.linear_model import LogisticRegression
 from sklearn.svm import SVC
 
@@ -46,7 +48,7 @@ disable_v2_behavior()
 
 import lime
 import lime.lime_tabular
-from lime import submodular_pick
+from lime import submodular_pick;
 
 import shap
 
@@ -613,29 +615,6 @@ if generate_model_shap:
                             neg_nr_events.append(instance['nr_events'])
                             neg_case_ids.append(instance['caseID'])
 
-#                     fig, ax = plt.subplots()
-#                     ax.plot(probas, changes, 'ro', label = "SHAP")
-#                     ax.set_xlabel("Prefix Length")
-#                     ax.set_ylabel("Change in prediction probability")
-#                     #ax.legend(frameon = False, bbox_to_anchor=(1, 1), loc = 'upper left')
-#                     plt.yticks(np.arange(0,1.1, 0.1))
-#                     plt.title("Prefix length and change in prediction probability - %s (Bucket %s)" %(type_list[i_type], bucketID))
-#                     plt.show()
-
-#                     fig2, ax2 = plt.subplots()
-#                     ax2.plot(nr_events, changes, 'ro', label = "SHAP")
-#                     ax2.set_xlabel("Prediction Probability")
-#                     ax2.set_ylabel("Change in prediction probability")
-#                     #ax2.legend(frameon = False, bbox_to_anchor=(1, 1), loc = 'upper left')
-#                     plt.yticks(np.arange(0,1.1, 0.1))
-#                     plt.title("Prediction probability and change in prediction probability - %s (Bucket %s)" %(type_list[i_type], bucketID))
-#                     plt.show()
-
-#                     all_shap_changes.extend(changes)
-#                     all_lens.extend(nr_events)
-#                     all_probas.extend(probas)
-#                     all_case_ids.extend(case_ids)
-
                 #Save dictionaries updated with scores
                 with open(tn_path, 'wb') as f:
                     pickle.dump(sample_instances[0], f)
@@ -1032,24 +1011,6 @@ if generate_lime:
                             neg_probas.append(p1)
                             neg_nr_events.append(instance['nr_events'])
                             neg_case_ids.append(instance['caseID'])
-
-#                     fig, ax = plt.subplots()
-#                     ax.plot(nr_events, changes, 'bo', label = "LIME")
-#                     ax.set_xlabel("Prefix Length")
-#                     ax.set_ylabel("Change in prediction probability")
-#                     #ax.legend(frameon = False, bbox_to_anchor=(1, 1), loc = 'upper left')
-#                     #plt.yticks(np.arange(0,1.1, 0.1))
-#                     plt.title("Prefix length and change in prediction probability - %s (Bucket %s)" %(type_list[i], bucketID))
-#                     plt.show()
-
-#                     fig2, ax2 = plt.subplots()
-#                     ax2.plot(probas, changes, 'bo', label = "LIME")
-#                     ax2.set_xlabel("Prediction Probability")
-#                     ax2.set_ylabel("Change in prediction probability")
-#                     #ax2.legend(frameon = False, bbox_to_anchor=(1, 1), loc = 'upper left')
-#                     plt.yticks(np.arange(0,1.1, 0.1))
-#                     plt.title("Prediction probability and change in prediction probability - %s (Bucket %s)" %(type_list[i], bucketID))
-#                     plt.show()
 
                     all_lime_changes.extend(changes)
                     all_lens.extend(nr_events)
