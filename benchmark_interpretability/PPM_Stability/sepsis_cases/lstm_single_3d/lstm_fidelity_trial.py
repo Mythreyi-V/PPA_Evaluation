@@ -1064,3 +1064,7 @@ if generate_lime:
                     pickle.dump(sample_instances[2], f)
                 with open(fp_path, 'wb') as f:
                     pickle.dump(sample_instances[3], f)
+
+print("Time taken to create distribution:", dist_elapsed)
+print("Time taken to create SHAP explanation:", shap_elapsed)
+print("Time tkane to create LIME explanation:", lime_elapsed)
