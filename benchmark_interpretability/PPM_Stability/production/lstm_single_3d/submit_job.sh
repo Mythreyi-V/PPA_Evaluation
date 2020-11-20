@@ -31,6 +31,6 @@ python3 -m pip install --upgrade pandas --user
 echo "pandas upgraded"
 
 echo "starting test"
-#python3 lstm_test.py
-python3 lstm_test_stability.py
+python3 lstm_test.py
+#python3 lstm_test_stability.py
 echo "test ended"
