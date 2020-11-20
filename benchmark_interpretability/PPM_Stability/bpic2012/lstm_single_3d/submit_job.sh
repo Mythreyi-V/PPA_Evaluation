@@ -3,7 +3,7 @@
 #PBS -l ncpus=6
 #PBS -l ngpus=2
 #PBS -l mem=20gb
-#PBS -l walltime=6:30:00
+#PBS -l walltime=24:00:00
 
 cd $PBS_O_WORKDIR
 echo "queue started"
