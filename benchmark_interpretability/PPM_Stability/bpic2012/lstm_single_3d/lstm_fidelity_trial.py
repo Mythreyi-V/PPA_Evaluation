@@ -4,7 +4,7 @@ import os
 PATH = "/home/n9455647/PPM_Evaluation/Stability-Experiments/benchmark_interpretability/PPM_Stability/"
 sys.path.append(PATH)
 
-#import modules
+#import required modules
 import EncoderFactory
 from DatasetManager import DatasetManager
 import BucketFactory
@@ -29,7 +29,7 @@ import random
 import joblib
 
 from sklearn.ensemble import RandomForestClassifier
-import xgboost as xgb
+#import xgboost as xgb
 from sklearn.linear_model import LogisticRegression
 from sklearn.svm import SVC
 
@@ -252,8 +252,7 @@ def generate_distributions(explainer, features, test_x, bin_min = -1, bin_max = 
         
         return shap_distribs
 
-        
-dataset_ref = "bpic2012"
+dataset_ref = "production"
 params_dir = PATH + "params"
 results_dir = "results"
 bucket_method = "single"
@@ -470,13 +469,13 @@ if generate_model_shap:
                 print("Time taken to generate distribution:", dist_elapsed)
                 
                 start_time = time.time()
-                for i_type in range(len(sample_instances[:1])):
+                for i_type in range(len(sample_instances)):
                     changes = []
                     probas = []
                     nr_events = []
                     case_ids = []
 
-                    for n in range(len(sample_instances[i_type][:1])):
+                    for n in range(len(sample_instances[i_type])):
                         print("Category %s of %s. Instance %s of %s" %(i_type+1, len(sample_instances), n+1, len(sample_instances[i_type])))
                         instance = sample_instances[i_type][n]
 
@@ -614,6 +613,29 @@ if generate_model_shap:
                             neg_probas.append(p1)
                             neg_nr_events.append(instance['nr_events'])
                             neg_case_ids.append(instance['caseID'])
+
+#                     fig, ax = plt.subplots()
+#                     ax.plot(probas, changes, 'ro', label = "SHAP")
+#                     ax.set_xlabel("Prefix Length")
+#                     ax.set_ylabel("Change in prediction probability")
+#                     #ax.legend(frameon = False, bbox_to_anchor=(1, 1), loc = 'upper left')
+#                     plt.yticks(np.arange(0,1.1, 0.1))
+#                     plt.title("Prefix length and change in prediction probability - %s (Bucket %s)" %(type_list[i_type], bucketID))
+#                     plt.show()
+
+#                     fig2, ax2 = plt.subplots()
+#                     ax2.plot(nr_events, changes, 'ro', label = "SHAP")
+#                     ax2.set_xlabel("Prediction Probability")
+#                     ax2.set_ylabel("Change in prediction probability")
+#                     #ax2.legend(frameon = False, bbox_to_anchor=(1, 1), loc = 'upper left')
+#                     plt.yticks(np.arange(0,1.1, 0.1))
+#                     plt.title("Prediction probability and change in prediction probability - %s (Bucket %s)" %(type_list[i_type], bucketID))
+#                     plt.show()
+
+#                     all_shap_changes.extend(changes)
+#                     all_lens.extend(nr_events)
+#                     all_probas.extend(probas)
+#                     all_case_ids.extend(case_ids)
 
                 #Save dictionaries updated with scores
                 with open(tn_path, 'wb') as f:
@@ -809,13 +831,13 @@ if generate_lime:
                 
                 type_list = ['True Negatives', 'True Positives', 'False Negatives', 'False Positives']
 
-                for i in list(range(len(sample_instances[:1]))):
+                for i in list(range(len(sample_instances))):
                     changes = []
                     probas = []
                     nr_events = []
                     case_ids = []
 
-                    for j in list(range(len(sample_instances[i][:1]))):
+                    for j in list(range(len(sample_instances[i]))):
                         print("Category %s of %s. Instance %s of %s" %(i+1, len(sample_instances), j+1, len(sample_instances[i])))
                         instance = sample_instances[i][j]
                         
@@ -1012,6 +1034,24 @@ if generate_lime:
                             neg_nr_events.append(instance['nr_events'])
                             neg_case_ids.append(instance['caseID'])
 
+#                     fig, ax = plt.subplots()
+#                     ax.plot(nr_events, changes, 'bo', label = "LIME")
+#                     ax.set_xlabel("Prefix Length")
+#                     ax.set_ylabel("Change in prediction probability")
+#                     #ax.legend(frameon = False, bbox_to_anchor=(1, 1), loc = 'upper left')
+#                     #plt.yticks(np.arange(0,1.1, 0.1))
+#                     plt.title("Prefix length and change in prediction probability - %s (Bucket %s)" %(type_list[i], bucketID))
+#                     plt.show()
+
+#                     fig2, ax2 = plt.subplots()
+#                     ax2.plot(probas, changes, 'bo', label = "LIME")
+#                     ax2.set_xlabel("Prediction Probability")
+#                     ax2.set_ylabel("Change in prediction probability")
+#                     #ax2.legend(frameon = False, bbox_to_anchor=(1, 1), loc = 'upper left')
+#                     plt.yticks(np.arange(0,1.1, 0.1))
+#                     plt.title("Prediction probability and change in prediction probability - %s (Bucket %s)" %(type_list[i], bucketID))
+#                     plt.show()
+
                     all_lime_changes.extend(changes)
                     all_lens.extend(nr_events)
                     all_probas.extend(probas)
@@ -1028,5 +1068,5 @@ if generate_lime:
                     pickle.dump(sample_instances[3], f)
 
 print("Time taken to generate distribution:", dist_elapsed)
-print("Time taken to generate SHAP explanation:", shap_elapsed)
-print("Time taken to generate LIME explanation:", lime_elapsed)
+print("Time taken to create SHAP explanation:", shap_elapsed)
+print("Time taken to create LIME explanation:", lime_elapsed)

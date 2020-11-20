@@ -29,7 +29,7 @@ import random
 import joblib
 
 from sklearn.ensemble import RandomForestClassifier
-import xgboost as xgb
+#import xgboost as xgb
 from sklearn.linear_model import LogisticRegression
 from sklearn.svm import SVC
 
@@ -252,7 +252,7 @@ def generate_distributions(explainer, features, test_x, bin_min = -1, bin_max = 
         
         return shap_distribs
 
-dataset_ref = "sepsis_cases"
+dataset_ref = "production"
 params_dir = PATH + "params"
 results_dir = "results"
 bucket_method = "single"
@@ -469,13 +469,13 @@ if generate_model_shap:
                 print("Time taken to generate distribution:", dist_elapsed)
                 
                 start_time = time.time()
-                for i_type in range(len(sample_instances[:1])):
+                for i_type in range(len(sample_instances)):
                     changes = []
                     probas = []
                     nr_events = []
                     case_ids = []
 
-                    for n in range(len(sample_instances[i_type][:1])):
+                    for n in range(len(sample_instances[i_type])):
                         print("Category %s of %s. Instance %s of %s" %(i_type+1, len(sample_instances), n+1, len(sample_instances[i_type])))
                         instance = sample_instances[i_type][n]
 
@@ -831,13 +831,13 @@ if generate_lime:
                 
                 type_list = ['True Negatives', 'True Positives', 'False Negatives', 'False Positives']
 
-                for i in list(range(len(sample_instances[:1]))):
+                for i in list(range(len(sample_instances))):
                     changes = []
                     probas = []
                     nr_events = []
                     case_ids = []
 
-                    for j in list(range(len(sample_instances[i][:1]))):
+                    for j in list(range(len(sample_instances[i]))):
                         print("Category %s of %s. Instance %s of %s" %(i+1, len(sample_instances), j+1, len(sample_instances[i])))
                         instance = sample_instances[i][j]
                         
@@ -1067,6 +1067,6 @@ if generate_lime:
                 with open(fp_path, 'wb') as f:
                     pickle.dump(sample_instances[3], f)
 
-print("Time taken to create distribution:", dist_elapsed)
+print("Time taken to generate distribution:", dist_elapsed)
 print("Time taken to create SHAP explanation:", shap_elapsed)
-print("Time tkane to create LIME explanation:", lime_elapsed)
+print("Time taken to create LIME explanation:", lime_elapsed)
