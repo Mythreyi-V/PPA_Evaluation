@@ -1,0 +1,91 @@
+iter;dataset;cls;method;param;value;score
+2;production;lstm;single_3d;batch_size;256;0.556128355298049
+2;production;lstm;single_3d;dense_layers;{'layers': 'one'};0.556128355298049
+2;production;lstm;single_3d;epochs;100;0.556128355298049
+2;production;lstm;single_3d;learning_rate;0.0006494440431119651;0.556128355298049
+2;production;lstm;single_3d;lstm1_dropouts;0.0019241193437906767;0.556128355298049
+2;production;lstm;single_3d;lstm1_nodes;20;0.556128355298049
+2;production;lstm;single_3d;lstm_layers;{'layers': 'one'};0.556128355298049
+2;production;lstm;single_3d;optimizer;rmsprop;0.556128355298049
+2;production;lstm;single_3d;processing_time;53.65253043174744;0
+3;production;lstm;single_3d;batch_size;256;0.6492673992673993
+3;production;lstm;single_3d;dense_layers;{'layers': 'one'};0.6492673992673993
+3;production;lstm;single_3d;epochs;200;0.6492673992673993
+3;production;lstm;single_3d;learning_rate;0.004126494437401497;0.6492673992673993
+3;production;lstm;single_3d;lstm1_dropouts;0.009826178737100021;0.6492673992673993
+3;production;lstm;single_3d;lstm1_nodes;10;0.6492673992673993
+3;production;lstm;single_3d;lstm_layers;{'layers': 'one'};0.6492673992673993
+3;production;lstm;single_3d;optimizer;adam;0.6492673992673993
+3;production;lstm;single_3d;processing_time;41.13642477989197;0
+4;production;lstm;single_3d;batch_size;64;0.6480612883051907
+4;production;lstm;single_3d;dense_layers;{'layers': 'one'};0.6480612883051907
+4;production;lstm;single_3d;epochs;300;0.6480612883051907
+4;production;lstm;single_3d;learning_rate;0.0017038713744686;0.6480612883051907
+4;production;lstm;single_3d;lstm1_dropouts;0.0012124517225814528;0.6480612883051907
+4;production;lstm;single_3d;lstm1_nodes;50;0.6480612883051907
+4;production;lstm;single_3d;lstm_layers;{'layers': 'one'};0.6480612883051907
+4;production;lstm;single_3d;optimizer;rmsprop;0.6480612883051907
+4;production;lstm;single_3d;processing_time;41.04186224937439;0
+5;production;lstm;single_3d;batch_size;128;0.6110594331541247
+5;production;lstm;single_3d;dense_layers;{'dense2_nodes': 40, 'layers': 'two'};0.6110594331541247
+5;production;lstm;single_3d;epochs;500;0.6110594331541247
+5;production;lstm;single_3d;learning_rate;0.0007692891562688473;0.6110594331541247
+5;production;lstm;single_3d;lstm1_dropouts;0.002725900312153948;0.6110594331541247
+5;production;lstm;single_3d;lstm1_nodes;50;0.6110594331541247
+5;production;lstm;single_3d;lstm_layers;{'layers': 'two', 'lstm2_dropouts': 0.013298119265601824, 'lstm2_nodes': 50};0.6110594331541247
+5;production;lstm;single_3d;optimizer;adam;0.6110594331541247
+5;production;lstm;single_3d;processing_time;98.46820616722107;0
+6;production;lstm;single_3d;batch_size;64;0.611414697210967
+6;production;lstm;single_3d;dense_layers;{'layers': 'one'};0.611414697210967
+6;production;lstm;single_3d;epochs;200;0.611414697210967
+6;production;lstm;single_3d;learning_rate;0.00042653273222892585;0.611414697210967
+6;production;lstm;single_3d;lstm1_dropouts;0.006353874743457713;0.611414697210967
+6;production;lstm;single_3d;lstm1_nodes;10;0.611414697210967
+6;production;lstm;single_3d;lstm_layers;{'layers': 'one'};0.611414697210967
+6;production;lstm;single_3d;optimizer;rmsprop;0.611414697210967
+6;production;lstm;single_3d;processing_time;49.53954863548279;0
+7;production;lstm;single_3d;batch_size;8;0.637003109662433
+7;production;lstm;single_3d;dense_layers;{'layers': 'one'};0.637003109662433
+7;production;lstm;single_3d;epochs;200;0.637003109662433
+7;production;lstm;single_3d;learning_rate;0.009257674103361615;0.637003109662433
+7;production;lstm;single_3d;lstm1_dropouts;0.041973393227736314;0.637003109662433
+7;production;lstm;single_3d;lstm1_nodes;10;0.637003109662433
+7;production;lstm;single_3d;lstm_layers;{'layers': 'three', 'lstm2_dropouts': 0.015045424810817939, 'lstm2_nodes': 50, 'lstm3_dropouts': 0.005894633885946038, 'lstm3_nodes': 50};0.637003109662433
+7;production;lstm;single_3d;optimizer;adam;0.637003109662433
+7;production;lstm;single_3d;processing_time;458.64261746406555;0
+8;production;lstm;single_3d;batch_size;16;0.7161184169445381
+8;production;lstm;single_3d;dense_layers;{'layers': 'one'};0.7161184169445381
+8;production;lstm;single_3d;epochs;100;0.7161184169445381
+8;production;lstm;single_3d;learning_rate;0.009244468358407422;0.7161184169445381
+8;production;lstm;single_3d;lstm1_dropouts;0.3393072832651145;0.7161184169445381
+8;production;lstm;single_3d;lstm1_nodes;50;0.7161184169445381
+8;production;lstm;single_3d;lstm_layers;{'layers': 'one'};0.7161184169445381
+8;production;lstm;single_3d;optimizer;adam;0.7161184169445381
+8;production;lstm;single_3d;processing_time;47.8372266292572;0
+9;production;lstm;single_3d;batch_size;128;0.7090815688376665
+9;production;lstm;single_3d;dense_layers;{'dense2_nodes': 30, 'layers': 'two'};0.7090815688376665
+9;production;lstm;single_3d;epochs;500;0.7090815688376665
+9;production;lstm;single_3d;learning_rate;0.005995598611420145;0.7090815688376665
+9;production;lstm;single_3d;lstm1_dropouts;0.38943977475175284;0.7090815688376665
+9;production;lstm;single_3d;lstm1_nodes;50;0.7090815688376665
+9;production;lstm;single_3d;lstm_layers;{'layers': 'one'};0.7090815688376665
+9;production;lstm;single_3d;optimizer;rmsprop;0.7090815688376665
+9;production;lstm;single_3d;processing_time;36.67375993728638;0
+10;production;lstm;single_3d;batch_size;16;0.6378311549760617
+10;production;lstm;single_3d;dense_layers;{'dense2_nodes': 10, 'layers': 'two'};0.6378311549760617
+10;production;lstm;single_3d;epochs;500;0.6378311549760617
+10;production;lstm;single_3d;learning_rate;0.0014266156501089727;0.6378311549760617
+10;production;lstm;single_3d;lstm1_dropouts;0.028843008800662564;0.6378311549760617
+10;production;lstm;single_3d;lstm1_nodes;10;0.6378311549760617
+10;production;lstm;single_3d;lstm_layers;{'layers': 'two', 'lstm2_dropouts': 0.04183338294935664, 'lstm2_nodes': 10};0.6378311549760617
+10;production;lstm;single_3d;optimizer;rmsprop;0.6378311549760617
+10;production;lstm;single_3d;processing_time;135.49287748336792;0
+11;production;lstm;single_3d;batch_size;16;0.58277542613406
+11;production;lstm;single_3d;dense_layers;{'dense2_nodes': 20, 'layers': 'two'};0.58277542613406
+11;production;lstm;single_3d;epochs;100;0.58277542613406
+11;production;lstm;single_3d;learning_rate;0.0005360666084175919;0.58277542613406
+11;production;lstm;single_3d;lstm1_dropouts;0.008020061860601358;0.58277542613406
+11;production;lstm;single_3d;lstm1_nodes;10;0.58277542613406
+11;production;lstm;single_3d;lstm_layers;{'layers': 'three', 'lstm2_dropouts': 0.49291750130169, 'lstm2_nodes': 50, 'lstm3_dropouts': 0.33058372468060143, 'lstm3_nodes': 20};0.58277542613406
+11;production;lstm;single_3d;optimizer;adam;0.58277542613406
+11;production;lstm;single_3d;processing_time;363.559828042984;0
