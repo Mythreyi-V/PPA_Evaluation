@@ -267,7 +267,7 @@ method_name = "%s_%s"%(bucket_method, cls_encoding)
 generate_samples = False
 generate_lime = True
 generate_kernel_shap = False
-generate_model_shap = True
+generate_model_shap = False
 
 sample_size = 2
 exp_iter = 10
@@ -855,6 +855,7 @@ if generate_lime:
                             test_x_group= feature_combiner.fit_transform(group) 
                             test_x=np.transpose(test_x_group[0])
                         else:
+                            test_x_group = np.array([input_])
                             test_x = input_
 
                         explanations = []
