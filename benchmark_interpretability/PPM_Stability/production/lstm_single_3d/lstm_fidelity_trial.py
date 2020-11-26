@@ -382,7 +382,7 @@ if generate_model_shap:
                         opt = RMSprop(lr=args['learning_rate'], rho=0.9, epsilon=1e-08, decay=0.0)
                         
                     print("adding weights to model")
-                    checkpoint_path = os.path.join(PATH, "%s/%s_%s/cls/checkpoint.cpt" % (dataset_ref, cls_method, method_name))
+                    checkpoint_path = os.path.join(PATH, "%s/%s_%s/cls/cls.h5" % (dataset_ref, cls_method, method_name))
                     weights = cls.load_weights(checkpoint_path)
                     #print(weights.assert_consumed())
                      
@@ -469,13 +469,13 @@ if generate_model_shap:
                 print("Time taken to generate distribution:", dist_elapsed)
                 
                 start_time = time.time()
-                for i_type in range(len(sample_instances)):
+                for i_type in range(len(sample_instances[:1])):
                     changes = []
                     probas = []
                     nr_events = []
                     case_ids = []
 
-                    for n in range(len(sample_instances[i_type])):
+                    for n in range(len(sample_instances[i_type][:1])):
                         print("Category %s of %s. Instance %s of %s" %(i_type+1, len(sample_instances), n+1, len(sample_instances[i_type])))
                         instance = sample_instances[i_type][n]
 
@@ -731,7 +731,7 @@ if generate_lime:
                         opt = RMSprop(lr=args['learning_rate'], rho=0.9, epsilon=1e-08, decay=0.0)
                         
                     print("adding weights to model")
-                    checkpoint_path = os.path.join(PATH, "%s/%s_%s/cls/checkpoint.cpt" % (dataset_ref, cls_method, method_name))
+                    checkpoint_path = os.path.join(PATH, "%s/%s_%s/cls/cls.h5" % (dataset_ref, cls_method, method_name))
                     weights = cls.load_weights(checkpoint_path)
                     #print(weights.assert_consumed())
                      
@@ -817,13 +817,13 @@ if generate_lime:
                 
                 type_list = ['True Negatives', 'True Positives', 'False Negatives', 'False Positives']
 
-                for i in list(range(len(sample_instances))):
+                for i in list(range(len(sample_instances[:1]))):
                     changes = []
                     probas = []
                     nr_events = []
                     case_ids = []
 
-                    for j in list(range(len(sample_instances[i]))):
+                    for j in list(range(len(sample_instances[i][:1]))):
                         print("Category %s of %s. Instance %s of %s" %(i+1, len(sample_instances), j+1, len(sample_instances[i])))
                         instance = sample_instances[i][j]
                         
