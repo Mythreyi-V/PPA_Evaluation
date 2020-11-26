@@ -1,0 +1,79 @@
+  WARNING: The script tensorboard is installed in '/home/n9455647/.local/bin' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+  WARNING: The scripts estimator_ckpt_converter, saved_model_cli, tensorboard, tf_upgrade_v2, tflite_convert, toco and toco_from_protos are installed in '/home/n9455647/.local/bin' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+2020-11-26 17:26:07.653330: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcudart.so.10.1
+--------------------------------------------------------------------------
+A process has executed an operation involving a call to the
+"fork()" system call to create a child process.  Open MPI is currently
+operating in a condition that could result in memory corruption or
+other system errors; your job may hang, crash, or produce silent
+data corruption.  The use of fork() (or system() or other calls that
+create child processes) is strongly discouraged.
+
+The process that invoked fork was:
+
+  Local host:          [[28680,1],0] (PID 30973)
+
+If you are *absolutely sure* that your application will successfully
+and correctly survive a call to fork(), you may disable this warning
+by setting the mpi_warn_on_fork MCA parameter to 0.
+--------------------------------------------------------------------------
+WARNING:tensorflow:From /pkg/suse12/software/TensorFlow/2.3.1-fosscuda-2019b-Python-3.7.4/lib/python3.7/site-packages/tensorflow/python/compat/v2_compat.py:96: disable_resource_variables (from tensorflow.python.ops.variable_scope) is deprecated and will be removed in a future version.
+Instructions for updating:
+non-resource variables are not supported in the long term
+2020-11-26 17:26:10.580582: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcuda.so.1
+2020-11-26 17:26:12.871930: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1716] Found device 0 with properties: 
+pciBusID: 0000:85:00.0 name: Tesla K80 computeCapability: 3.7
+coreClock: 0.8235GHz coreCount: 13 deviceMemorySize: 11.17GiB deviceMemoryBandwidth: 223.96GiB/s
+2020-11-26 17:26:12.871991: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcudart.so.10.1
+2020-11-26 17:26:12.875081: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcublas.so.10
+2020-11-26 17:26:12.877515: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcufft.so.10
+2020-11-26 17:26:12.878253: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcurand.so.10
+2020-11-26 17:26:12.880598: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcusolver.so.10
+2020-11-26 17:26:12.881949: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcusparse.so.10
+2020-11-26 17:26:12.886209: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcudnn.so.7
+2020-11-26 17:26:12.888752: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1858] Adding visible gpu devices: 0
+2020-11-26 17:26:12.892086: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1716] Found device 0 with properties: 
+pciBusID: 0000:85:00.0 name: Tesla K80 computeCapability: 3.7
+coreClock: 0.8235GHz coreCount: 13 deviceMemorySize: 11.17GiB deviceMemoryBandwidth: 223.96GiB/s
+2020-11-26 17:26:12.892130: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcudart.so.10.1
+2020-11-26 17:26:12.892159: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcublas.so.10
+2020-11-26 17:26:12.892185: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcufft.so.10
+2020-11-26 17:26:12.892237: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcurand.so.10
+2020-11-26 17:26:12.892263: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcusolver.so.10
+2020-11-26 17:26:12.892289: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcusparse.so.10
+2020-11-26 17:26:12.892314: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcudnn.so.7
+2020-11-26 17:26:12.894695: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1858] Adding visible gpu devices: 0
+2020-11-26 17:26:12.894740: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcudart.so.10.1
+2020-11-26 17:26:13.366876: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1257] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-11-26 17:26:13.366911: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1263]      0 
+2020-11-26 17:26:13.366917: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1276] 0:   N 
+2020-11-26 17:26:13.370757: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1402] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 10629 MB memory) -> physical GPU (device: 0, name: Tesla K80, pci bus id: 0000:85:00.0, compute capability: 3.7)
+2020-11-26 17:26:13.371071: I tensorflow/core/common_runtime/process_util.cc:146] Creating new thread pool with default inter op setting: 2. Tune using inter_op_parallelism_threads for best performance.
+WARNING:tensorflow:Layer lstm will not use cuDNN kernel since it doesn't meet the cuDNN kernel criteria. It will use generic GPU kernel as fallback when running on GPU
+WARNING:tensorflow:OMP_NUM_THREADS is no longer used by the default Keras config. To configure the number of threads, use tf.config.threading APIs.
+2020-11-26 17:26:13.727670: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1716] Found device 0 with properties: 
+pciBusID: 0000:85:00.0 name: Tesla K80 computeCapability: 3.7
+coreClock: 0.8235GHz coreCount: 13 deviceMemorySize: 11.17GiB deviceMemoryBandwidth: 223.96GiB/s
+2020-11-26 17:26:13.727744: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcudart.so.10.1
+2020-11-26 17:26:13.727787: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcublas.so.10
+2020-11-26 17:26:13.727813: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcufft.so.10
+2020-11-26 17:26:13.727838: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcurand.so.10
+2020-11-26 17:26:13.727863: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcusolver.so.10
+2020-11-26 17:26:13.727889: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcusparse.so.10
+2020-11-26 17:26:13.727914: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcudnn.so.7
+2020-11-26 17:26:13.730347: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1858] Adding visible gpu devices: 0
+2020-11-26 17:26:13.730384: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1257] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-11-26 17:26:13.730392: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1263]      0 
+2020-11-26 17:26:13.730397: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1276] 0:   N 
+2020-11-26 17:26:13.732842: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1402] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 10629 MB memory) -> physical GPU (device: 0, name: Tesla K80, pci bus id: 0000:85:00.0, compute capability: 3.7)
+2020-11-26 17:26:13.732897: I tensorflow/core/common_runtime/process_util.cc:146] Creating new thread pool with default inter op setting: 2. Tune using inter_op_parallelism_threads for best performance.
+2020-11-26 17:26:14.321084: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcublas.so.10
+WARNING:tensorflow:From /pkg/suse12/software/TensorFlow/2.3.1-fosscuda-2019b-Python-3.7.4/lib/python3.7/site-packages/tensorflow/python/keras/engine/training_v1.py:2070: Model.state_updates (from tensorflow.python.keras.engine.training) is deprecated and will be removed in a future version.
+Instructions for updating:
+This property should not be used in TensorFlow 2.0, as updates are applied automatically.
+Traceback (most recent call last):
+  File "lstm_fidelity_trial.py", line 621, in <module>
+    pos_shap_changes.append(abs(diff))#np.std(diffs))
+NameError: name 'diff' is not defined

@@ -1,0 +1,60 @@
+  WARNING: The script tensorboard is installed in '/home/n9455647/.local/bin' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+  WARNING: The scripts estimator_ckpt_converter, saved_model_cli, tensorboard, tf_upgrade_v2, tflite_convert, toco and toco_from_protos are installed in '/home/n9455647/.local/bin' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+2020-11-23 17:04:22.050227: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcudart.so.10.1
+--------------------------------------------------------------------------
+A process has executed an operation involving a call to the
+"fork()" system call to create a child process.  Open MPI is currently
+operating in a condition that could result in memory corruption or
+other system errors; your job may hang, crash, or produce silent
+data corruption.  The use of fork() (or system() or other calls that
+create child processes) is strongly discouraged.
+
+The process that invoked fork was:
+
+  Local host:          [[13046,1],0] (PID 14365)
+
+If you are *absolutely sure* that your application will successfully
+and correctly survive a call to fork(), you may disable this warning
+by setting the mpi_warn_on_fork MCA parameter to 0.
+--------------------------------------------------------------------------
+WARNING:tensorflow:From /pkg/suse12/software/TensorFlow/2.3.1-fosscuda-2019b-Python-3.7.4/lib/python3.7/site-packages/tensorflow/python/compat/v2_compat.py:96: disable_resource_variables (from tensorflow.python.ops.variable_scope) is deprecated and will be removed in a future version.
+Instructions for updating:
+non-resource variables are not supported in the long term
+2020-11-23 17:04:32.467613: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcuda.so.1
+2020-11-23 17:04:35.531035: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1716] Found device 0 with properties: 
+pciBusID: 0000:82:00.0 name: Tesla M40 24GB computeCapability: 5.2
+coreClock: 1.112GHz coreCount: 24 deviceMemorySize: 22.41GiB deviceMemoryBandwidth: 268.58GiB/s
+2020-11-23 17:04:35.531087: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcudart.so.10.1
+2020-11-23 17:04:35.536822: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcublas.so.10
+2020-11-23 17:04:35.538807: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcufft.so.10
+2020-11-23 17:04:35.546650: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcurand.so.10
+2020-11-23 17:04:35.549119: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcusolver.so.10
+2020-11-23 17:04:35.550738: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcusparse.so.10
+2020-11-23 17:04:35.559444: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcudnn.so.7
+2020-11-23 17:04:35.561315: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1858] Adding visible gpu devices: 0
+2020-11-23 17:04:35.563872: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1716] Found device 0 with properties: 
+pciBusID: 0000:82:00.0 name: Tesla M40 24GB computeCapability: 5.2
+coreClock: 1.112GHz coreCount: 24 deviceMemorySize: 22.41GiB deviceMemoryBandwidth: 268.58GiB/s
+2020-11-23 17:04:35.563910: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcudart.so.10.1
+2020-11-23 17:04:35.563935: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcublas.so.10
+2020-11-23 17:04:35.563956: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcufft.so.10
+2020-11-23 17:04:35.564001: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcurand.so.10
+2020-11-23 17:04:35.564022: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcusolver.so.10
+2020-11-23 17:04:35.564043: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcusparse.so.10
+2020-11-23 17:04:35.564063: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcudnn.so.7
+2020-11-23 17:04:35.565793: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1858] Adding visible gpu devices: 0
+2020-11-23 17:04:35.565826: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcudart.so.10.1
+Traceback (most recent call last):
+  File "lstm_fidelity_trial.py", line 356, in <module>
+    recurrent_dropout=args['lstm1_dropouts'], stateful = False)(main_input)
+  File "/pkg/suse12/software/TensorFlow/2.3.1-fosscuda-2019b-Python-3.7.4/lib/python3.7/site-packages/tensorflow/python/keras/layers/recurrent_v2.py", line 1092, in __init__
+    if context.num_gpus() > 0:
+  File "/pkg/suse12/software/TensorFlow/2.3.1-fosscuda-2019b-Python-3.7.4/lib/python3.7/site-packages/tensorflow/python/eager/context.py", line 2162, in num_gpus
+    return context().num_gpus()
+  File "/pkg/suse12/software/TensorFlow/2.3.1-fosscuda-2019b-Python-3.7.4/lib/python3.7/site-packages/tensorflow/python/eager/context.py", line 1082, in num_gpus
+    self.ensure_initialized()
+  File "/pkg/suse12/software/TensorFlow/2.3.1-fosscuda-2019b-Python-3.7.4/lib/python3.7/site-packages/tensorflow/python/eager/context.py", line 539, in ensure_initialized
+    context_handle = pywrap_tfe.TFE_NewContext(opts)
+tensorflow.python.framework.errors_impl.InternalError: cudaGetDevice() failed. Status: CUDA driver version is insufficient for CUDA runtime version

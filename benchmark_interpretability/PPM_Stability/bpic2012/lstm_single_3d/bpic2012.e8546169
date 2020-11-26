@@ -1,0 +1,110 @@
+  WARNING: The script tensorboard is installed in '/home/n9455647/.local/bin' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+  WARNING: The scripts estimator_ckpt_converter, saved_model_cli, tensorboard, tf_upgrade_v2, tflite_convert, toco and toco_from_protos are installed in '/home/n9455647/.local/bin' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+2020-11-21 03:42:01.150353: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcudart.so.10.1
+--------------------------------------------------------------------------
+A process has executed an operation involving a call to the
+"fork()" system call to create a child process.  Open MPI is currently
+operating in a condition that could result in memory corruption or
+other system errors; your job may hang, crash, or produce silent
+data corruption.  The use of fork() (or system() or other calls that
+create child processes) is strongly discouraged.
+
+The process that invoked fork was:
+
+  Local host:          [[10733,1],0] (PID 9262)
+
+If you are *absolutely sure* that your application will successfully
+and correctly survive a call to fork(), you may disable this warning
+by setting the mpi_warn_on_fork MCA parameter to 0.
+--------------------------------------------------------------------------
+WARNING:tensorflow:From /pkg/suse12/software/TensorFlow/2.3.1-fosscuda-2019b-Python-3.7.4/lib/python3.7/site-packages/tensorflow/python/compat/v2_compat.py:96: disable_resource_variables (from tensorflow.python.ops.variable_scope) is deprecated and will be removed in a future version.
+Instructions for updating:
+non-resource variables are not supported in the long term
+2020-11-21 03:42:36.117466: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcuda.so.1
+2020-11-21 03:42:41.543622: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1716] Found device 0 with properties: 
+pciBusID: 0000:82:00.0 name: Tesla M40 24GB computeCapability: 5.2
+coreClock: 1.112GHz coreCount: 24 deviceMemorySize: 22.41GiB deviceMemoryBandwidth: 268.58GiB/s
+2020-11-21 03:42:41.545280: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1716] Found device 1 with properties: 
+pciBusID: 0000:83:00.0 name: Tesla M40 24GB computeCapability: 5.2
+coreClock: 1.112GHz coreCount: 24 deviceMemorySize: 22.41GiB deviceMemoryBandwidth: 268.58GiB/s
+2020-11-21 03:42:41.545309: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcudart.so.10.1
+2020-11-21 03:42:41.953188: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcublas.so.10
+2020-11-21 03:42:42.144900: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcufft.so.10
+2020-11-21 03:42:42.284243: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcurand.so.10
+2020-11-21 03:42:42.446152: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcusolver.so.10
+2020-11-21 03:42:42.505057: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcusparse.so.10
+2020-11-21 03:42:42.725994: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcudnn.so.7
+2020-11-21 03:42:42.732477: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1858] Adding visible gpu devices: 0, 1
+2020-11-21 03:42:42.863162: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1716] Found device 0 with properties: 
+pciBusID: 0000:82:00.0 name: Tesla M40 24GB computeCapability: 5.2
+coreClock: 1.112GHz coreCount: 24 deviceMemorySize: 22.41GiB deviceMemoryBandwidth: 268.58GiB/s
+2020-11-21 03:42:42.864792: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1716] Found device 1 with properties: 
+pciBusID: 0000:83:00.0 name: Tesla M40 24GB computeCapability: 5.2
+coreClock: 1.112GHz coreCount: 24 deviceMemorySize: 22.41GiB deviceMemoryBandwidth: 268.58GiB/s
+2020-11-21 03:42:42.864858: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcudart.so.10.1
+2020-11-21 03:42:42.864896: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcublas.so.10
+2020-11-21 03:42:42.864919: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcufft.so.10
+2020-11-21 03:42:42.864940: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcurand.so.10
+2020-11-21 03:42:42.864960: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcusolver.so.10
+2020-11-21 03:42:42.864981: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcusparse.so.10
+2020-11-21 03:42:42.865002: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcudnn.so.7
+2020-11-21 03:42:42.871357: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1858] Adding visible gpu devices: 0, 1
+2020-11-21 03:42:42.871394: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcudart.so.10.1
+2020-11-21 03:54:53.991016: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1257] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-11-21 03:54:53.991058: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1263]      0 1 
+2020-11-21 03:54:53.991064: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1276] 0:   N Y 
+2020-11-21 03:54:53.991068: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1276] 1:   Y N 
+2020-11-21 03:54:53.998852: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1402] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 21378 MB memory) -> physical GPU (device: 0, name: Tesla M40 24GB, pci bus id: 0000:82:00.0, compute capability: 5.2)
+2020-11-21 03:54:54.002311: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1402] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:1 with 21378 MB memory) -> physical GPU (device: 1, name: Tesla M40 24GB, pci bus id: 0000:83:00.0, compute capability: 5.2)
+2020-11-21 03:54:54.002505: I tensorflow/core/common_runtime/process_util.cc:146] Creating new thread pool with default inter op setting: 2. Tune using inter_op_parallelism_threads for best performance.
+WARNING:tensorflow:Layer lstm will not use cuDNN kernel since it doesn't meet the cuDNN kernel criteria. It will use generic GPU kernel as fallback when running on GPU
+WARNING:tensorflow:OMP_NUM_THREADS is no longer used by the default Keras config. To configure the number of threads, use tf.config.threading APIs.
+2020-11-21 03:54:54.378402: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1716] Found device 0 with properties: 
+pciBusID: 0000:82:00.0 name: Tesla M40 24GB computeCapability: 5.2
+coreClock: 1.112GHz coreCount: 24 deviceMemorySize: 22.41GiB deviceMemoryBandwidth: 268.58GiB/s
+2020-11-21 03:54:54.380042: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1716] Found device 1 with properties: 
+pciBusID: 0000:83:00.0 name: Tesla M40 24GB computeCapability: 5.2
+coreClock: 1.112GHz coreCount: 24 deviceMemorySize: 22.41GiB deviceMemoryBandwidth: 268.58GiB/s
+2020-11-21 03:54:54.380084: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcudart.so.10.1
+2020-11-21 03:54:54.380118: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcublas.so.10
+2020-11-21 03:54:54.380140: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcufft.so.10
+2020-11-21 03:54:54.380161: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcurand.so.10
+2020-11-21 03:54:54.380181: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcusolver.so.10
+2020-11-21 03:54:54.380225: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcusparse.so.10
+2020-11-21 03:54:54.380247: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcudnn.so.7
+2020-11-21 03:54:54.386674: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1858] Adding visible gpu devices: 0, 1
+2020-11-21 03:54:54.386729: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1257] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-11-21 03:54:54.386737: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1263]      0 1 
+2020-11-21 03:54:54.386741: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1276] 0:   N Y 
+2020-11-21 03:54:54.386745: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1276] 1:   Y N 
+2020-11-21 03:54:54.391748: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1402] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 21378 MB memory) -> physical GPU (device: 0, name: Tesla M40 24GB, pci bus id: 0000:82:00.0, compute capability: 5.2)
+2020-11-21 03:54:54.393360: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1402] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:1 with 21378 MB memory) -> physical GPU (device: 1, name: Tesla M40 24GB, pci bus id: 0000:83:00.0, compute capability: 5.2)
+2020-11-21 03:54:54.393393: I tensorflow/core/common_runtime/process_util.cc:146] Creating new thread pool with default inter op setting: 2. Tune using inter_op_parallelism_threads for best performance.
+2020-11-21 03:54:55.929763: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcublas.so.10
+WARNING:tensorflow:From /pkg/suse12/software/TensorFlow/2.3.1-fosscuda-2019b-Python-3.7.4/lib/python3.7/site-packages/tensorflow/python/keras/engine/training_v1.py:2070: Model.state_updates (from tensorflow.python.keras.engine.training) is deprecated and will be removed in a future version.
+Instructions for updating:
+This property should not be used in TensorFlow 2.0, as updates are applied automatically.
+WARNING:tensorflow:Layer lstm_1 will not use cuDNN kernel since it doesn't meet the cuDNN kernel criteria. It will use generic GPU kernel as fallback when running on GPU
+WARNING:tensorflow:Unresolved object in checkpoint: (root).optimizer.iter
+WARNING:tensorflow:Unresolved object in checkpoint: (root).optimizer.beta_1
+WARNING:tensorflow:Unresolved object in checkpoint: (root).optimizer.beta_2
+WARNING:tensorflow:Unresolved object in checkpoint: (root).optimizer.decay
+WARNING:tensorflow:Unresolved object in checkpoint: (root).optimizer.learning_rate
+WARNING:tensorflow:Unresolved object in checkpoint: (root).optimizer.momentum_cache
+WARNING:tensorflow:Unresolved object in checkpoint: (root).optimizer's state 'm' for (root).layer_with_weights-1.gamma
+WARNING:tensorflow:Unresolved object in checkpoint: (root).optimizer's state 'm' for (root).layer_with_weights-1.beta
+WARNING:tensorflow:Unresolved object in checkpoint: (root).optimizer's state 'm' for (root).layer_with_weights-2.kernel
+WARNING:tensorflow:Unresolved object in checkpoint: (root).optimizer's state 'm' for (root).layer_with_weights-2.bias
+WARNING:tensorflow:Unresolved object in checkpoint: (root).optimizer's state 'm' for (root).layer_with_weights-0.cell.kernel
+WARNING:tensorflow:Unresolved object in checkpoint: (root).optimizer's state 'm' for (root).layer_with_weights-0.cell.recurrent_kernel
+WARNING:tensorflow:Unresolved object in checkpoint: (root).optimizer's state 'm' for (root).layer_with_weights-0.cell.bias
+WARNING:tensorflow:Unresolved object in checkpoint: (root).optimizer's state 'v' for (root).layer_with_weights-1.gamma
+WARNING:tensorflow:Unresolved object in checkpoint: (root).optimizer's state 'v' for (root).layer_with_weights-1.beta
+WARNING:tensorflow:Unresolved object in checkpoint: (root).optimizer's state 'v' for (root).layer_with_weights-2.kernel
+WARNING:tensorflow:Unresolved object in checkpoint: (root).optimizer's state 'v' for (root).layer_with_weights-2.bias
+WARNING:tensorflow:Unresolved object in checkpoint: (root).optimizer's state 'v' for (root).layer_with_weights-0.cell.kernel
+WARNING:tensorflow:Unresolved object in checkpoint: (root).optimizer's state 'v' for (root).layer_with_weights-0.cell.recurrent_kernel
+WARNING:tensorflow:Unresolved object in checkpoint: (root).optimizer's state 'v' for (root).layer_with_weights-0.cell.bias
+WARNING:tensorflow:A checkpoint was restored (e.g. tf.train.Checkpoint.restore or tf.keras.Model.load_weights) but not all checkpointed values were used. See above for specific issues. Use expect_partial() on the load status object, e.g. tf.train.Checkpoint.restore(...).expect_partial(), to silence these warnings, or use assert_consumed() to make the check explicit. See https://www.tensorflow.org/guide/checkpoint#loading_mechanics for details.

@@ -1,9 +1,9 @@
 #!/bin/bash -l
 #PBS -N production
 #PBS -l ncpus=4
-#PBS -l ngpus=1
+#PBS -l ngpus=2
 #PBS -l mem=20gb
-#PBS -l walltime=15:00:00
+#PBS -l walltime=24:00:00
 
 cd $PBS_O_WORKDIR
 echo "queue started"
