@@ -252,7 +252,7 @@ def generate_distributions(explainer, features, test_x, bin_min = -1, bin_max = 
         
         return shap_distribs
 
-dataset_ref = "production"
+dataset_ref = "sepsis_cases"
 params_dir = PATH + "params"
 results_dir = "results"
 bucket_method = "single"
@@ -267,7 +267,7 @@ method_name = "%s_%s"%(bucket_method, cls_encoding)
 generate_samples = False
 generate_lime = True
 generate_kernel_shap = False
-generate_model_shap = True
+generate_model_shap = False
 
 sample_size = 2
 exp_iter = 10
@@ -855,6 +855,7 @@ if generate_lime:
                             test_x_group= feature_combiner.fit_transform(group) 
                             test_x=np.transpose(test_x_group[0])
                         else:
+                            test_x_group = np.array([input_])
                             test_x = input_
 
                         explanations = []
@@ -898,10 +899,11 @@ if generate_lime:
                                 if each in feat:
                                     dpls.append(feat)
                                     vals.append(counter[feat])
-                            keepval = vals.index(max(vals))
-                            for n in range(len(dpls)):
-                                if n != keepval:
-                                    del counter[dpls[n]]
+                            if vals != []:
+                                keepval = vals.index(max(vals))
+                                for n in range(len(dpls)):
+                                    if n != keepval:
+                                        del counter[dpls[n]]
 
                         rel_feat = counter.most_common(max_feat)
                         #print(len(rel_feat))
