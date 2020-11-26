@@ -469,13 +469,13 @@ if generate_model_shap:
                 print("Time taken to generate distribution:", dist_elapsed)
                 
                 start_time = time.time()
-                for i_type in range(len(sample_instances[:1])):
+                for i_type in range(len(sample_instances)):
                     changes = []
                     probas = []
                     nr_events = []
                     case_ids = []
 
-                    for n in range(len(sample_instances[i_type][:1])):
+                    for n in range(len(sample_instances[i_type])):
                         print("Category %s of %s. Instance %s of %s" %(i_type+1, len(sample_instances), n+1, len(sample_instances[i_type])))
                         instance = sample_instances[i_type][n]
 
@@ -534,7 +534,7 @@ if generate_model_shap:
                             feat = item [0]
                             val = item[1]
 
-                            print("Creating distribution for feature", rel_feats.index(item)+1, "of", len(rel_feats))
+                            #print("Creating distribution for feature", rel_feats.index(item)+1, "of", len(rel_feats))
 
                             if type(feat_list) == list:
                                 n = feat_list.index(feat)
@@ -603,54 +603,26 @@ if generate_model_shap:
                                 diff = p1-p2
                                 diffs.append(diff)
                             else:
-                                permutations.append(alt_x[0])
+                                p2 = cls.predict(np.array([alt_x[0],]))[0][ind]
+                                print(p2)
+                                diff = p1-p2
+                                diffs.append(diff)
+                                #permutations.append(alt_x[0])
                         
-                        if cls_method == "lstm":
-                            pred_probas = cls.predict(np.array(permutations))
-                            print(pred_probas)
-                            p2 = [proba[ind] for proba in pred_probas]
-                            diffs = [p1-new for new in p2]
-                            print(diffs)
+                        # if cls_method == "lstm":
+                        #     print(len(permutations), print(type(permutations)))
+                        #     print([each.shape for each in permutations])
+                        #     pred_probas = cls.predict_on_batch(np.array(permutations))
+                        #     print(pred_probas)
+                        #     p2 = [proba[ind] for proba in pred_probas]
+                        #     diffs = [p1-new for new in p2]
+                        #     print(diffs)
 
                         changes.append(np.mean(diffs))
                         shap_elapsed = time.time()-start_time
                         instance['shap_fid_change'] = diffs
                         #print("RMSE for instance:", np.std(diffs))
                         
-                        if ind == 0:
-                            pos_shap_changes.append(abs(diff))#np.std(diffs))
-                            pos_probas.append(p1)
-                            pos_nr_events.append(instance['nr_events'])
-                            pos_case_ids.append(instance['caseID'])
-                        else:
-                            neg_shap_changes.append(abs(diff))#np.std(diffs))
-                            neg_probas.append(p1)
-                            neg_nr_events.append(instance['nr_events'])
-                            neg_case_ids.append(instance['caseID'])
-
-#                     fig, ax = plt.subplots()
-#                     ax.plot(probas, changes, 'ro', label = "SHAP")
-#                     ax.set_xlabel("Prefix Length")
-#                     ax.set_ylabel("Change in prediction probability")
-#                     #ax.legend(frameon = False, bbox_to_anchor=(1, 1), loc = 'upper left')
-#                     plt.yticks(np.arange(0,1.1, 0.1))
-#                     plt.title("Prefix length and change in prediction probability - %s (Bucket %s)" %(type_list[i_type], bucketID))
-#                     plt.show()
-
-#                     fig2, ax2 = plt.subplots()
-#                     ax2.plot(nr_events, changes, 'ro', label = "SHAP")
-#                     ax2.set_xlabel("Prediction Probability")
-#                     ax2.set_ylabel("Change in prediction probability")
-#                     #ax2.legend(frameon = False, bbox_to_anchor=(1, 1), loc = 'upper left')
-#                     plt.yticks(np.arange(0,1.1, 0.1))
-#                     plt.title("Prediction probability and change in prediction probability - %s (Bucket %s)" %(type_list[i_type], bucketID))
-#                     plt.show()
-
-#                     all_shap_changes.extend(changes)
-#                     all_lens.extend(nr_events)
-#                     all_probas.extend(probas)
-#                     all_case_ids.extend(case_ids)
-
                 #Save dictionaries updated with scores
                 with open(tn_path, 'wb') as f:
                     pickle.dump(sample_instances[0], f)
@@ -845,13 +817,13 @@ if generate_lime:
                 
                 type_list = ['True Negatives', 'True Positives', 'False Negatives', 'False Positives']
 
-                for i in list(range(len(sample_instances[:1]))):
+                for i in list(range(len(sample_instances))):
                     changes = []
                     probas = []
                     nr_events = []
                     case_ids = []
 
-                    for j in list(range(len(sample_instances[i][:1]))):
+                    for j in list(range(len(sample_instances[i]))):
                         print("Category %s of %s. Instance %s of %s" %(i+1, len(sample_instances), j+1, len(sample_instances[i])))
                         instance = sample_instances[i][j]
                         
@@ -926,7 +898,7 @@ if generate_lime:
                         intervals = []
 
                         for item in rel_feat:
-                            print("Creating distribution for feature", rel_feat.index(item))
+                            #print("Creating distribution for feature", rel_feat.index(item))
                             feat = item[0]
                             #print(item)
                             #print(feat)
@@ -1019,7 +991,7 @@ if generate_lime:
                         if cls_method == "lstm":
                             permutations = []
                         for iteration in range(exp_iter):
-                            print("Pertubing - Run", iteration+1)
+                            #print("Pertubing - Run", iteration+1)
                             alt_x = np.copy(test_x_group)
                             #print("original:", alt_x)
                             for each in intervals:
@@ -1035,48 +1007,24 @@ if generate_lime:
                                 diff = p1-p2
                                 diffs.append(diff)
                             else:
-                                permutations.append(alt_x[0])
-                        if cls_method == "lstm":
-                            pred_probas = cls.predict(np.array(permutations))
-                            print(pred_probas)
-                            p2 = [proba[ind] for proba in pred_probas]
-                            diffs = [p1-new for new in p2]
-                            print(diffs)
-
+                                p2 = cls.predict(np.array([alt_x[0],]))[0][ind]
+                                print(p2)
+                                diff = p1-p2
+                                diffs.append(diff)
+                                #permutations.append(alt_x[0])
+                        
+                        # if cls_method == "lstm":
+                        #     print(len(permutations), print(type(permutations)))
+                        #     print([each.shape for each in permutations])
+                        #     pred_probas = cls.predict_on_batch(np.array(permutations))
+                        #     print(pred_probas)
+                        #     p2 = [proba[ind] for proba in pred_probas]
+                        #     diffs = [p1-new for new in p2]
+                        #     print(diffs)
                         changes.append(np.mean(diffs))
                         lime_elapsed = time.time()-start_time
                         instance['lime_fid_change'] = diffs
                         #print("RMSE for instance:", np.std(diffs))
-
-
-                        if ind == 0:
-                            pos_lime_changes.append(abs(diff))#np.std(diffs))
-                            pos_probas.append(p1)
-                            pos_nr_events.append(instance['nr_events'])
-                            pos_case_ids.append(instance['caseID'])
-                        else:
-                            neg_lime_changes.append(abs(diff))#np.std(diffs))
-                            neg_probas.append(p1)
-                            neg_nr_events.append(instance['nr_events'])
-                            neg_case_ids.append(instance['caseID'])
-
-#                     fig, ax = plt.subplots()
-#                     ax.plot(nr_events, changes, 'bo', label = "LIME")
-#                     ax.set_xlabel("Prefix Length")
-#                     ax.set_ylabel("Change in prediction probability")
-#                     #ax.legend(frameon = False, bbox_to_anchor=(1, 1), loc = 'upper left')
-#                     #plt.yticks(np.arange(0,1.1, 0.1))
-#                     plt.title("Prefix length and change in prediction probability - %s (Bucket %s)" %(type_list[i], bucketID))
-#                     plt.show()
-
-#                     fig2, ax2 = plt.subplots()
-#                     ax2.plot(probas, changes, 'bo', label = "LIME")
-#                     ax2.set_xlabel("Prediction Probability")
-#                     ax2.set_ylabel("Change in prediction probability")
-#                     #ax2.legend(frameon = False, bbox_to_anchor=(1, 1), loc = 'upper left')
-#                     plt.yticks(np.arange(0,1.1, 0.1))
-#                     plt.title("Prediction probability and change in prediction probability - %s (Bucket %s)" %(type_list[i], bucketID))
-#                     plt.show()
 
                     all_lime_changes.extend(changes)
                     all_lens.extend(nr_events)
