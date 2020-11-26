@@ -29,6 +29,8 @@ python3 -m pip install tensorflow==2.2.0 --user
 echo "tensorflow downgraded"
 python3 -m pip install --upgrade pandas --user
 echo "pandas upgraded"
+#python3 -m pip install --upgrade cuda==5.2 --user
+
 
 echo "starting test"
 #python3 lstm_test.py

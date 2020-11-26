@@ -1,0 +1,114 @@
+queue started
+modules purged
+cuda loaded
+tensorflow loaded
+Requirement already up-to-date: pip in /home/n9455647/.local/lib/python3.7/site-packages (20.2.4)
+pip upgraded
+Requirement already satisfied: lime==0.2.0.1 in /home/n9455647/.local/lib/python3.7/site-packages (0.2.0.1)
+Requirement already satisfied: scikit-image>=0.12 in /home/n9455647/.local/lib/python3.7/site-packages (from lime==0.2.0.1) (0.17.2)
+Requirement already satisfied: matplotlib in /home/n9455647/.local/lib/python3.7/site-packages (from lime==0.2.0.1) (3.3.2)
+Requirement already satisfied: scipy in /pkg/suse12/software/SciPy-bundle/2019.10-fosscuda-2019b-Python-3.7.4/lib/python3.7/site-packages (from lime==0.2.0.1) (1.3.1)
+Requirement already satisfied: tqdm in /home/n9455647/.local/lib/python3.7/site-packages (from lime==0.2.0.1) (4.51.0)
+Requirement already satisfied: numpy in /pkg/suse12/software/SciPy-bundle/2019.10-fosscuda-2019b-Python-3.7.4/lib/python3.7/site-packages (from lime==0.2.0.1) (1.17.3)
+Requirement already satisfied: scikit-learn>=0.18 in /home/n9455647/.local/lib/python3.7/site-packages (from lime==0.2.0.1) (0.23.2)
+Requirement already satisfied: pillow!=7.1.0,!=7.1.1,>=4.3.0 in /home/n9455647/.local/lib/python3.7/site-packages (from scikit-image>=0.12->lime==0.2.0.1) (8.0.1)
+Requirement already satisfied: PyWavelets>=1.1.1 in /home/n9455647/.local/lib/python3.7/site-packages (from scikit-image>=0.12->lime==0.2.0.1) (1.1.1)
+Requirement already satisfied: imageio>=2.3.0 in /home/n9455647/.local/lib/python3.7/site-packages (from scikit-image>=0.12->lime==0.2.0.1) (2.9.0)
+Requirement already satisfied: tifffile>=2019.7.26 in /home/n9455647/.local/lib/python3.7/site-packages (from scikit-image>=0.12->lime==0.2.0.1) (2020.10.1)
+Requirement already satisfied: networkx>=2.0 in /home/n9455647/.local/lib/python3.7/site-packages (from scikit-image>=0.12->lime==0.2.0.1) (2.5)
+Requirement already satisfied: cycler>=0.10 in /home/n9455647/.local/lib/python3.7/site-packages (from matplotlib->lime==0.2.0.1) (0.10.0)
+Requirement already satisfied: kiwisolver>=1.0.1 in /home/n9455647/.local/lib/python3.7/site-packages (from matplotlib->lime==0.2.0.1) (1.3.1)
+Requirement already satisfied: pyparsing!=2.0.4,!=2.1.2,!=2.1.6,>=2.0.3 in /pkg/suse12/software/python/3.7.4-gcccore-8.3.0/lib/python3.7/site-packages (from matplotlib->lime==0.2.0.1) (2.4.2)
+Requirement already satisfied: certifi>=2020.06.20 in /home/n9455647/.local/lib/python3.7/site-packages (from matplotlib->lime==0.2.0.1) (2020.11.8)
+Requirement already satisfied: python-dateutil>=2.1 in /pkg/suse12/software/python/3.7.4-gcccore-8.3.0/lib/python3.7/site-packages (from matplotlib->lime==0.2.0.1) (2.8.0)
+Requirement already satisfied: joblib>=0.11 in /home/n9455647/.local/lib/python3.7/site-packages (from scikit-learn>=0.18->lime==0.2.0.1) (0.17.0)
+Requirement already satisfied: threadpoolctl>=2.0.0 in /home/n9455647/.local/lib/python3.7/site-packages (from scikit-learn>=0.18->lime==0.2.0.1) (2.1.0)
+Requirement already satisfied: decorator>=4.3.0 in /pkg/suse12/software/python/3.7.4-gcccore-8.3.0/lib/python3.7/site-packages (from networkx>=2.0->scikit-image>=0.12->lime==0.2.0.1) (4.4.0)
+Requirement already satisfied: six in /home/n9455647/.local/lib/python3.7/site-packages (from cycler>=0.10->matplotlib->lime==0.2.0.1) (1.15.0)
+lime installed
+Requirement already satisfied: shap==0.35.0 in /home/n9455647/.local/lib/python3.7/site-packages (0.35.0)
+Requirement already satisfied: tqdm>4.25.0 in /home/n9455647/.local/lib/python3.7/site-packages (from shap==0.35.0) (4.51.0)
+Requirement already satisfied: scipy in /pkg/suse12/software/SciPy-bundle/2019.10-fosscuda-2019b-Python-3.7.4/lib/python3.7/site-packages (from shap==0.35.0) (1.3.1)
+Requirement already satisfied: numpy in /pkg/suse12/software/SciPy-bundle/2019.10-fosscuda-2019b-Python-3.7.4/lib/python3.7/site-packages (from shap==0.35.0) (1.17.3)
+Requirement already satisfied: scikit-learn in /home/n9455647/.local/lib/python3.7/site-packages (from shap==0.35.0) (0.23.2)
+Requirement already satisfied: pandas in /pkg/suse12/software/SciPy-bundle/2019.10-fosscuda-2019b-Python-3.7.4/lib/python3.7/site-packages (from shap==0.35.0) (0.25.3)
+Requirement already satisfied: threadpoolctl>=2.0.0 in /home/n9455647/.local/lib/python3.7/site-packages (from scikit-learn->shap==0.35.0) (2.1.0)
+Requirement already satisfied: joblib>=0.11 in /home/n9455647/.local/lib/python3.7/site-packages (from scikit-learn->shap==0.35.0) (0.17.0)
+Requirement already satisfied: pytz>=2017.2 in /pkg/suse12/software/python/3.7.4-gcccore-8.3.0/lib/python3.7/site-packages (from pandas->shap==0.35.0) (2019.2)
+Requirement already satisfied: python-dateutil>=2.6.1 in /pkg/suse12/software/python/3.7.4-gcccore-8.3.0/lib/python3.7/site-packages (from pandas->shap==0.35.0) (2.8.0)
+Requirement already satisfied: six>=1.5 in /home/n9455647/.local/lib/python3.7/site-packages (from python-dateutil>=2.6.1->pandas->shap==0.35.0) (1.15.0)
+shap installed
+Requirement already satisfied: keras in /home/n9455647/.local/lib/python3.7/site-packages (2.4.3)
+Requirement already satisfied: numpy>=1.9.1 in /pkg/suse12/software/SciPy-bundle/2019.10-fosscuda-2019b-Python-3.7.4/lib/python3.7/site-packages (from keras) (1.17.3)
+Requirement already satisfied: scipy>=0.14 in /pkg/suse12/software/SciPy-bundle/2019.10-fosscuda-2019b-Python-3.7.4/lib/python3.7/site-packages (from keras) (1.3.1)
+Requirement already satisfied: pyyaml in /home/n9455647/.local/lib/python3.7/site-packages (from keras) (5.3.1)
+Requirement already satisfied: h5py in /pkg/suse12/software/h5py/2.10.0-fosscuda-2019b-Python-3.7.4/lib/python3.7/site-packages/h5py-2.10.0-py3.7-linux-x86_64.egg (from keras) (2.10.0)
+Requirement already satisfied: six in /home/n9455647/.local/lib/python3.7/site-packages (from h5py->keras) (1.15.0)
+keras installed
+Collecting tensorflow==2.2.0
+  Using cached tensorflow-2.2.0-cp37-cp37m-manylinux2010_x86_64.whl (516.2 MB)
+Requirement already satisfied: keras-preprocessing>=1.1.0 in /pkg/suse12/software/TensorFlow/2.3.1-fosscuda-2019b-Python-3.7.4/lib/python3.7/site-packages (from tensorflow==2.2.0) (1.1.2)
+Requirement already satisfied: termcolor>=1.1.0 in /pkg/suse12/software/TensorFlow/2.3.1-fosscuda-2019b-Python-3.7.4/lib/python3.7/site-packages (from tensorflow==2.2.0) (1.1.0)
+Requirement already satisfied: wrapt>=1.11.1 in /pkg/suse12/software/TensorFlow/2.3.1-fosscuda-2019b-Python-3.7.4/lib/python3.7/site-packages (from tensorflow==2.2.0) (1.12.1)
+Collecting scipy==1.4.1; python_version >= "3"
+  Using cached scipy-1.4.1-cp37-cp37m-manylinux1_x86_64.whl (26.1 MB)
+Requirement already satisfied: wheel>=0.26; python_version >= "3" in /pkg/suse12/software/python/3.7.4-gcccore-8.3.0/lib/python3.7/site-packages (from tensorflow==2.2.0) (0.33.6)
+Requirement already satisfied: h5py<2.11.0,>=2.10.0 in /pkg/suse12/software/h5py/2.10.0-fosscuda-2019b-Python-3.7.4/lib/python3.7/site-packages/h5py-2.10.0-py3.7-linux-x86_64.egg (from tensorflow==2.2.0) (2.10.0)
+Requirement already satisfied: absl-py>=0.7.0 in /pkg/suse12/software/TensorFlow/2.3.1-fosscuda-2019b-Python-3.7.4/lib/python3.7/site-packages (from tensorflow==2.2.0) (0.10.0)
+Requirement already satisfied: opt-einsum>=2.3.2 in /pkg/suse12/software/TensorFlow/2.3.1-fosscuda-2019b-Python-3.7.4/lib/python3.7/site-packages (from tensorflow==2.2.0) (3.3.0)
+Collecting tensorboard<2.3.0,>=2.2.0
+  Using cached tensorboard-2.2.2-py3-none-any.whl (3.0 MB)
+Requirement already satisfied: protobuf>=3.8.0 in /pkg/suse12/software/protobuf-python/3.10.0-fosscuda-2019b-Python-3.7.4/lib/python3.7/site-packages (from tensorflow==2.2.0) (3.10.0)
+Collecting tensorflow-estimator<2.3.0,>=2.2.0
+  Using cached tensorflow_estimator-2.2.0-py2.py3-none-any.whl (454 kB)
+Requirement already satisfied: six>=1.12.0 in /home/n9455647/.local/lib/python3.7/site-packages (from tensorflow==2.2.0) (1.15.0)
+Requirement already satisfied: astunparse==1.6.3 in /pkg/suse12/software/TensorFlow/2.3.1-fosscuda-2019b-Python-3.7.4/lib/python3.7/site-packages (from tensorflow==2.2.0) (1.6.3)
+Requirement already satisfied: numpy<2.0,>=1.16.0 in /pkg/suse12/software/SciPy-bundle/2019.10-fosscuda-2019b-Python-3.7.4/lib/python3.7/site-packages (from tensorflow==2.2.0) (1.17.3)
+Requirement already satisfied: grpcio>=1.8.6 in /pkg/suse12/software/TensorFlow/2.3.1-fosscuda-2019b-Python-3.7.4/lib/python3.7/site-packages (from tensorflow==2.2.0) (1.32.0)
+Requirement already satisfied: gast==0.3.3 in /pkg/suse12/software/TensorFlow/2.3.1-fosscuda-2019b-Python-3.7.4/lib/python3.7/site-packages (from tensorflow==2.2.0) (0.3.3)
+Requirement already satisfied: google-pasta>=0.1.8 in /pkg/suse12/software/TensorFlow/2.3.1-fosscuda-2019b-Python-3.7.4/lib/python3.7/site-packages (from tensorflow==2.2.0) (0.2.0)
+Requirement already satisfied: google-auth<2,>=1.6.3 in /pkg/suse12/software/TensorFlow/2.3.1-fosscuda-2019b-Python-3.7.4/lib/python3.7/site-packages (from tensorboard<2.3.0,>=2.2.0->tensorflow==2.2.0) (1.21.3)
+Requirement already satisfied: setuptools>=41.0.0 in /pkg/suse12/software/python/3.7.4-gcccore-8.3.0/lib/python3.7/site-packages (from tensorboard<2.3.0,>=2.2.0->tensorflow==2.2.0) (41.2.0)
+Requirement already satisfied: google-auth-oauthlib<0.5,>=0.4.1 in /pkg/suse12/software/TensorFlow/2.3.1-fosscuda-2019b-Python-3.7.4/lib/python3.7/site-packages (from tensorboard<2.3.0,>=2.2.0->tensorflow==2.2.0) (0.4.1)
+Requirement already satisfied: tensorboard-plugin-wit>=1.6.0 in /pkg/suse12/software/TensorFlow/2.3.1-fosscuda-2019b-Python-3.7.4/lib/python3.7/site-packages (from tensorboard<2.3.0,>=2.2.0->tensorflow==2.2.0) (1.7.0)
+Requirement already satisfied: werkzeug>=0.11.15 in /pkg/suse12/software/TensorFlow/2.3.1-fosscuda-2019b-Python-3.7.4/lib/python3.7/site-packages (from tensorboard<2.3.0,>=2.2.0->tensorflow==2.2.0) (1.0.1)
+Requirement already satisfied: requests<3,>=2.21.0 in /home/n9455647/.local/lib/python3.7/site-packages (from tensorboard<2.3.0,>=2.2.0->tensorflow==2.2.0) (2.24.0)
+Requirement already satisfied: markdown>=2.6.8 in /pkg/suse12/software/TensorFlow/2.3.1-fosscuda-2019b-Python-3.7.4/lib/python3.7/site-packages (from tensorboard<2.3.0,>=2.2.0->tensorflow==2.2.0) (3.2.2)
+Requirement already satisfied: cachetools<5.0,>=2.0.0 in /pkg/suse12/software/TensorFlow/2.3.1-fosscuda-2019b-Python-3.7.4/lib/python3.7/site-packages (from google-auth<2,>=1.6.3->tensorboard<2.3.0,>=2.2.0->tensorflow==2.2.0) (4.1.1)
+Requirement already satisfied: rsa<5,>=3.1.4; python_version >= "3.5" in /pkg/suse12/software/TensorFlow/2.3.1-fosscuda-2019b-Python-3.7.4/lib/python3.7/site-packages (from google-auth<2,>=1.6.3->tensorboard<2.3.0,>=2.2.0->tensorflow==2.2.0) (4.6)
+Requirement already satisfied: pyasn1-modules>=0.2.1 in /pkg/suse12/software/TensorFlow/2.3.1-fosscuda-2019b-Python-3.7.4/lib/python3.7/site-packages (from google-auth<2,>=1.6.3->tensorboard<2.3.0,>=2.2.0->tensorflow==2.2.0) (0.2.8)
+Requirement already satisfied: requests-oauthlib>=0.7.0 in /pkg/suse12/software/TensorFlow/2.3.1-fosscuda-2019b-Python-3.7.4/lib/python3.7/site-packages (from google-auth-oauthlib<0.5,>=0.4.1->tensorboard<2.3.0,>=2.2.0->tensorflow==2.2.0) (1.3.0)
+Requirement already satisfied: idna<3,>=2.5 in /home/n9455647/.local/lib/python3.7/site-packages (from requests<3,>=2.21.0->tensorboard<2.3.0,>=2.2.0->tensorflow==2.2.0) (2.10)
+Requirement already satisfied: certifi>=2017.4.17 in /home/n9455647/.local/lib/python3.7/site-packages (from requests<3,>=2.21.0->tensorboard<2.3.0,>=2.2.0->tensorflow==2.2.0) (2020.11.8)
+Requirement already satisfied: urllib3!=1.25.0,!=1.25.1,<1.26,>=1.21.1 in /home/n9455647/.local/lib/python3.7/site-packages (from requests<3,>=2.21.0->tensorboard<2.3.0,>=2.2.0->tensorflow==2.2.0) (1.25.11)
+Requirement already satisfied: chardet<4,>=3.0.2 in /home/n9455647/.local/lib/python3.7/site-packages (from requests<3,>=2.21.0->tensorboard<2.3.0,>=2.2.0->tensorflow==2.2.0) (3.0.4)
+Requirement already satisfied: importlib-metadata; python_version < "3.8" in /home/n9455647/.local/lib/python3.7/site-packages (from markdown>=2.6.8->tensorboard<2.3.0,>=2.2.0->tensorflow==2.2.0) (2.0.0)
+Requirement already satisfied: pyasn1>=0.1.3 in /home/n9455647/.local/lib/python3.7/site-packages (from rsa<5,>=3.1.4; python_version >= "3.5"->google-auth<2,>=1.6.3->tensorboard<2.3.0,>=2.2.0->tensorflow==2.2.0) (0.4.8)
+Requirement already satisfied: oauthlib>=3.0.0 in /pkg/suse12/software/TensorFlow/2.3.1-fosscuda-2019b-Python-3.7.4/lib/python3.7/site-packages (from requests-oauthlib>=0.7.0->google-auth-oauthlib<0.5,>=0.4.1->tensorboard<2.3.0,>=2.2.0->tensorflow==2.2.0) (3.1.0)
+Requirement already satisfied: zipp>=0.5 in /home/n9455647/.local/lib/python3.7/site-packages (from importlib-metadata; python_version < "3.8"->markdown>=2.6.8->tensorboard<2.3.0,>=2.2.0->tensorflow==2.2.0) (3.4.0)
+Installing collected packages: scipy, tensorboard, tensorflow-estimator, tensorflow
+Successfully installed scipy-1.4.1 tensorboard-2.2.2 tensorflow-2.2.0 tensorflow-estimator-2.2.0
+tensorflow downgraded
+Collecting pandas
+  Using cached pandas-1.1.4-cp37-cp37m-manylinux1_x86_64.whl (9.5 MB)
+Requirement already satisfied, skipping upgrade: python-dateutil>=2.7.3 in /pkg/suse12/software/python/3.7.4-gcccore-8.3.0/lib/python3.7/site-packages (from pandas) (2.8.0)
+Requirement already satisfied, skipping upgrade: pytz>=2017.2 in /pkg/suse12/software/python/3.7.4-gcccore-8.3.0/lib/python3.7/site-packages (from pandas) (2019.2)
+Requirement already satisfied, skipping upgrade: numpy>=1.15.4 in /pkg/suse12/software/SciPy-bundle/2019.10-fosscuda-2019b-Python-3.7.4/lib/python3.7/site-packages (from pandas) (1.17.3)
+Requirement already satisfied, skipping upgrade: six>=1.5 in /home/n9455647/.local/lib/python3.7/site-packages (from python-dateutil>=2.7.3->pandas) (1.15.0)
+Installing collected packages: pandas
+Successfully installed pandas-1.1.4
+pandas upgraded
+starting test
+----------------------------------------------SHAP----------------------------------------------
+Bucket all
+get everything to create model
+Parameters loaded
+defining input layer
+adding lstm layers
+test ended
+
+-----
+PBS Job 8568419.pbs
+CPU time  : 00:00:37
+Wall time : 00:05:24
+Mem usage : 2553356kb
