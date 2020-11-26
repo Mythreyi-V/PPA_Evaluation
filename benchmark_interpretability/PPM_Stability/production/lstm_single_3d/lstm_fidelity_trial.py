@@ -267,7 +267,7 @@ method_name = "%s_%s"%(bucket_method, cls_encoding)
 generate_samples = False
 generate_lime = True
 generate_kernel_shap = False
-generate_model_shap = False
+generate_model_shap = True
 
 sample_size = 2
 exp_iter = 10
@@ -469,19 +469,21 @@ if generate_model_shap:
                 print("Time taken to generate distribution:", dist_elapsed)
                 
                 start_time = time.time()
-                for i_type in range(len(sample_instances)):
+                for i_type in range(len(sample_instances[:1])):
                     changes = []
                     probas = []
                     nr_events = []
                     case_ids = []
 
-                    for n in range(len(sample_instances[i_type])):
+                    for n in range(len(sample_instances[i_type][:1])):
                         print("Category %s of %s. Instance %s of %s" %(i_type+1, len(sample_instances), n+1, len(sample_instances[i_type])))
                         instance = sample_instances[i_type][n]
 
                         ind = instance['predicted']
+                        print(ind)
                         case_ids.append(instance['caseID'])
                         p1 = instance['proba']
+                        print(p1)
                         probas.append(p1)
                         nr_events.append(instance['nr_events'])
                         input_ = instance['input']
@@ -580,7 +582,10 @@ if generate_model_shap:
 
 
                         diffs = []
-
+                        
+                        if cls_method == "lstm":
+                            permutations = []
+                        
                         for iteration in range(exp_iter):
                             print("Pertubing - Run", iteration+1)
                             alt_x = np.copy(test_x_group)
@@ -588,15 +593,24 @@ if generate_model_shap:
                             for each in intervals:
                                 new_val = random.uniform(each[2], each[3])
                                 if cls_encoding == "3d":
+                                    #print(alt_x[0][each[1][0]][each[1][1]])
                                     alt_x[0][each[1][0]][each[1][1]] = new_val
                                 else:
                                     alt_x[0][each[1]] = new_val
+                                    
                             if cls_method != "lstm":
                                 p2 = cls.predict_proba(alt_x)[0][ind]
+                                diff = p1-p2
+                                diffs.append(diff)
                             else:
-                                p2 = cls.predict(alt_x)[0][ind]
-                            diff = p1-p2
-                            diffs.append(diff)
+                                permutations.append(alt_x[0])
+                        
+                        if cls_method == "lstm":
+                            pred_probas = cls.predict(np.array(permutations))
+                            print(pred_probas)
+                            p2 = [proba[ind] for proba in pred_probas]
+                            diffs = [p1-new for new in p2]
+                            print(diffs)
 
                         changes.append(np.mean(diffs))
                         shap_elapsed = time.time()-start_time
@@ -831,23 +845,24 @@ if generate_lime:
                 
                 type_list = ['True Negatives', 'True Positives', 'False Negatives', 'False Positives']
 
-                for i in list(range(len(sample_instances))):
+                for i in list(range(len(sample_instances[:1]))):
                     changes = []
                     probas = []
                     nr_events = []
                     case_ids = []
 
-                    for j in list(range(len(sample_instances[i]))):
+                    for j in list(range(len(sample_instances[i][:1]))):
                         print("Category %s of %s. Instance %s of %s" %(i+1, len(sample_instances), j+1, len(sample_instances[i])))
                         instance = sample_instances[i][j]
                         
                         #start_time = time.time()
                         
                         ind = instance['predicted']
+                        print(ind)
                         case_ids.append(instance['caseID'])
                         p1 = instance['proba']
                         probas.append(p1)
-                        #print("proba:", p1)
+                        print("proba:", p1)
                         nr_events.append(instance['nr_events'])
                         input_ = instance['input']
 
@@ -899,10 +914,11 @@ if generate_lime:
                                 if each in feat:
                                     dpls.append(feat)
                                     vals.append(counter[feat])
-                            keepval = vals.index(max(vals))
-                            for n in range(len(dpls)):
-                                if n != keepval:
-                                    del counter[dpls[n]]
+                            if vals != []:
+                                keepval = vals.index(max(vals))
+                                for n in range(len(dpls)):
+                                    if n != keepval:
+                                        del counter[dpls[n]]
 
                         rel_feat = counter.most_common(max_feat)
                         #print(len(rel_feat))
@@ -1000,6 +1016,8 @@ if generate_lime:
                                         intervals.append((feature_name, index, int_min, int_max))
 
                         diffs = []
+                        if cls_method == "lstm":
+                            permutations = []
                         for iteration in range(exp_iter):
                             print("Pertubing - Run", iteration+1)
                             alt_x = np.copy(test_x_group)
@@ -1007,16 +1025,23 @@ if generate_lime:
                             for each in intervals:
                                 new_val = random.uniform(each[2], each[3])
                                 if cls_encoding == "3d":
+                                    #print(alt_x[0][each[1][0]][each[1][1]])
                                     alt_x[0][each[1][0]][each[1][1]] = new_val
                                 else:
                                     alt_x[0][each[1]] = new_val
                                     
                             if cls_method != "lstm":
                                 p2 = cls.predict_proba(alt_x)[0][ind]
+                                diff = p1-p2
+                                diffs.append(diff)
                             else:
-                                p2 = cls.predict(alt_x)[0][ind]
-                            diff = p1-p2
-                            diffs.append(diff)
+                                permutations.append(alt_x[0])
+                        if cls_method == "lstm":
+                            pred_probas = cls.predict(np.array(permutations))
+                            print(pred_probas)
+                            p2 = [proba[ind] for proba in pred_probas]
+                            diffs = [p1-new for new in p2]
+                            print(diffs)
 
                         changes.append(np.mean(diffs))
                         lime_elapsed = time.time()-start_time
