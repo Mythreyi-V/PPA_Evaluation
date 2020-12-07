@@ -1,0 +1,91 @@
+iter;dataset;cls;method;param;value;score
+2;sepsis_cases_1;lstm;single_3d;batch_size;128;0.48569882985651563
+2;sepsis_cases_1;lstm;single_3d;dense_layers;{'dense2_nodes': 40, 'layers': 'two'};0.48569882985651563
+2;sepsis_cases_1;lstm;single_3d;epochs;100;0.48569882985651563
+2;sepsis_cases_1;lstm;single_3d;learning_rate;0.00018714533917864524;0.48569882985651563
+2;sepsis_cases_1;lstm;single_3d;lstm1_dropouts;0.16063784877005607;0.48569882985651563
+2;sepsis_cases_1;lstm;single_3d;lstm1_nodes;50;0.48569882985651563
+2;sepsis_cases_1;lstm;single_3d;lstm_layers;{'layers': 'two', 'lstm2_dropouts': 0.0032604849748752687, 'lstm2_nodes': 20};0.48569882985651563
+2;sepsis_cases_1;lstm;single_3d;optimizer;adam;0.48569882985651563
+2;sepsis_cases_1;lstm;single_3d;processing_time;151.54498958587646;0
+3;sepsis_cases_1;lstm;single_3d;batch_size;128;0.49398997860601285
+3;sepsis_cases_1;lstm;single_3d;dense_layers;{'dense2_nodes': 20, 'layers': 'two'};0.49398997860601285
+3;sepsis_cases_1;lstm;single_3d;epochs;100;0.49398997860601285
+3;sepsis_cases_1;lstm;single_3d;learning_rate;0.000811803513292795;0.49398997860601285
+3;sepsis_cases_1;lstm;single_3d;lstm1_dropouts;0.0263269627702636;0.49398997860601285
+3;sepsis_cases_1;lstm;single_3d;lstm1_nodes;20;0.49398997860601285
+3;sepsis_cases_1;lstm;single_3d;lstm_layers;{'layers': 'three', 'lstm2_dropouts': 0.013597339532977367, 'lstm2_nodes': 20, 'lstm3_dropouts': 0.004445025115526317, 'lstm3_nodes': 50};0.49398997860601285
+3;sepsis_cases_1;lstm;single_3d;optimizer;adam;0.49398997860601285
+3;sepsis_cases_1;lstm;single_3d;processing_time;179.51350474357605;0
+4;sepsis_cases_1;lstm;single_3d;batch_size;16;0.4611276384602929
+4;sepsis_cases_1;lstm;single_3d;dense_layers;{'dense2_nodes': 20, 'layers': 'two'};0.4611276384602929
+4;sepsis_cases_1;lstm;single_3d;epochs;50;0.4611276384602929
+4;sepsis_cases_1;lstm;single_3d;learning_rate;0.00020801145954856245;0.4611276384602929
+4;sepsis_cases_1;lstm;single_3d;lstm1_dropouts;0.013911104996343099;0.4611276384602929
+4;sepsis_cases_1;lstm;single_3d;lstm1_nodes;50;0.4611276384602929
+4;sepsis_cases_1;lstm;single_3d;lstm_layers;{'layers': 'one'};0.4611276384602929
+4;sepsis_cases_1;lstm;single_3d;optimizer;adam;0.4611276384602929
+4;sepsis_cases_1;lstm;single_3d;processing_time;101.61724996566772;0
+5;sepsis_cases_1;lstm;single_3d;batch_size;64;0.47629188930538174
+5;sepsis_cases_1;lstm;single_3d;dense_layers;{'layers': 'one'};0.47629188930538174
+5;sepsis_cases_1;lstm;single_3d;epochs;200;0.47629188930538174
+5;sepsis_cases_1;lstm;single_3d;learning_rate;0.0001878080931612727;0.47629188930538174
+5;sepsis_cases_1;lstm;single_3d;lstm1_dropouts;0.007525295276521878;0.47629188930538174
+5;sepsis_cases_1;lstm;single_3d;lstm1_nodes;10;0.47629188930538174
+5;sepsis_cases_1;lstm;single_3d;lstm_layers;{'layers': 'three', 'lstm2_dropouts': 0.03375711819472814, 'lstm2_nodes': 10, 'lstm3_dropouts': 0.033310484522679276, 'lstm3_nodes': 20};0.47629188930538174
+5;sepsis_cases_1;lstm;single_3d;optimizer;rmsprop;0.47629188930538174
+5;sepsis_cases_1;lstm;single_3d;processing_time;279.4100589752197;0
+6;sepsis_cases_1;lstm;single_3d;batch_size;128;0.4876207842793813
+6;sepsis_cases_1;lstm;single_3d;dense_layers;{'layers': 'one'};0.4876207842793813
+6;sepsis_cases_1;lstm;single_3d;epochs;100;0.4876207842793813
+6;sepsis_cases_1;lstm;single_3d;learning_rate;0.002941142080530519;0.4876207842793813
+6;sepsis_cases_1;lstm;single_3d;lstm1_dropouts;0.002593299282449886;0.4876207842793813
+6;sepsis_cases_1;lstm;single_3d;lstm1_nodes;50;0.4876207842793813
+6;sepsis_cases_1;lstm;single_3d;lstm_layers;{'layers': 'one'};0.4876207842793813
+6;sepsis_cases_1;lstm;single_3d;optimizer;rmsprop;0.4876207842793813
+6;sepsis_cases_1;lstm;single_3d;processing_time;88.2395236492157;0
+7;sepsis_cases_1;lstm;single_3d;batch_size;8;0.4679018444572473
+7;sepsis_cases_1;lstm;single_3d;dense_layers;{'layers': 'one'};0.4679018444572473
+7;sepsis_cases_1;lstm;single_3d;epochs;50;0.4679018444572473
+7;sepsis_cases_1;lstm;single_3d;learning_rate;0.00015868611078958332;0.4679018444572473
+7;sepsis_cases_1;lstm;single_3d;lstm1_dropouts;0.012437427524127288;0.4679018444572473
+7;sepsis_cases_1;lstm;single_3d;lstm1_nodes;10;0.4679018444572473
+7;sepsis_cases_1;lstm;single_3d;lstm_layers;{'layers': 'two', 'lstm2_dropouts': 0.010711956168250554, 'lstm2_nodes': 20};0.4679018444572473
+7;sepsis_cases_1;lstm;single_3d;optimizer;rmsprop;0.4679018444572473
+7;sepsis_cases_1;lstm;single_3d;processing_time;505.65965485572815;0
+8;sepsis_cases_1;lstm;single_3d;batch_size;256;0.4730809226696919
+8;sepsis_cases_1;lstm;single_3d;dense_layers;{'layers': 'one'};0.4730809226696919
+8;sepsis_cases_1;lstm;single_3d;epochs;300;0.4730809226696919
+8;sepsis_cases_1;lstm;single_3d;learning_rate;0.0001796839205124857;0.4730809226696919
+8;sepsis_cases_1;lstm;single_3d;lstm1_dropouts;0.001222324929605151;0.4730809226696919
+8;sepsis_cases_1;lstm;single_3d;lstm1_nodes;50;0.4730809226696919
+8;sepsis_cases_1;lstm;single_3d;lstm_layers;{'layers': 'two', 'lstm2_dropouts': 0.010311226121140375, 'lstm2_nodes': 50};0.4730809226696919
+8;sepsis_cases_1;lstm;single_3d;optimizer;rmsprop;0.4730809226696919
+8;sepsis_cases_1;lstm;single_3d;processing_time;149.35491466522217;0
+9;sepsis_cases_1;lstm;single_3d;batch_size;16;0.45085391423066473
+9;sepsis_cases_1;lstm;single_3d;dense_layers;{'dense2_nodes': 40, 'layers': 'two'};0.45085391423066473
+9;sepsis_cases_1;lstm;single_3d;epochs;300;0.45085391423066473
+9;sepsis_cases_1;lstm;single_3d;learning_rate;0.0001234677325257161;0.45085391423066473
+9;sepsis_cases_1;lstm;single_3d;lstm1_dropouts;0.004058992829508239;0.45085391423066473
+9;sepsis_cases_1;lstm;single_3d;lstm1_nodes;20;0.45085391423066473
+9;sepsis_cases_1;lstm;single_3d;lstm_layers;{'layers': 'one'};0.45085391423066473
+9;sepsis_cases_1;lstm;single_3d;optimizer;adam;0.45085391423066473
+9;sepsis_cases_1;lstm;single_3d;processing_time;112.97750616073608;0
+10;sepsis_cases_1;lstm;single_3d;batch_size;32;0.42731872409501764
+10;sepsis_cases_1;lstm;single_3d;dense_layers;{'dense2_nodes': 30, 'layers': 'two'};0.42731872409501764
+10;sepsis_cases_1;lstm;single_3d;epochs;50;0.42731872409501764
+10;sepsis_cases_1;lstm;single_3d;learning_rate;0.0003560454759066351;0.42731872409501764
+10;sepsis_cases_1;lstm;single_3d;lstm1_dropouts;0.1331552147704324;0.42731872409501764
+10;sepsis_cases_1;lstm;single_3d;lstm1_nodes;50;0.42731872409501764
+10;sepsis_cases_1;lstm;single_3d;lstm_layers;{'layers': 'two', 'lstm2_dropouts': 0.004127913775841811, 'lstm2_nodes': 10};0.42731872409501764
+10;sepsis_cases_1;lstm;single_3d;optimizer;adam;0.42731872409501764
+10;sepsis_cases_1;lstm;single_3d;processing_time;194.00019216537476;0
+11;sepsis_cases_1;lstm;single_3d;batch_size;32;0.3923670196004286
+11;sepsis_cases_1;lstm;single_3d;dense_layers;{'layers': 'one'};0.3923670196004286
+11;sepsis_cases_1;lstm;single_3d;epochs;500;0.3923670196004286
+11;sepsis_cases_1;lstm;single_3d;learning_rate;0.0002919203591786185;0.3923670196004286
+11;sepsis_cases_1;lstm;single_3d;lstm1_dropouts;0.012526875728519014;0.3923670196004286
+11;sepsis_cases_1;lstm;single_3d;lstm1_nodes;50;0.3923670196004286
+11;sepsis_cases_1;lstm;single_3d;lstm_layers;{'layers': 'two', 'lstm2_dropouts': 0.04999464454278527, 'lstm2_nodes': 50};0.3923670196004286
+11;sepsis_cases_1;lstm;single_3d;optimizer;adam;0.3923670196004286
+11;sepsis_cases_1;lstm;single_3d;processing_time;193.25842690467834;0
