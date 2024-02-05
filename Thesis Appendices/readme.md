@@ -1,0 +1,1 @@
+This folder contains Appendix B for the PhD thesis "Evaluating Post Hoc Explanations Using Tabular Data: A Functionally-Grounded Perspective". The publication of this thesis is forthcoming.
